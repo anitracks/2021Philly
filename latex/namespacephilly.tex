@@ -1,0 +1,54 @@
+\hypertarget{namespacephilly}{}\doxysection{philly Namespace Reference}
+\label{namespacephilly}\index{philly@{philly}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}{main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function that collects command line arguments and acts on them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}\label{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}} 
+\index{philly@{philly}!main@{main}}
+\index{main@{main}!philly@{philly}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def philly.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the main function that collects command line arguments and acts on them. 
+
+
+
+Definition at line 18 of file philly.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18 \textcolor{keyword}{def }\mbox{\hyperlink{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}{main}}():}
+\DoxyCodeLine{19     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that collects command line arguments}}
+\DoxyCodeLine{20 \textcolor{stringliteral}{    and acts on them.}}
+\DoxyCodeLine{21 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{22     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
+\DoxyCodeLine{23     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
+\DoxyCodeLine{24     parser.add\_argument(\textcolor{stringliteral}{'dbfile'}, help=\textcolor{stringliteral}{'The name of the sqlite db file'})}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
+\DoxyCodeLine{27     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
+\DoxyCodeLine{30     print(f\textcolor{stringliteral}{'The column names are:\(\backslash\)n\{csvDF.columns.values\}'})}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{comment}{\# calculate the median judgment amount}}
+\DoxyCodeLine{33     medJudgment = np.nanmedian(csvDF[\textcolor{stringliteral}{'Judgment Amount'}])}
+\DoxyCodeLine{34     print(f\textcolor{stringliteral}{'The median judgment amount is \$\{medJudgment\}'})}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{comment}{\#conn = sqlite3.connect(args.dbfile)  \# connect to the database}}
+\DoxyCodeLine{37     \textcolor{comment}{\# load the csvData into the database}}
+\DoxyCodeLine{38     \textcolor{comment}{\#csvDF.to\_sql('csvDF', conn, if\_exists='fail', index=False)}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     pdb.set\_trace()}
+\DoxyCodeLine{41     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{42     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
+\DoxyCodeLine{43 }
+
+\end{DoxyCode}
