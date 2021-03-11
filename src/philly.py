@@ -1,10 +1,9 @@
 """!
- @file testOpen.py
- @brief Short test to see if the csv files can be read
- @details This sets up reading a CSV, analyzing a column, and 
-          putting the data into sqlite if wanted.
+ @file philly.py
+ @brief Data collection and analysis for Philly data
+ @details 
  @author Seth McNeill
- @date 2021 February 17
+ @date 2021 March 11
 """
 
 import datetime  # used for start/end times
@@ -38,7 +37,7 @@ def main():
     # load the csvData into the database
     #csvDF.to_sql('csvDF', conn, if_exists='fail', index=False)
 
-#    pdb.set_trace()
+    pdb.set_trace()
     stop_time = datetime.datetime.now()
     print(f'{__file__} took {stop_time-start_time} seconds')
 
