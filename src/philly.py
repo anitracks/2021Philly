@@ -32,7 +32,7 @@ def cleanOutcome(dirtyString):
        @param dirtyString string to remove all caps from the end of
        @returns cleaned string
     """
-    #endCaps.sub('', csvDF['Case Outcome'][10129]).strip()
+    #endCaps.sub('', csvNoDups['Case Outcome'][10129]).strip()
     # Catch the nan's from assumably empty fields
     # nan's are both the empty strings and NULLs in David's data
     if(isinstance(dirtyString, float)):
@@ -83,22 +83,29 @@ def main():
     csvDF = pd.read_csv(args.csvfile)  # read in the csv data
     print(f'The column names are:\n{csvDF.columns.values}')
 
-    print("The column types are:")
-    print(csvDF.dtypes)  # print out the data type for each column
+    # need to filter out exact duplicate rows in base dataset
+    # keep=False keeps both original and duplicate
+    # keep='first' marks all but first as True
+    dups = csvDF.duplicated(keep='first')  
+    print(f'\n{len(dups[dups==True])} duplicates found') 
+    #display(csvDF.loc[619,:])  # display a particular row
+    csvNoDups = csvDF.drop_duplicates(keep='first')
+
+    print("\nThe column types are:")
+    print(csvNoDups.dtypes)  # print out the data type for each column
     # calculate the median judgment amount
-    medJudgment = np.nanmedian(csvDF['Judgment Amount'])
+    medJudgment = np.nanmedian(csvNoDups['Judgment Amount'])
     print(f'\nThe median judgment amount is ${medJudgment}')
 
-    # need to filter out exact duplicate rows in base dataset
     # need to look at cases where the same attorney is listed on both sides
     # try using sent2vec to sort out similar ones
     # pypi.org/project/sent2vec
-    outs = outcomeList(csvDF)
+    outs = outcomeList(csvNoDups)
     print('\nOutcome Subcategories')
     print(f'{outs}')
     #conn = sqlite3.connect(args.dbfile)  # connect to the database
     # load the csvData into the database
-    #csvDF.to_sql('csvDF', conn, if_exists='fail', index=False)
+    #csvNoDups.to_sql('csvNoDups', conn, if_exists='fail', index=False)
 
     stop_time = datetime.datetime.now()
     print(f'{__file__} took {stop_time-start_time} seconds')
