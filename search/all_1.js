@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['philly_1',['philly',['../namespacephilly.html',1,'']]],
-  ['philly_2epy_2',['philly.py',['../philly_8py.html',1,'']]]
+  ['cleanoutcome_1',['cleanOutcome',['../namespacephilly.html#a6bba32dda69a2a95c83dca47ed7715d7',1,'philly']]]
 ];

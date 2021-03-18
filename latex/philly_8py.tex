@@ -13,14 +13,25 @@ Data collection and analysis for Philly data.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+def \mbox{\hyperlink{namespacephilly_a6bba32dda69a2a95c83dca47ed7715d7}{philly.\+clean\+Outcome}} (dirty\+String)
+\begin{DoxyCompactList}\small\item\em Removes the ALL CAPS words at the end of a string dirty\+String. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacephilly_afd61199a26debb52b46c478deea8c038}{philly.\+outcome\+List}} (df)
+\begin{DoxyCompactList}\small\item\em Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}{philly.\+main}} ()
 \begin{DoxyCompactList}\small\item\em This is the main function that collects command line arguments and acts on them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacephilly_a686a60bfbd1f44bcf72d394c3f757a99}{philly.\+end\+Caps}} = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em selects all caps words to the end of the line \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacephilly_a0bc3cdc19237e83d3472a5294ede0c1e}{philly.\+datetime\+To\+End}} = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em selects date and time to end of line in format 07/17/2017 1\+:15 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Data collection and analysis for Philly data. 
 
-\begin{DoxyAuthor}{Author}
+This script cleans and collates the outcomes data \begin{DoxyAuthor}{Author}
 Seth Mc\+Neill 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}

@@ -3,11 +3,72 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+def \mbox{\hyperlink{namespacephilly_a6bba32dda69a2a95c83dca47ed7715d7}{clean\+Outcome}} (dirty\+String)
+\begin{DoxyCompactList}\small\item\em Removes the ALL CAPS words at the end of a string dirty\+String. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacephilly_afd61199a26debb52b46c478deea8c038}{outcome\+List}} (df)
+\begin{DoxyCompactList}\small\item\em Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}{main}} ()
 \begin{DoxyCompactList}\small\item\em This is the main function that collects command line arguments and acts on them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacephilly_a686a60bfbd1f44bcf72d394c3f757a99}{end\+Caps}} = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em selects all caps words to the end of the line \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacephilly_a0bc3cdc19237e83d3472a5294ede0c1e}{datetime\+To\+End}} = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em selects date and time to end of line in format 07/17/2017 1\+:15 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacephilly_a6bba32dda69a2a95c83dca47ed7715d7}\label{namespacephilly_a6bba32dda69a2a95c83dca47ed7715d7}} 
+\index{philly@{philly}!cleanOutcome@{cleanOutcome}}
+\index{cleanOutcome@{cleanOutcome}!philly@{philly}}
+\doxysubsubsection{\texorpdfstring{cleanOutcome()}{cleanOutcome()}}
+{\footnotesize\ttfamily def philly.\+clean\+Outcome (\begin{DoxyParamCaption}\item[{}]{dirty\+String }\end{DoxyParamCaption})}
+
+
+
+Removes the ALL CAPS words at the end of a string dirty\+String. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dirty\+String} & string to remove all caps from the end of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cleaned string 
+\end{DoxyReturn}
+
+
+Definition at line 30 of file philly.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30 \textcolor{keyword}{def }\mbox{\hyperlink{namespacephilly_a6bba32dda69a2a95c83dca47ed7715d7}{cleanOutcome}}(dirtyString):}
+\DoxyCodeLine{31     \textcolor{stringliteral}{"{}"{}"{}! Removes the ALL CAPS words at the end of a string dirtyString}}
+\DoxyCodeLine{32 \textcolor{stringliteral}{       @param dirtyString string to remove all caps from the end of}}
+\DoxyCodeLine{33 \textcolor{stringliteral}{       @returns cleaned string}}
+\DoxyCodeLine{34 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{35     \textcolor{comment}{\#endCaps.sub('', csvDF['Case Outcome'][10129]).strip()}}
+\DoxyCodeLine{36     \textcolor{comment}{\# Catch the nan's from assumably empty fields}}
+\DoxyCodeLine{37     \textcolor{comment}{\# nan's are both the empty strings and NULLs in David's data}}
+\DoxyCodeLine{38     if(isinstance(dirtyString, float)):}
+\DoxyCodeLine{39         if(math.isnan(dirtyString)):}
+\DoxyCodeLine{40             return(\textcolor{stringliteral}{'Blank or NULL'})}
+\DoxyCodeLine{41         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{42             pdb.set\_trace()  \textcolor{comment}{\# it isn't an expected value}}
+\DoxyCodeLine{43     \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{44         cleanedString = endCaps.sub(\textcolor{stringliteral}{''}, dirtyString).strip()}
+\DoxyCodeLine{45     \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} e:}
+\DoxyCodeLine{46         pdb.set\_trace()  \textcolor{comment}{\# unexpected type}}
+\DoxyCodeLine{47     firstCleaned = cleanedString.split(\textcolor{stringliteral}{'.'})[0] \textcolor{comment}{\# remove everything after first .}}
+\DoxyCodeLine{48     \textcolor{comment}{\# remove everything including and after date-\/time }}
+\DoxyCodeLine{49     \textcolor{comment}{\#   (typical format 07/17/2017 1:15)}}
+\DoxyCodeLine{50     dateCleaned = datetimeToEnd.sub(\textcolor{stringliteral}{''}, firstCleaned).strip()}
+\DoxyCodeLine{51     return(dateCleaned)}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+
+\end{DoxyCode}
 \mbox{\Hypertarget{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}\label{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}} 
 \index{philly@{philly}!main@{main}}
 \index{main@{main}!philly@{philly}}
@@ -20,35 +81,118 @@ This is the main function that collects command line arguments and acts on them.
 
 
 
-Definition at line 18 of file philly.\+py.
+Definition at line 71 of file philly.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{18 \textcolor{keyword}{def }\mbox{\hyperlink{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}{main}}():}
-\DoxyCodeLine{19     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that collects command line arguments}}
-\DoxyCodeLine{20 \textcolor{stringliteral}{    and acts on them.}}
-\DoxyCodeLine{21 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{22     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
-\DoxyCodeLine{23     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
-\DoxyCodeLine{24     parser.add\_argument(\textcolor{stringliteral}{'dbfile'}, help=\textcolor{stringliteral}{'The name of the sqlite db file'})}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
-\DoxyCodeLine{27     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
-\DoxyCodeLine{30     print(f\textcolor{stringliteral}{'The column names are:\(\backslash\)n\{csvDF.columns.values\}'})}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     \textcolor{comment}{\# calculate the median judgment amount}}
-\DoxyCodeLine{33     medJudgment = np.nanmedian(csvDF[\textcolor{stringliteral}{'Judgment Amount'}])}
-\DoxyCodeLine{34     print(f\textcolor{stringliteral}{'The median judgment amount is \$\{medJudgment\}'})}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{36     \textcolor{comment}{\#conn = sqlite3.connect(args.dbfile)  \# connect to the database}}
-\DoxyCodeLine{37     \textcolor{comment}{\# load the csvData into the database}}
-\DoxyCodeLine{38     \textcolor{comment}{\#csvDF.to\_sql('csvDF', conn, if\_exists='fail', index=False)}}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40     pdb.set\_trace()}
-\DoxyCodeLine{41     stop\_time = datetime.datetime.now()}
-\DoxyCodeLine{42     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
-\DoxyCodeLine{43 }
+\DoxyCodeLine{71 \textcolor{keyword}{def }\mbox{\hyperlink{namespacephilly_a90324f681fa1068c9c8dc12fa6ccf626}{main}}():}
+\DoxyCodeLine{72     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that collects command line arguments}}
+\DoxyCodeLine{73 \textcolor{stringliteral}{    and acts on them.}}
+\DoxyCodeLine{74 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{75     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
+\DoxyCodeLine{76     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
+\DoxyCodeLine{77 \textcolor{comment}{\#    parser.add\_argument('dbfile', help='The name of the sqlite db file')}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
+\DoxyCodeLine{80     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{comment}{\# Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason}}
+\DoxyCodeLine{83     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
+\DoxyCodeLine{84     print(f\textcolor{stringliteral}{'The column names are:\(\backslash\)n\{csvDF.columns.values\}'})}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     print(\textcolor{stringliteral}{"{}The column types are:"{}})}
+\DoxyCodeLine{87     print(csvDF.dtypes)  \textcolor{comment}{\# print out the data type for each column}}
+\DoxyCodeLine{88     \textcolor{comment}{\# calculate the median judgment amount}}
+\DoxyCodeLine{89     medJudgment = np.nanmedian(csvDF[\textcolor{stringliteral}{'Judgment Amount'}])}
+\DoxyCodeLine{90     print(f\textcolor{stringliteral}{'\(\backslash\)nThe median judgment amount is \$\{medJudgment\}'})}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{comment}{\# need to filter out exact duplicate rows in base dataset}}
+\DoxyCodeLine{93     \textcolor{comment}{\# need to look at cases where the same attorney is listed on both sides}}
+\DoxyCodeLine{94     \textcolor{comment}{\# try using sent2vec to sort out similar ones}}
+\DoxyCodeLine{95     \textcolor{comment}{\# pypi.org/project/sent2vec}}
+\DoxyCodeLine{96     outs = \mbox{\hyperlink{namespacephilly_afd61199a26debb52b46c478deea8c038}{outcomeList}}(csvDF)}
+\DoxyCodeLine{97     print(\textcolor{stringliteral}{'\(\backslash\)nOutcome Subcategories'})}
+\DoxyCodeLine{98     print(f\textcolor{stringliteral}{'\{outs\}'})}
+\DoxyCodeLine{99     \textcolor{comment}{\#conn = sqlite3.connect(args.dbfile)  \# connect to the database}}
+\DoxyCodeLine{100     \textcolor{comment}{\# load the csvData into the database}}
+\DoxyCodeLine{101     \textcolor{comment}{\#csvDF.to\_sql('csvDF', conn, if\_exists='fail', index=False)}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{104     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
+\DoxyCodeLine{105 }
 
 \end{DoxyCode}
+\mbox{\Hypertarget{namespacephilly_afd61199a26debb52b46c478deea8c038}\label{namespacephilly_afd61199a26debb52b46c478deea8c038}} 
+\index{philly@{philly}!outcomeList@{outcomeList}}
+\index{outcomeList@{outcomeList}!philly@{philly}}
+\doxysubsubsection{\texorpdfstring{outcomeList()}{outcomeList()}}
+{\footnotesize\ttfamily def philly.\+outcome\+List (\begin{DoxyParamCaption}\item[{}]{df }\end{DoxyParamCaption})}
+
+
+
+Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em df} & is a panda dataframe of outcomes from reading in the csv file of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cleaned and sorted outcomes 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file philly.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54 \textcolor{keyword}{def }\mbox{\hyperlink{namespacephilly_afd61199a26debb52b46c478deea8c038}{outcomeList}}(df):}
+\DoxyCodeLine{55     \textcolor{stringliteral}{"{}"{}"{}! Returns a list of cleaned and sorted outcomes that}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{    have been grouped by commonality and counts the number}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{    of occurrences of each one.}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{}}
+\DoxyCodeLine{59 \textcolor{stringliteral}{    @param df is a panda dataframe of outcomes from reading in the csv file }}
+\DoxyCodeLine{60 \textcolor{stringliteral}{        of data}}
+\DoxyCodeLine{61 \textcolor{stringliteral}{    @returns cleaned and sorted outcomes}}
+\DoxyCodeLine{62 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{63     outcomes = df[\textcolor{stringliteral}{'Case Outcome'}]}
+\DoxyCodeLine{64     \textcolor{comment}{\# clean up the outcome string}}
+\DoxyCodeLine{65     cleanedOutcomes = outcomes.apply(cleanOutcome)}
+\DoxyCodeLine{66     \textcolor{comment}{\# Good ways to count specific occurances: }}
+\DoxyCodeLine{67     \textcolor{comment}{\# https://stackoverflow.com/a/35277776}}
+\DoxyCodeLine{68     \textcolor{comment}{\# see also cleanedOutcomes.value\_counts()}}
+\DoxyCodeLine{69     return(cleanedOutcomes.value\_counts())}
+\DoxyCodeLine{70 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacephilly_a0bc3cdc19237e83d3472a5294ede0c1e}\label{namespacephilly_a0bc3cdc19237e83d3472a5294ede0c1e}} 
+\index{philly@{philly}!datetimeToEnd@{datetimeToEnd}}
+\index{datetimeToEnd@{datetimeToEnd}!philly@{philly}}
+\doxysubsubsection{\texorpdfstring{datetimeToEnd}{datetimeToEnd}}
+{\footnotesize\ttfamily philly.\+datetime\+To\+End = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})}
+
+
+
+selects date and time to end of line in format 07/17/2017 1\+:15 
+
+
+
+Definition at line 28 of file philly.\+py.
+
+\mbox{\Hypertarget{namespacephilly_a686a60bfbd1f44bcf72d394c3f757a99}\label{namespacephilly_a686a60bfbd1f44bcf72d394c3f757a99}} 
+\index{philly@{philly}!endCaps@{endCaps}}
+\index{endCaps@{endCaps}!philly@{philly}}
+\doxysubsubsection{\texorpdfstring{endCaps}{endCaps}}
+{\footnotesize\ttfamily philly.\+end\+Caps = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})}
+
+
+
+selects all caps words to the end of the line 
+
+
+
+Definition at line 26 of file philly.\+py.
+
