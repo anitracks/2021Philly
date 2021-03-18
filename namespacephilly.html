@@ -124,7 +124,7 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">       @param dirtyString string to remove all caps from the end of</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">       @returns cleaned string</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">#endCaps.sub(&#39;&#39;, csvDF[&#39;Case Outcome&#39;][10129]).strip()</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">#endCaps.sub(&#39;&#39;, csvNoDups[&#39;Case Outcome&#39;][10129]).strip()</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment"># Catch the nan&#39;s from assumably empty fields</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment"># nan&#39;s are both the empty strings and NULLs in David&#39;s data</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    if(isinstance(dirtyString, float)):</div>
@@ -180,26 +180,33 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    csvDF = pd.read_csv(args.csvfile)  <span class="comment"># read in the csv data</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    print(f<span class="stringliteral">&#39;The column names are:\n{csvDF.columns.values}&#39;</span>)</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    print(<span class="stringliteral">&quot;The column types are:&quot;</span>)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    print(csvDF.dtypes)  <span class="comment"># print out the data type for each column</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment"># calculate the median judgment amount</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    medJudgment = np.nanmedian(csvDF[<span class="stringliteral">&#39;Judgment Amount&#39;</span>])</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    print(f<span class="stringliteral">&#39;\nThe median judgment amount is ${medJudgment}&#39;</span>)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment"># need to filter out exact duplicate rows in base dataset</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment"># need to look at cases where the same attorney is listed on both sides</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment"># try using sent2vec to sort out similar ones</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment"># pypi.org/project/sent2vec</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    outs = <a class="code" href="namespacephilly.html#afd61199a26debb52b46c478deea8c038">outcomeList</a>(csvDF)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    print(<span class="stringliteral">&#39;\nOutcome Subcategories&#39;</span>)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    print(f<span class="stringliteral">&#39;{outs}&#39;</span>)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">#conn = sqlite3.connect(args.dbfile)  # connect to the database</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment"># load the csvData into the database</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">#csvDF.to_sql(&#39;csvDF&#39;, conn, if_exists=&#39;fail&#39;, index=False)</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    stop_time = datetime.datetime.now()</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds&#39;</span>)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment"># need to filter out exact duplicate rows in base dataset</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment"># keep=False keeps both original and duplicate</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment"># keep=&#39;first&#39; marks all but first as True</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    dups = csvDF.duplicated(keep=<span class="stringliteral">&#39;first&#39;</span>)  </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    print(f<span class="stringliteral">&#39;\n{len(dups[dups==True])} duplicates found&#39;</span>) </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">#display(csvDF.loc[619,:])  # display a particular row</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    csvNoDups = csvDF.drop_duplicates(keep=<span class="stringliteral">&#39;first&#39;</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    print(<span class="stringliteral">&quot;\nThe column types are:&quot;</span>)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    print(csvNoDups.dtypes)  <span class="comment"># print out the data type for each column</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment"># calculate the median judgment amount</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    medJudgment = np.nanmedian(csvNoDups[<span class="stringliteral">&#39;Judgment Amount&#39;</span>])</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    print(f<span class="stringliteral">&#39;\nThe median judgment amount is ${medJudgment}&#39;</span>)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment"># need to look at cases where the same attorney is listed on both sides</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment"># try using sent2vec to sort out similar ones</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment"># pypi.org/project/sent2vec</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    outs = <a class="code" href="namespacephilly.html#afd61199a26debb52b46c478deea8c038">outcomeList</a>(csvNoDups)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    print(<span class="stringliteral">&#39;\nOutcome Subcategories&#39;</span>)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    print(f<span class="stringliteral">&#39;{outs}&#39;</span>)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">#conn = sqlite3.connect(args.dbfile)  # connect to the database</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment"># load the csvData into the database</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">#csvNoDups.to_sql(&#39;csvNoDups&#39;, conn, if_exists=&#39;fail&#39;, index=False)</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    stop_time = datetime.datetime.now()</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds&#39;</span>)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="ttc" id="anamespacephilly_html_a90324f681fa1068c9c8dc12fa6ccf626"><div class="ttname"><a href="namespacephilly.html#a90324f681fa1068c9c8dc12fa6ccf626">philly.main</a></div><div class="ttdeci">def main()</div><div class="ttdoc">This is the main function that collects command line arguments and acts on them.</div><div class="ttdef"><b>Definition:</b> <a href="philly_8py_source.html#l00071">philly.py:71</a></div></div>
 <div class="ttc" id="anamespacephilly_html_afd61199a26debb52b46c478deea8c038"><div class="ttname"><a href="namespacephilly.html#afd61199a26debb52b46c478deea8c038">philly.outcomeList</a></div><div class="ttdeci">def outcomeList(df)</div><div class="ttdoc">Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu...</div><div class="ttdef"><b>Definition:</b> <a href="philly_8py_source.html#l00054">philly.py:54</a></div></div>
 </div><!-- fragment -->
