@@ -14,6 +14,7 @@ from the Philidelphia court system, cleans, collates, and prints
 out the outcomes column.
 
 ### Example output
+```
 Outcome Subcategories                                              Count
 Judgment for Plaintiff by Default                                  40711
 No Service, Dismissed without Prejudice                            28300
@@ -54,3 +55,4 @@ Additional Information:                                                1
 Discharged Bankruptcy Debt                                             1
 Judgment for Plaintiff as Defendant on Counterclaim by Default         1
 Petition/Affidavit Withdrawn Without Prejudice                         1
+```
