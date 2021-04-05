@@ -9,11 +9,12 @@ Managed by David McNeill and Stacy Butler
 
 # Progress
 ## 2021 March 18 
-The code in philly.py reads in a csv file
+The code in cleanCountOutcomes.py reads in a csv file
 from the Philidelphia court system, cleans, collates, and prints
 out the outcomes column.
 
 ### Example output
+```
 Outcome Subcategories                                              Count
 Judgment for Plaintiff by Default                                  40711
 No Service, Dismissed without Prejudice                            28300
@@ -54,3 +55,4 @@ Additional Information:                                                1
 Discharged Bankruptcy Debt                                             1
 Judgment for Plaintiff as Defendant on Counterclaim by Default         1
 Petition/Affidavit Withdrawn Without Prejudice                         1
+```

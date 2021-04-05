@@ -1,7 +1,26 @@
 """!
- @file philly.py
- @brief Data collection and analysis for Philly data
- @details This script cleans and collates the outcomes data
+ @file cleanCountOutcomes.py
+ @brief Cleans the outcome data and counts how many of each there are
+ @details The main function reads in the name of a csv file to process. 
+ The "Case Outcome" column is processed via 
+  \dot
+ digraph example{
+ node[shape=record, fontname=Helvetica, fontsize=10];
+ b [label="main"  URL= "\ref cleanCountOutcomes.main" ];
+ c [label="outcomeList" URL= "\ref cleanCountOutcomes.outcomeList" ];
+ d [label="cleanOutcome" URL= "\ref cleanCountOutcomes.cleanOutcome" ];
+ b -> c -> d [arrowhead= "open", style = "dashed"];
+ }
+ \enddot
+ It is cleaned via the following
+ processes:
+ -# Check for nan which arise from blank or Null input values
+ -# Remove all trailing ALL CAPS WORDS
+ -# Remove everything after the first period (.)
+ -# Remove date/time and everything after it (typical format 07/17/2017 1:15)
+
+ Then the count of each unique value is calculated and printed.
+
  @author Seth McNeill
  @date 2021 March 11
 """
@@ -22,14 +41,15 @@ import math  # for isnan
 
 # need to parse out the judgment amounts
 
-## selects all caps words to the end of the line
+## matches all caps words to the end of the line
 endCaps = re.compile(r'(\b(?:[A-Z]+)\b(?:\s[A-Z]+\b)*\.*)$')
-## selects date and time to end of line in format 07/17/2017 1:15
+## matches date and time to end of line in format 07/17/2017 1:15
 datetimeToEnd = re.compile(r'(\s\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{2} [AP]M.*)$')  # selects date time to end
 
 def cleanOutcome(dirtyString):
-    """! Removes the ALL CAPS words at the end of a string dirtyString
-       @param dirtyString string to remove all caps from the end of
+    """! Removes the ALL CAPS words at the end of a string dirtyString, 
+    everything after the first period (.), and any date/time and everything after it
+       @param dirtyString string that contains extra case specific text
        @returns cleaned string
     """
     #endCaps.sub('', csvNoDups['Case Outcome'][10129]).strip()
@@ -54,7 +74,8 @@ def cleanOutcome(dirtyString):
 def outcomeList(df):
     """! Returns a list of cleaned and sorted outcomes that
     have been grouped by commonality and counts the number
-    of occurrences of each one.
+    of occurrences of each one. It applies the cleanOutcome
+    function to the dataframe of case outcomes.
 
     @param df is a panda dataframe of outcomes from reading in the csv file 
         of data
@@ -69,8 +90,13 @@ def outcomeList(df):
     return(cleanedOutcomes.value_counts())
 
 def main():
-    """! This is the main function that collects command line arguments
-    and acts on them.
+    """! This is the main function that reads in a csv file containing the
+    court data from the filename passed as the first command line argument. 
+    It then prints out the column names for reference, filters out the
+    duplicate rows, and prints out the column types for reference. It also
+    calculates the median judgement amount as a proof of concept. Lastly,
+    it calls outcomeList to create a cleaned and counted list of the outcomes
+    and prints the results.
     """
     parser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
     parser.add_argument('csvfile', help='The name of the csv file to load')
