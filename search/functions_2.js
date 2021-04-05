@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outcomelist_14',['outcomeList',['../namespacephilly.html#afd61199a26debb52b46c478deea8c038',1,'philly']]]
+  ['outcomelist_14',['outcomeList',['../namespacecleanCountOutcomes.html#a423318d5f6b137f5388738ef967565f8',1,'cleanCountOutcomes']]]
 ];

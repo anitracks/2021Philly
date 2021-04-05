@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['datetimetoend_15',['datetimeToEnd',['../namespacephilly.html#a0bc3cdc19237e83d3472a5294ede0c1e',1,'philly']]]
+  ['datetimetoend_15',['datetimeToEnd',['../namespacecleanCountOutcomes.html#a897bcd47ddf390703d2ee5531a793765',1,'cleanCountOutcomes']]]
 ];

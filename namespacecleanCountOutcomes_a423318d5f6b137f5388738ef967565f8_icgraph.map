@@ -1,0 +1,4 @@
+<map id="cleanCountOutcomes.outcomeList" name="cleanCountOutcomes.outcomeList">
+<area shape="rect" id="node1" title="Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu..." alt="" coords="232,5,455,32"/>
+<area shape="rect" id="node2" href="$namespacecleanCountOutcomes.html#a99564092ed8f0a8cb6062fd33086ae28" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,5,184,32"/>
+</map>

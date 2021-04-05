@@ -1,0 +1,53 @@
+\hypertarget{cleanCountOutcomes_8py}{}\doxysection{C\+:/\+Users/\+SMcneil-\/\+Consultant/\+CLSM/2021\+Philly/src/clean\+Count\+Outcomes.py File Reference}
+\label{cleanCountOutcomes_8py}\index{C:/Users/SMcneil-\/Consultant/CLSM/2021Philly/src/cleanCountOutcomes.py@{C:/Users/SMcneil-\/Consultant/CLSM/2021Philly/src/cleanCountOutcomes.py}}
+
+
+Cleans the outcome data and counts how many of each there are.  
+
+
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacecleanCountOutcomes}{clean\+Count\+Outcomes}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a03e2f7d864028a0fa17bf09f898d0d32}{clean\+Count\+Outcomes.\+clean\+Outcome}} (dirty\+String)
+\begin{DoxyCompactList}\small\item\em Removes the ALL CAPS words at the end of a string dirty\+String, everything after the first period (.), and any date/time and everything after it. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8}{clean\+Count\+Outcomes.\+outcome\+List}} (df)
+\begin{DoxyCompactList}\small\item\em Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae28}{clean\+Count\+Outcomes.\+main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacecleanCountOutcomes_a2386f6f7a71fc46b2e35a54a7968d053}{clean\+Count\+Outcomes.\+end\+Caps}} = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches all caps words to the end of the line \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanCountOutcomes_a897bcd47ddf390703d2ee5531a793765}{clean\+Count\+Outcomes.\+datetime\+To\+End}} = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches date and time to end of line in format 07/17/2017 1\+:15 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cleans the outcome data and counts how many of each there are. 
+
+The main function reads in the name of a csv file to process. The \char`\"{}\+Case Outcome\char`\"{} column is processed via 
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{dot_inline_dotgraph_1}}
+\end{DoxyImageNoCaption}
+ It is cleaned via the following processes\+:
+\begin{DoxyEnumerate}
+\item Check for nan which arise from blank or Null input values
+\item Remove all trailing ALL CAPS WORDS
+\item Remove everything after the first period (.)
+\item Remove date/time and everything after it (typical format 07/17/2017 1\+:15)
+\end{DoxyEnumerate}
+
+Then the count of each unique value is calculated and printed.
+
+\begin{DoxyAuthor}{Author}
+Seth Mc\+Neill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021 March 11 
+\end{DoxyDate}

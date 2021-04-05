@@ -1,0 +1,228 @@
+\hypertarget{namespacecleanCountOutcomes}{}\doxysection{clean\+Count\+Outcomes Namespace Reference}
+\label{namespacecleanCountOutcomes}\index{cleanCountOutcomes@{cleanCountOutcomes}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a03e2f7d864028a0fa17bf09f898d0d32}{clean\+Outcome}} (dirty\+String)
+\begin{DoxyCompactList}\small\item\em Removes the ALL CAPS words at the end of a string dirty\+String, everything after the first period (.), and any date/time and everything after it. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8}{outcome\+List}} (df)
+\begin{DoxyCompactList}\small\item\em Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae28}{main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacecleanCountOutcomes_a2386f6f7a71fc46b2e35a54a7968d053}{end\+Caps}} = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches all caps words to the end of the line \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanCountOutcomes_a897bcd47ddf390703d2ee5531a793765}{datetime\+To\+End}} = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches date and time to end of line in format 07/17/2017 1\+:15 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacecleanCountOutcomes_a03e2f7d864028a0fa17bf09f898d0d32}\label{namespacecleanCountOutcomes_a03e2f7d864028a0fa17bf09f898d0d32}} 
+\index{cleanCountOutcomes@{cleanCountOutcomes}!cleanOutcome@{cleanOutcome}}
+\index{cleanOutcome@{cleanOutcome}!cleanCountOutcomes@{cleanCountOutcomes}}
+\doxysubsubsection{\texorpdfstring{cleanOutcome()}{cleanOutcome()}}
+{\footnotesize\ttfamily def clean\+Count\+Outcomes.\+clean\+Outcome (\begin{DoxyParamCaption}\item[{}]{dirty\+String }\end{DoxyParamCaption})}
+
+
+
+Removes the ALL CAPS words at the end of a string dirty\+String, everything after the first period (.), and any date/time and everything after it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dirty\+String} & string that contains extra case specific text \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cleaned string 
+\end{DoxyReturn}
+
+
+Definition at line 49 of file clean\+Count\+Outcomes.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanCountOutcomes_a03e2f7d864028a0fa17bf09f898d0d32}{cleanOutcome}}(dirtyString):}
+\DoxyCodeLine{50     \textcolor{stringliteral}{"{}"{}"{}! Removes the ALL CAPS words at the end of a string dirtyString, }}
+\DoxyCodeLine{51 \textcolor{stringliteral}{    everything after the first period (.), and any date/time and everything after it}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{       @param dirtyString string that contains extra case specific text}}
+\DoxyCodeLine{53 \textcolor{stringliteral}{       @returns cleaned string}}
+\DoxyCodeLine{54 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{55     \textcolor{comment}{\#endCaps.sub('', csvNoDups['Case Outcome'][10129]).strip()}}
+\DoxyCodeLine{56     \textcolor{comment}{\# Catch the nan's from assumably empty fields}}
+\DoxyCodeLine{57     \textcolor{comment}{\# nan's are both the empty strings and NULLs in David's data}}
+\DoxyCodeLine{58     if(isinstance(dirtyString, float)):}
+\DoxyCodeLine{59         if(math.isnan(dirtyString)):}
+\DoxyCodeLine{60             return(\textcolor{stringliteral}{'Blank or NULL'})}
+\DoxyCodeLine{61         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{62             pdb.set\_trace()  \textcolor{comment}{\# it isn't an expected value}}
+\DoxyCodeLine{63     \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{64         cleanedString = endCaps.sub(\textcolor{stringliteral}{''}, dirtyString).strip()}
+\DoxyCodeLine{65     \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} e:}
+\DoxyCodeLine{66         pdb.set\_trace()  \textcolor{comment}{\# unexpected type}}
+\DoxyCodeLine{67     firstCleaned = cleanedString.split(\textcolor{stringliteral}{'.'})[0] \textcolor{comment}{\# remove everything after first .}}
+\DoxyCodeLine{68     \textcolor{comment}{\# remove everything including and after date-\/time }}
+\DoxyCodeLine{69     \textcolor{comment}{\#   (typical format 07/17/2017 1:15)}}
+\DoxyCodeLine{70     dateCleaned = datetimeToEnd.sub(\textcolor{stringliteral}{''}, firstCleaned).strip()}
+\DoxyCodeLine{71     return(dateCleaned)}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae28}\label{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae28}} 
+\index{cleanCountOutcomes@{cleanCountOutcomes}!main@{main}}
+\index{main@{main}!cleanCountOutcomes@{cleanCountOutcomes}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def clean\+Count\+Outcomes.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. 
+
+It then prints out the column names for reference, filters out the duplicate rows, and prints out the column types for reference. It also calculates the median judgement amount as a proof of concept. Lastly, it calls outcome\+List to create a cleaned and counted list of the outcomes and prints the results. 
+
+Definition at line 92 of file clean\+Count\+Outcomes.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae28}{main}}():}
+\DoxyCodeLine{93     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that reads in a csv file containing the}}
+\DoxyCodeLine{94 \textcolor{stringliteral}{    court data from the filename passed as the first command line argument. }}
+\DoxyCodeLine{95 \textcolor{stringliteral}{    It then prints out the column names for reference, filters out the}}
+\DoxyCodeLine{96 \textcolor{stringliteral}{    duplicate rows, and prints out the column types for reference. It also}}
+\DoxyCodeLine{97 \textcolor{stringliteral}{    calculates the median judgement amount as a proof of concept. Lastly,}}
+\DoxyCodeLine{98 \textcolor{stringliteral}{    it calls outcomeList to create a cleaned and counted list of the outcomes}}
+\DoxyCodeLine{99 \textcolor{stringliteral}{    and prints the results.}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{101     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
+\DoxyCodeLine{102     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
+\DoxyCodeLine{103 \textcolor{comment}{\#    parser.add\_argument('dbfile', help='The name of the sqlite db file')}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
+\DoxyCodeLine{106     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{comment}{\# Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason}}
+\DoxyCodeLine{109     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
+\DoxyCodeLine{110     print(f\textcolor{stringliteral}{'The column names are:\(\backslash\)n\{csvDF.columns.values\}'})}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     \textcolor{comment}{\# need to filter out exact duplicate rows in base dataset}}
+\DoxyCodeLine{113     \textcolor{comment}{\# keep=False keeps both original and duplicate}}
+\DoxyCodeLine{114     \textcolor{comment}{\# keep='first' marks all but first as True}}
+\DoxyCodeLine{115     dups = csvDF.duplicated(keep=\textcolor{stringliteral}{'first'})  }
+\DoxyCodeLine{116     print(f\textcolor{stringliteral}{'\(\backslash\)n\{len(dups[dups==True])\} duplicates found'}) }
+\DoxyCodeLine{117     \textcolor{comment}{\#display(csvDF.loc[619,:])  \# display a particular row}}
+\DoxyCodeLine{118     csvNoDups = csvDF.drop\_duplicates(keep=\textcolor{stringliteral}{'first'})}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     print(\textcolor{stringliteral}{"{}\(\backslash\)nThe column types are:"{}})}
+\DoxyCodeLine{121     print(csvNoDups.dtypes)  \textcolor{comment}{\# print out the data type for each column}}
+\DoxyCodeLine{122     \textcolor{comment}{\# calculate the median judgment amount}}
+\DoxyCodeLine{123     medJudgment = np.nanmedian(csvNoDups[\textcolor{stringliteral}{'Judgment Amount'}])}
+\DoxyCodeLine{124     print(f\textcolor{stringliteral}{'\(\backslash\)nThe median judgment amount is \$\{medJudgment\}'})}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \textcolor{comment}{\# need to look at cases where the same attorney is listed on both sides}}
+\DoxyCodeLine{127     \textcolor{comment}{\# try using sent2vec to sort out similar ones}}
+\DoxyCodeLine{128     \textcolor{comment}{\# pypi.org/project/sent2vec}}
+\DoxyCodeLine{129     outs = \mbox{\hyperlink{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8}{outcomeList}}(csvNoDups)}
+\DoxyCodeLine{130     print(\textcolor{stringliteral}{'\(\backslash\)nOutcome Subcategories'})}
+\DoxyCodeLine{131     print(f\textcolor{stringliteral}{'\{outs\}'})}
+\DoxyCodeLine{132     \textcolor{comment}{\#conn = sqlite3.connect(args.dbfile)  \# connect to the database}}
+\DoxyCodeLine{133     \textcolor{comment}{\# load the csvData into the database}}
+\DoxyCodeLine{134     \textcolor{comment}{\#csvNoDups.to\_sql('csvNoDups', conn, if\_exists='fail', index=False)}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{137     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
+\DoxyCodeLine{138 }
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae28_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8}\label{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8}} 
+\index{cleanCountOutcomes@{cleanCountOutcomes}!outcomeList@{outcomeList}}
+\index{outcomeList@{outcomeList}!cleanCountOutcomes@{cleanCountOutcomes}}
+\doxysubsubsection{\texorpdfstring{outcomeList()}{outcomeList()}}
+{\footnotesize\ttfamily def clean\+Count\+Outcomes.\+outcome\+List (\begin{DoxyParamCaption}\item[{}]{df }\end{DoxyParamCaption})}
+
+
+
+Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one. 
+
+It applies the clean\+Outcome function to the dataframe of case outcomes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em df} & is a panda dataframe of outcomes from reading in the csv file of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cleaned and sorted outcomes 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file clean\+Count\+Outcomes.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{74 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8}{outcomeList}}(df):}
+\DoxyCodeLine{75     \textcolor{stringliteral}{"{}"{}"{}! Returns a list of cleaned and sorted outcomes that}}
+\DoxyCodeLine{76 \textcolor{stringliteral}{    have been grouped by commonality and counts the number}}
+\DoxyCodeLine{77 \textcolor{stringliteral}{    of occurrences of each one. It applies the cleanOutcome}}
+\DoxyCodeLine{78 \textcolor{stringliteral}{    function to the dataframe of case outcomes.}}
+\DoxyCodeLine{79 \textcolor{stringliteral}{}}
+\DoxyCodeLine{80 \textcolor{stringliteral}{    @param df is a panda dataframe of outcomes from reading in the csv file }}
+\DoxyCodeLine{81 \textcolor{stringliteral}{        of data}}
+\DoxyCodeLine{82 \textcolor{stringliteral}{    @returns cleaned and sorted outcomes}}
+\DoxyCodeLine{83 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{84     outcomes = df[\textcolor{stringliteral}{'Case Outcome'}]}
+\DoxyCodeLine{85     \textcolor{comment}{\# clean up the outcome string}}
+\DoxyCodeLine{86     cleanedOutcomes = outcomes.apply(cleanOutcome)}
+\DoxyCodeLine{87     \textcolor{comment}{\# Good ways to count specific occurances: }}
+\DoxyCodeLine{88     \textcolor{comment}{\# https://stackoverflow.com/a/35277776}}
+\DoxyCodeLine{89     \textcolor{comment}{\# see also cleanedOutcomes.value\_counts()}}
+\DoxyCodeLine{90     return(cleanedOutcomes.value\_counts())}
+\DoxyCodeLine{91 }
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacecleanCountOutcomes_a897bcd47ddf390703d2ee5531a793765}\label{namespacecleanCountOutcomes_a897bcd47ddf390703d2ee5531a793765}} 
+\index{cleanCountOutcomes@{cleanCountOutcomes}!datetimeToEnd@{datetimeToEnd}}
+\index{datetimeToEnd@{datetimeToEnd}!cleanCountOutcomes@{cleanCountOutcomes}}
+\doxysubsubsection{\texorpdfstring{datetimeToEnd}{datetimeToEnd}}
+{\footnotesize\ttfamily clean\+Count\+Outcomes.\+datetime\+To\+End = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})}
+
+
+
+matches date and time to end of line in format 07/17/2017 1\+:15 
+
+
+
+Definition at line 47 of file clean\+Count\+Outcomes.\+py.
+
+\mbox{\Hypertarget{namespacecleanCountOutcomes_a2386f6f7a71fc46b2e35a54a7968d053}\label{namespacecleanCountOutcomes_a2386f6f7a71fc46b2e35a54a7968d053}} 
+\index{cleanCountOutcomes@{cleanCountOutcomes}!endCaps@{endCaps}}
+\index{endCaps@{endCaps}!cleanCountOutcomes@{cleanCountOutcomes}}
+\doxysubsubsection{\texorpdfstring{endCaps}{endCaps}}
+{\footnotesize\ttfamily clean\+Count\+Outcomes.\+end\+Caps = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})}
+
+
+
+matches all caps words to the end of the line 
+
+
+
+Definition at line 45 of file clean\+Count\+Outcomes.\+py.
+
