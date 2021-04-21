@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['datetimetoend_15',['datetimeToEnd',['../namespacecleanCountOutcomes.html#a897bcd47ddf390703d2ee5531a793765',1,'cleanCountOutcomes']]]
+  ['alphamatch_26',['alphaMatch',['../namespacecleanPlaintiffs.html#a6b8aa5b6928db0f01e2477455b672597',1,'cleanPlaintiffs']]]
 ];

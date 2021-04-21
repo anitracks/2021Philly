@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outcomelist_7',['outcomeList',['../namespacecleanCountOutcomes.html#a423318d5f6b137f5388738ef967565f8',1,'cleanCountOutcomes']]]
+  ['llcmatch_10',['llcMatch',['../namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd',1,'cleanPlaintiffs']]]
 ];

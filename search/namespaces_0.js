@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cleancountoutcomes_9',['cleanCountOutcomes',['../namespacecleanCountOutcomes.html',1,'']]]
+  ['cleancountoutcomes_16',['cleanCountOutcomes',['../namespacecleanCountOutcomes.html',1,'']]],
+  ['cleanplaintiffs_17',['cleanPlaintiffs',['../namespacecleanPlaintiffs.html',1,'']]]
 ];

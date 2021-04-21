@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['endcaps_5',['endCaps',['../namespacecleanCountOutcomes.html#a2386f6f7a71fc46b2e35a54a7968d053',1,'cleanCountOutcomes']]]
+  ['datetimetoend_8',['datetimeToEnd',['../namespacecleanCountOutcomes.html#a897bcd47ddf390703d2ee5531a793765',1,'cleanCountOutcomes.datetimeToEnd()'],['../namespacecleanPlaintiffs.html#a2520fa4be7522d0231ab7ac252d6579b',1,'cleanPlaintiffs.datetimeToEnd()']]]
 ];

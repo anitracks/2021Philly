@@ -1,0 +1,61 @@
+\hypertarget{cleanPlaintiffs_8py}{}\doxysection{C\+:/\+Users/\+SMcneil-\/\+Consultant/\+CLSM/2021\+Philly/src/clean\+Plaintiffs.py File Reference}
+\label{cleanPlaintiffs_8py}\index{C:/Users/SMcneil-\/Consultant/CLSM/2021Philly/src/cleanPlaintiffs.py@{C:/Users/SMcneil-\/Consultant/CLSM/2021Philly/src/cleanPlaintiffs.py}}
+
+
+Cleans the plaintiff names and counts frequency of occurance.  
+
+
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacecleanPlaintiffs}{clean\+Plaintiffs}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}{clean\+Plaintiffs.\+clean\+Plaintiff}} (full\+Plaintiff)
+\begin{DoxyCompactList}\small\item\em Removes everything from LLC or comma to the end of the name. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{clean\+Plaintiffs.\+plaintiff\+List}} (df\+Raw, field\+Name)
+\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}{clean\+Plaintiffs.\+main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}{clean\+Plaintiffs.\+llc\+Match}} = re.\+compile(r\textquotesingle{}(llc$\vert$,).$\ast$\textquotesingle{}, re.\+I)
+\begin{DoxyCompactList}\small\item\em match up to case insensitive first LLC or first comma \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_a6b8aa5b6928db0f01e2477455b672597}{clean\+Plaintiffs.\+alpha\+Match}} = re.\+compile(r\textquotesingle{}\mbox{[}$^\wedge$a-\/z A-\/Z0-\/9\mbox{]}\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em clean all non-\/alpha and space characters out \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_a55df444f6d816fd4a2beebcc6b097a29}{clean\+Plaintiffs.\+end\+Caps}} = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches all caps words to the end of the line \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_a2520fa4be7522d0231ab7ac252d6579b}{clean\+Plaintiffs.\+datetime\+To\+End}} = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches date and time to end of line in format 07/17/2017 1\+:15 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cleans the plaintiff names and counts frequency of occurance. 
+
+The main function reads in the name of a csv file to process.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]change the following documentation The \char`\"{}\+Case Outcome\char`\"{} column is processed via \end{DoxyRefDesc}
+
+\begin{DoxyImageNoCaption}
+  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{dot_inline_dotgraph_2}}
+\end{DoxyImageNoCaption}
+ It is cleaned via the following processes\+:
+\begin{DoxyEnumerate}
+\item Check for nan which arise from blank or Null input values
+\item Remove all trailing ALL CAPS WORDS
+\item Remove everything after the first period (.)
+\item Remove date/time and everything after it (typical format 07/17/2017 1\+:15)
+\end{DoxyEnumerate}
+
+Then the count of each unique value is calculated and printed.
+
+\begin{DoxyAuthor}{Author}
+Seth Mc\+Neill 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2021 March 11 
+\end{DoxyDate}

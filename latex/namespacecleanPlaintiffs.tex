@@ -1,0 +1,257 @@
+\hypertarget{namespacecleanPlaintiffs}{}\doxysection{clean\+Plaintiffs Namespace Reference}
+\label{namespacecleanPlaintiffs}\index{cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}{clean\+Plaintiff}} (full\+Plaintiff)
+\begin{DoxyCompactList}\small\item\em Removes everything from LLC or comma to the end of the name. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{plaintiff\+List}} (df\+Raw, field\+Name)
+\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}{main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}{llc\+Match}} = re.\+compile(r\textquotesingle{}(llc$\vert$,).$\ast$\textquotesingle{}, re.\+I)
+\begin{DoxyCompactList}\small\item\em match up to case insensitive first LLC or first comma \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_a6b8aa5b6928db0f01e2477455b672597}{alpha\+Match}} = re.\+compile(r\textquotesingle{}\mbox{[}$^\wedge$a-\/z A-\/Z0-\/9\mbox{]}\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em clean all non-\/alpha and space characters out \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_a55df444f6d816fd4a2beebcc6b097a29}{end\+Caps}} = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches all caps words to the end of the line \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_a2520fa4be7522d0231ab7ac252d6579b}{datetime\+To\+End}} = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em matches date and time to end of line in format 07/17/2017 1\+:15 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}\label{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!cleanPlaintiff@{cleanPlaintiff}}
+\index{cleanPlaintiff@{cleanPlaintiff}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{cleanPlaintiff()}{cleanPlaintiff()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+clean\+Plaintiff (\begin{DoxyParamCaption}\item[{}]{full\+Plaintiff }\end{DoxyParamCaption})}
+
+
+
+Removes everything from LLC or comma to the end of the name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Plaintiff} & is the whole plaintiff name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cleaned string 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}{cleanPlaintiff}}(fullPlaintiff):}
+\DoxyCodeLine{51     \textcolor{stringliteral}{"{}"{}"{}! Removes everything from LLC or comma to the end of the name}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{       @param fullPlaintiff is the whole plaintiff name}}
+\DoxyCodeLine{53 \textcolor{stringliteral}{       @returns cleaned string}}
+\DoxyCodeLine{54 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{55     \textcolor{comment}{\# Catch the nan's from assumably empty fields}}
+\DoxyCodeLine{56     \textcolor{comment}{\# nan's are both the empty strings and NULLs in David's data}}
+\DoxyCodeLine{57     if(isinstance(fullPlaintiff, float)):}
+\DoxyCodeLine{58         if(math.isnan(fullPlaintiff)):}
+\DoxyCodeLine{59             return(\textcolor{stringliteral}{'Blank or NULL'})}
+\DoxyCodeLine{60         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{61             pdb.set\_trace()  \textcolor{comment}{\# it isn't an expected value}}
+\DoxyCodeLine{62     \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{63         cleanedString = llcMatch.sub(\textcolor{stringliteral}{''}, fullPlaintiff).strip()}
+\DoxyCodeLine{64     \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} e:}
+\DoxyCodeLine{65         pdb.set\_trace()  \textcolor{comment}{\# unexpected type}}
+\DoxyCodeLine{66     \textcolor{comment}{\# remove everything not alphanumeric or space}}
+\DoxyCodeLine{67     cleanedOut = alphaMatch.sub(\textcolor{stringliteral}{''}, cleanedString).strip().upper()}
+\DoxyCodeLine{68     if(cleanedOut == \textcolor{stringliteral}{''}):}
+\DoxyCodeLine{69         print(\textcolor{stringliteral}{'blank output'})}
+\DoxyCodeLine{70         pdb.set\_trace()}
+\DoxyCodeLine{71     return(cleanedOut)}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}\label{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!main@{main}}
+\index{main@{main}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. 
+
+It then prints out the column names for reference, filters out the duplicate rows, and prints out the column types for reference. It also calculates the median judgement amount as a proof of concept. Lastly, it calls outcome\+List to create a cleaned and counted list of the outcomes and prints the results. 
+
+Definition at line 96 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}{main}}():}
+\DoxyCodeLine{97     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that reads in a csv file containing the}}
+\DoxyCodeLine{98 \textcolor{stringliteral}{    court data from the filename passed as the first command line argument. }}
+\DoxyCodeLine{99 \textcolor{stringliteral}{    It then prints out the column names for reference, filters out the}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{    duplicate rows, and prints out the column types for reference. It also}}
+\DoxyCodeLine{101 \textcolor{stringliteral}{    calculates the median judgement amount as a proof of concept. Lastly,}}
+\DoxyCodeLine{102 \textcolor{stringliteral}{    it calls outcomeList to create a cleaned and counted list of the outcomes}}
+\DoxyCodeLine{103 \textcolor{stringliteral}{    and prints the results.}}
+\DoxyCodeLine{104 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{105     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
+\DoxyCodeLine{106     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
+\DoxyCodeLine{107 \textcolor{comment}{\#    parser.add\_argument('dbfile', help='The name of the sqlite db file')}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
+\DoxyCodeLine{110     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     \textcolor{comment}{\# Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason}}
+\DoxyCodeLine{113     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
+\DoxyCodeLine{114     print(f\textcolor{stringliteral}{'The column names are:\(\backslash\)n\{csvDF.columns.values\}'})}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     print(\textcolor{stringliteral}{"{}\(\backslash\)nThe column types are:"{}})}
+\DoxyCodeLine{117     print(csvDF.dtypes)  \textcolor{comment}{\# print out the data type for each column}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \textcolor{comment}{\# need to look at cases where the same attorney is listed on both sides}}
+\DoxyCodeLine{120     \textcolor{comment}{\# try using sent2vec to sort out similar ones}}
+\DoxyCodeLine{121     \textcolor{comment}{\# pypi.org/project/sent2vec}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     plaintiffs = \mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{plaintiffList}}(csvDF, \textcolor{stringliteral}{'Plaintiff Name(s)'})}
+\DoxyCodeLine{124     print(\textcolor{stringliteral}{'\(\backslash\)nPlaintiff Frequency'})}
+\DoxyCodeLine{125     print(f\textcolor{stringliteral}{'\{plaintiffs\}'})}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordflow}{for} plaintiff, pCount \textcolor{keywordflow}{in} plaintiffs.items():}
+\DoxyCodeLine{128         if(pCount > 10):}
+\DoxyCodeLine{129             print(f\textcolor{stringliteral}{"{}\{plaintiff\},\{pCount\}"{}})}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     \textcolor{comment}{\# the following line counts the Plaintiff names that contain Midland as a check}}
+\DoxyCodeLine{132     \textcolor{comment}{\#nMidlands = len(csvNoDups[csvNoDups['Plaintiff Name(s)'].str.contains('Midland', flags=re.IGNORECASE)]['Plaintiff Name(s)'])}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{comment}{\#conn = sqlite3.connect(args.dbfile)  \# connect to the database}}
+\DoxyCodeLine{135     \textcolor{comment}{\# load the csvData into the database}}
+\DoxyCodeLine{136     \textcolor{comment}{\#csvNoDups.to\_sql('csvNoDups', conn, if\_exists='fail', index=False)}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{139     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
+\DoxyCodeLine{140 }
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}\label{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!plaintiffList@{plaintiffList}}
+\index{plaintiffList@{plaintiffList}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{plaintiffList()}{plaintiffList()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+plaintiff\+List (\begin{DoxyParamCaption}\item[{}]{df\+Raw,  }\item[{}]{field\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em df} & is a panda dataframe of plaintiff names from reading in the csv file of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cleaned and sorted plaintiff names 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{74 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{plaintiffList}}(dfRaw, fieldName):}
+\DoxyCodeLine{75     \textcolor{stringliteral}{"{}"{}"{}! }}
+\DoxyCodeLine{76 \textcolor{stringliteral}{    @param df is a panda dataframe of plaintiff names from reading in the csv file }}
+\DoxyCodeLine{77 \textcolor{stringliteral}{        of data}}
+\DoxyCodeLine{78 \textcolor{stringliteral}{    @returns cleaned and sorted plaintiff names}}
+\DoxyCodeLine{79 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{80     \textcolor{comment}{\# need to filter out exact duplicate rows in base dataset}}
+\DoxyCodeLine{81     \textcolor{comment}{\# keep=False keeps both original and duplicate}}
+\DoxyCodeLine{82     \textcolor{comment}{\# keep='first' marks all but first as True}}
+\DoxyCodeLine{83     dups = dfRaw.duplicated(keep=\textcolor{stringliteral}{'first'})  }
+\DoxyCodeLine{84     print(f\textcolor{stringliteral}{'\(\backslash\)n\{len(dups[dups==True])\} duplicates found'}) }
+\DoxyCodeLine{85     \textcolor{comment}{\#display(csvDF.loc[619,:])  \# display a particular row}}
+\DoxyCodeLine{86     df = dfRaw.drop\_duplicates(keep=\textcolor{stringliteral}{'first'})}
+\DoxyCodeLine{87  }
+\DoxyCodeLine{88     outcomes = df[fieldName]}
+\DoxyCodeLine{89     \textcolor{comment}{\# clean up the outcome string}}
+\DoxyCodeLine{90     cleanedPlaintiffs = outcomes.apply(cleanPlaintiff)}
+\DoxyCodeLine{91     \textcolor{comment}{\# Good ways to count specific occurances: }}
+\DoxyCodeLine{92     \textcolor{comment}{\# https://stackoverflow.com/a/35277776}}
+\DoxyCodeLine{93     \textcolor{comment}{\# see also cleanedOutcomes.value\_counts()}}
+\DoxyCodeLine{94     return(cleanedPlaintiffs.value\_counts())}
+\DoxyCodeLine{95 }
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a6b8aa5b6928db0f01e2477455b672597}\label{namespacecleanPlaintiffs_a6b8aa5b6928db0f01e2477455b672597}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!alphaMatch@{alphaMatch}}
+\index{alphaMatch@{alphaMatch}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{alphaMatch}{alphaMatch}}
+{\footnotesize\ttfamily clean\+Plaintiffs.\+alpha\+Match = re.\+compile(r\textquotesingle{}\mbox{[}$^\wedge$a-\/z A-\/Z0-\/9\mbox{]}\textquotesingle{})}
+
+
+
+clean all non-\/alpha and space characters out 
+
+
+
+Definition at line 43 of file clean\+Plaintiffs.\+py.
+
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a2520fa4be7522d0231ab7ac252d6579b}\label{namespacecleanPlaintiffs_a2520fa4be7522d0231ab7ac252d6579b}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!datetimeToEnd@{datetimeToEnd}}
+\index{datetimeToEnd@{datetimeToEnd}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{datetimeToEnd}{datetimeToEnd}}
+{\footnotesize\ttfamily clean\+Plaintiffs.\+datetime\+To\+End = re.\+compile(r\textquotesingle{}(\textbackslash{}s\textbackslash{}d\{1,2\}/\textbackslash{}d\{1,2\}/\textbackslash{}d\{4\} \textbackslash{}d\{1,2\}\+:\textbackslash{}d\{2\} \mbox{[}AP\mbox{]}M.$\ast$)\$\textquotesingle{})}
+
+
+
+matches date and time to end of line in format 07/17/2017 1\+:15 
+
+
+
+Definition at line 48 of file clean\+Plaintiffs.\+py.
+
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a55df444f6d816fd4a2beebcc6b097a29}\label{namespacecleanPlaintiffs_a55df444f6d816fd4a2beebcc6b097a29}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!endCaps@{endCaps}}
+\index{endCaps@{endCaps}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{endCaps}{endCaps}}
+{\footnotesize\ttfamily clean\+Plaintiffs.\+end\+Caps = re.\+compile(r\textquotesingle{}(\textbackslash{}b(?\+:\mbox{[}A-\/Z\mbox{]}+)\textbackslash{}b(?\+:\textbackslash{}s\mbox{[}A-\/Z\mbox{]}+\textbackslash{}b)$\ast$\textbackslash{}.$\ast$)\$\textquotesingle{})}
+
+
+
+matches all caps words to the end of the line 
+
+
+
+Definition at line 46 of file clean\+Plaintiffs.\+py.
+
+\mbox{\Hypertarget{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}\label{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!llcMatch@{llcMatch}}
+\index{llcMatch@{llcMatch}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{llcMatch}{llcMatch}}
+{\footnotesize\ttfamily clean\+Plaintiffs.\+llc\+Match = re.\+compile(r\textquotesingle{}(llc$\vert$,).$\ast$\textquotesingle{}, re.\+I)}
+
+
+
+match up to case insensitive first LLC or first comma 
+
+
+
+Definition at line 41 of file clean\+Plaintiffs.\+py.
+
