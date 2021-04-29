@@ -88,10 +88,12 @@ def plaintiffList(dfRaw, fieldName):
     outcomes = df[fieldName]
     # clean up the outcome string
     cleanedPlaintiffs = outcomes.apply(cleanPlaintiff)
+    # add cleaned plaintiff names to the original dataframe
+    df.loc[:,'Plaintiff Cleaned'] = cleanedPlaintiffs.to_numpy()
     # Good ways to count specific occurances: 
     # https://stackoverflow.com/a/35277776
     # see also cleanedOutcomes.value_counts()
-    return(cleanedPlaintiffs.value_counts())
+    return((cleanedPlaintiffs.value_counts(), df))
 
 def main():
     """! This is the main function that reads in a csv file containing the
@@ -120,7 +122,7 @@ def main():
     # try using sent2vec to sort out similar ones
     # pypi.org/project/sent2vec
 
-    plaintiffs = plaintiffList(csvDF, 'Plaintiff Name(s)')
+    plaintiffs = plaintiffList(csvDF, 'Plaintiff Name(s)')[0]
     print('\nPlaintiff Frequency')
     print(f'{plaintiffs}')
 
