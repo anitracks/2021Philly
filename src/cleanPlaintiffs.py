@@ -85,11 +85,13 @@ def plaintiffList(dfRaw, fieldName):
     #display(csvDF.loc[619,:])  # display a particular row
     df = dfRaw.drop_duplicates(keep='first')
  
-    outcomes = df[fieldName]
+    outcomes = df[fieldName].copy(deep=True)
     # clean up the outcome string
     cleanedPlaintiffs = outcomes.apply(cleanPlaintiff)
     # add cleaned plaintiff names to the original dataframe
-    df.loc[:,'Plaintiff Cleaned'] = cleanedPlaintiffs.to_numpy()
+    # the following line caused a setting copy of slice from dataframe warning
+    # https://www.dataquest.io/blog/settingwithcopywarning/
+    df = df.assign(PlaintiffCleaned=cleanedPlaintiffs)
     # Good ways to count specific occurances: 
     # https://stackoverflow.com/a/35277776
     # see also cleanedOutcomes.value_counts()
@@ -122,6 +124,7 @@ def main():
     # try using sent2vec to sort out similar ones
     # pypi.org/project/sent2vec
 
+    pdb.set_trace()
     plaintiffs = plaintiffList(csvDF, 'Plaintiff Name(s)')[0]
     print('\nPlaintiff Frequency')
     print(f'{plaintiffs}')
