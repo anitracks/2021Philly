@@ -46,6 +46,20 @@ endCaps = re.compile(r'(\b(?:[A-Z]+)\b(?:\s[A-Z]+\b)*\.*)$')
 ## matches date and time to end of line in format 07/17/2017 1:15
 datetimeToEnd = re.compile(r'(\s\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{2} [AP]M.*)$')  # selects date time to end
 
+def cleanWholeDF(df):
+    """! Cleans the main df by removing duplicate rows
+        @param df DataFrame that needs cleaning
+        @returns cleaned df
+    """
+    # need to filter out exact duplicate rows in base dataset
+    # keep=False keeps both original and duplicate
+    # keep='first' marks all but first as True
+    dups = df.duplicated(keep='first')  
+    print(f'\n{len(dups[dups==True])} duplicates found') 
+    #display(csvDF.loc[619,:])  # display a particular row
+    df = df.drop_duplicates(keep='first')
+    return(df)
+
 def cleanOutcome(dirtyString):
     """! Removes the ALL CAPS words at the end of a string dirtyString, 
     everything after the first period (.), and any date/time and everything after it
@@ -71,7 +85,7 @@ def cleanOutcome(dirtyString):
     return(dateCleaned)
 
 
-def outcomeList(df):
+def outcomeList(df, columnName='Case Outcome'):
     """! Returns a list of cleaned and sorted outcomes that
     have been grouped by commonality and counts the number
     of occurrences of each one. It applies the cleanOutcome
@@ -81,13 +95,15 @@ def outcomeList(df):
         of data
     @returns cleaned and sorted outcomes
     """
-    outcomes = df['Case Outcome']
+    outcomes = df[columnName]
     # clean up the outcome string
     cleanedOutcomes = outcomes.apply(cleanOutcome)
     # Good ways to count specific occurances: 
     # https://stackoverflow.com/a/35277776
     # see also cleanedOutcomes.value_counts()
-    return(cleanedOutcomes.value_counts())
+    df = df.assign(OutcomeCleaned=cleanedOutcomes)
+    return((cleanedOutcomes.value_counts(), df))
+
 
 def main():
     """! This is the main function that reads in a csv file containing the
@@ -109,13 +125,7 @@ def main():
     csvDF = pd.read_csv(args.csvfile)  # read in the csv data
     print(f'The column names are:\n{csvDF.columns.values}')
 
-    # need to filter out exact duplicate rows in base dataset
-    # keep=False keeps both original and duplicate
-    # keep='first' marks all but first as True
-    dups = csvDF.duplicated(keep='first')  
-    print(f'\n{len(dups[dups==True])} duplicates found') 
-    #display(csvDF.loc[619,:])  # display a particular row
-    csvNoDups = csvDF.drop_duplicates(keep='first')
+    csvNoDups = cleanWholeDF(csvDF)
 
     print("\nThe column types are:")
     print(csvNoDups.dtypes)  # print out the data type for each column
@@ -126,7 +136,7 @@ def main():
     # need to look at cases where the same attorney is listed on both sides
     # try using sent2vec to sort out similar ones
     # pypi.org/project/sent2vec
-    outs = outcomeList(csvNoDups)
+    outs = outcomeList(csvNoDups)[0]
     print('\nOutcome Subcategories')
     print(f'{outs}')
     #conn = sqlite3.connect(args.dbfile)  # connect to the database

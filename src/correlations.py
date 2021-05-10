@@ -17,6 +17,7 @@ import numpy as np  # for data processing
 import re  # regular expression library for processing
 import math  # for isnan
 import cleanPlaintiffs  # to clean the plaintiff names
+import cleanCountOutcomes  # for cleaning df and outcomes
 
 
 def main():
@@ -36,14 +37,20 @@ def main():
     # try using sent2vec to sort out similar ones
     # pypi.org/project/sent2vec
 
-    (plaintiffs, cleanDF) = cleanPlaintiffs.plaintiffList(csvDF, 'Plaintiff Name(s)')
-
-    print(cleanDF['PlaintiffCleaned'].head())
-    pdb.set_trace()
+    df = cleanCountOutcomes.cleanWholeDF(csvDF)
+    (plaintiffs, df) = cleanPlaintiffs.plaintiffList(df, 'Plaintiff Name(s)')
+    (outcomes, df) = cleanCountOutcomes.outcomeList(df, 'Case Outcome')
+    print(df['PlaintiffCleaned'].head())
 
     # Look at rows where Plaintiff Name(s) == plaintiffs
-    cleanDF.loc[cleanDF['PlaintiffCleaned'] == plaintiffs.index[0],'Case Outcome'].value_counts()
+    df.loc[df['PlaintiffCleaned'] == plaintiffs.index[0],'OutcomeCleaned'].value_counts()
     # need to use cleaned outcomes, not raw outcomes for line above ^
+
+    # https://stackoverflow.com/questions/48465941/counting-combinations-between-two-dataframe-columns
+    comparedPO = pd.crosstab(df['PlaintiffCleaned'], df['OutcomeCleaned'])  # Seems to be a good base dataset
+    comparedPO.to_csv('comparedPO.csv')
+    groupedPO = df.groupby(['PlaintiffCleaned','OutcomeCleaned']).size().reset_index().rename(columns={0:'count'})  # data not in right form
+    pdb.set_trace()
 
     # This is a bootstrapping method to find more of the similar plaintiff names
     matched = 0

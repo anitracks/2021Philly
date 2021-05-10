@@ -36,6 +36,7 @@ import sqlite3   # built in sql database
 import numpy as np  # for data processing
 import re  # regular expression library for processing
 import math  # for isnan
+import cleanCountOutcomes  # for cleanWholeDF and outcome cleaning
 
 ## match up to case insensitive first LLC or first comma
 llcMatch = re.compile(r'(llc|,).*', re.I)
@@ -46,6 +47,7 @@ alphaMatch = re.compile(r'[^a-z A-Z0-9]')
 endCaps = re.compile(r'(\b(?:[A-Z]+)\b(?:\s[A-Z]+\b)*\.*)$')
 ## matches date and time to end of line in format 07/17/2017 1:15
 datetimeToEnd = re.compile(r'(\s\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{2} [AP]M.*)$')  # selects date time to end
+
 
 def cleanPlaintiff(fullPlaintiff):
     """! Removes everything from LLC or comma to the end of the name
@@ -71,19 +73,13 @@ def cleanPlaintiff(fullPlaintiff):
     return(cleanedOut)
 
 
-def plaintiffList(dfRaw, fieldName):
-    """! 
+def plaintiffList(df, fieldName):
+    """!  Returns df with added column of cleaned plaintiff names
     @param df is a panda dataframe of plaintiff names from reading in the csv file 
-        of data
-    @returns cleaned and sorted plaintiff names
+        of data that has had duplicates removed and other cleaning done
+    @returns Tuple (cleaned and sorted plaintiff names, 
+        df with cleaned plaintiff names column)
     """
-    # need to filter out exact duplicate rows in base dataset
-    # keep=False keeps both original and duplicate
-    # keep='first' marks all but first as True
-    dups = dfRaw.duplicated(keep='first')  
-    print(f'\n{len(dups[dups==True])} duplicates found') 
-    #display(csvDF.loc[619,:])  # display a particular row
-    df = dfRaw.drop_duplicates(keep='first')
  
     outcomes = df[fieldName].copy(deep=True)
     # clean up the outcome string
@@ -124,8 +120,9 @@ def main():
     # try using sent2vec to sort out similar ones
     # pypi.org/project/sent2vec
 
-    pdb.set_trace()
-    plaintiffs = plaintiffList(csvDF, 'Plaintiff Name(s)')[0]
+    df = cleanCountOutcomes.cleanWholeDF(csvDF)
+    (plaintiffs, df) = plaintiffList(df, 'Plaintiff Name(s)')
+    (outcomes, df) = cleanCountOutcomes.outcomeList(df, 'Case Outcome')
     print('\nPlaintiff Frequency')
     print(f'{plaintiffs}')
 
