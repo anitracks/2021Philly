@@ -7,6 +7,13 @@ https://anitracks.github.io/2021Philly/index.html
 Written by Seth McNeill  
 Managed by David McNeill and Stacy Butler
 
+# Usage
+The following is an example of running the cleanPlaintiffs.py script from inside the 
+src folder.
+```
+python .\cleanPlaintiffs.py ..\..\data\MC_specialreport_limiteddaterange_Nov6.csv .\20215121490-comparisonMatrix.pkl -e 0.1
+```
+
 # Progress
 ## 2021 March 18 
 The code in cleanCountOutcomes.py reads in a csv file
