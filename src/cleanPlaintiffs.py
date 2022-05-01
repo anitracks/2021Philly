@@ -158,7 +158,7 @@ def testComparisonMethod(seriesToTest, testFunction, numberToTry):
     print(f"Time estimate for whole table: {seriesToTest.size*totalTime/nTest}")
 
 
-def createSimilarityMatrix(cleanedValueCount):
+def createSimilarityMatrix(cleanedValueCounts):
     """! Taking the cleanedValueCount from plaintiffList, this 
     function creates a similarity matrix between the cleaned names
     @param cleanedValueCounts returned by plaintiffList
