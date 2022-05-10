@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['todo_20list_15',['Todo List',['../todo.html',1,'']]]
+  ['plaintifflist_22',['plaintiffList',['../namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e',1,'cleanPlaintiffs']]]
 ];

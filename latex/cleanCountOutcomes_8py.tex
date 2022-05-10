@@ -13,9 +13,11 @@ Cleans the outcome data and counts how many of each there are.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a4274f083552a8e34e4f1100d27302ef2}{clean\+Count\+Outcomes.\+remove\+Duplicates}} (df)
+\begin{DoxyCompactList}\small\item\em Cleans the main df by removing duplicate rows. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacecleanCountOutcomes_a03e2f7d864028a0fa17bf09f898d0d32}{clean\+Count\+Outcomes.\+clean\+Outcome}} (dirty\+String)
 \begin{DoxyCompactList}\small\item\em Removes the ALL CAPS words at the end of a string dirty\+String, everything after the first period (.), and any date/time and everything after it. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespacecleanCountOutcomes_a423318d5f6b137f5388738ef967565f8}{clean\+Count\+Outcomes.\+outcome\+List}} (df)
+def \mbox{\hyperlink{namespacecleanCountOutcomes_a5293171c9a56b78cc70e003c9817e261}{clean\+Count\+Outcomes.\+outcome\+List}} (df, column\+Name=\textquotesingle{}Case Outcome\textquotesingle{})
 \begin{DoxyCompactList}\small\item\em Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae28}{clean\+Count\+Outcomes.\+main}} ()
 \begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -31,11 +33,11 @@ def \mbox{\hyperlink{namespacecleanCountOutcomes_a99564092ed8f0a8cb6062fd33086ae
 \doxysubsection{Detailed Description}
 Cleans the outcome data and counts how many of each there are. 
 
-The main function reads in the name of a csv file to process. The \char`\"{}\+Case Outcome\char`\"{} column is processed via 
+The main function reads in the name of a csv file to process. It then removes all rows that are exact duplicates of each other. Lastly, it processes the \char`\"{}\+Case Outcome\char`\"{} column via the following function stack\+: 
 \begin{DoxyImageNoCaption}
   \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{dot_inline_dotgraph_1}}
 \end{DoxyImageNoCaption}
- It is cleaned via the following processes\+:
+ It is cleaned via the following process\+:
 \begin{DoxyEnumerate}
 \item Check for nan which arise from blank or Null input values
 \item Remove all trailing ALL CAPS WORDS

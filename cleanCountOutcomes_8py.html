@@ -88,12 +88,15 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a4274f083552a8e34e4f1100d27302ef2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanCountOutcomes.html#a4274f083552a8e34e4f1100d27302ef2">cleanCountOutcomes.removeDuplicates</a> (df)</td></tr>
+<tr class="memdesc:a4274f083552a8e34e4f1100d27302ef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans the main df by removing duplicate rows.  <a href="namespacecleanCountOutcomes.html#a4274f083552a8e34e4f1100d27302ef2">More...</a><br /></td></tr>
+<tr class="separator:a4274f083552a8e34e4f1100d27302ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03e2f7d864028a0fa17bf09f898d0d32"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanCountOutcomes.html#a03e2f7d864028a0fa17bf09f898d0d32">cleanCountOutcomes.cleanOutcome</a> (dirtyString)</td></tr>
 <tr class="memdesc:a03e2f7d864028a0fa17bf09f898d0d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the ALL CAPS words at the end of a string dirtyString, everything after the first period (.), and any date/time and everything after it.  <a href="namespacecleanCountOutcomes.html#a03e2f7d864028a0fa17bf09f898d0d32">More...</a><br /></td></tr>
 <tr class="separator:a03e2f7d864028a0fa17bf09f898d0d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a423318d5f6b137f5388738ef967565f8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanCountOutcomes.html#a423318d5f6b137f5388738ef967565f8">cleanCountOutcomes.outcomeList</a> (df)</td></tr>
-<tr class="memdesc:a423318d5f6b137f5388738ef967565f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one.  <a href="namespacecleanCountOutcomes.html#a423318d5f6b137f5388738ef967565f8">More...</a><br /></td></tr>
-<tr class="separator:a423318d5f6b137f5388738ef967565f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5293171c9a56b78cc70e003c9817e261"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261">cleanCountOutcomes.outcomeList</a> (df, columnName='Case Outcome')</td></tr>
+<tr class="memdesc:a5293171c9a56b78cc70e003c9817e261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the number of occurrences of each one.  <a href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261">More...</a><br /></td></tr>
+<tr class="separator:a5293171c9a56b78cc70e003c9817e261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99564092ed8f0a8cb6062fd33086ae28"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanCountOutcomes.html#a99564092ed8f0a8cb6062fd33086ae28">cleanCountOutcomes.main</a> ()</td></tr>
 <tr class="memdesc:a99564092ed8f0a8cb6062fd33086ae28"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument.  <a href="namespacecleanCountOutcomes.html#a99564092ed8f0a8cb6062fd33086ae28">More...</a><br /></td></tr>
 <tr class="separator:a99564092ed8f0a8cb6062fd33086ae28"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,14 +112,14 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cleans the outcome data and counts how many of each there are. </p>
-<p>The main function reads in the name of a csv file to process. The "Case Outcome" column is processed via </p><div class="dotgraph">
+<p>The main function reads in the name of a csv file to process. It then removes all rows that are exact duplicates of each other. Lastly, it processes the "Case Outcome" column via the following function stack: </p><div class="dotgraph">
 <img src="dot_inline_dotgraph_1.png" alt="dot_inline_dotgraph_1.png" border="0" usemap="#dot_inline_dotgraph_1.map"/>
 <map name="dot_inline_dotgraph_1.map" id="dot_inline_dotgraph_1.map"><area shape="rect" href="namespacecleanCountOutcomes.html#a99564092ed8f0a8cb6062fd33086ae28" title="main" alt="" coords="23,5,95,55"/>
-<area shape="rect" href="namespacecleanCountOutcomes.html#a423318d5f6b137f5388738ef967565f8" title="outcomeList" alt="" coords="12,103,105,152"/>
+<area shape="rect" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="outcomeList" alt="" coords="12,103,105,152"/>
 <area shape="rect" href="namespacecleanCountOutcomes.html#a03e2f7d864028a0fa17bf09f898d0d32" title="cleanOutcome" alt="" coords="5,200,112,249"/>
 </map>
 </div>
-<p> It is cleaned via the following processes:</p><ol type="1">
+<p> It is cleaned via the following process:</p><ol type="1">
 <li>Check for nan which arise from blank or Null input values</li>
 <li>Remove all trailing ALL CAPS WORDS</li>
 <li>Remove everything after the first period (.)</li>

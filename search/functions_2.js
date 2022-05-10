@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outcomelist_24',['outcomeList',['../namespacecleanCountOutcomes.html#a423318d5f6b137f5388738ef967565f8',1,'cleanCountOutcomes']]]
+  ['findbasenames_42',['findBaseNames',['../namespacecleanPlaintiffs.html#aa52ac5b007acdb249f0fe759a98fa1de',1,'cleanPlaintiffs.findBaseNames()'],['../namespacedbscanTest.html#a53f6789a745b40c715e0ac3fa2c84e35',1,'dbscanTest.findBaseNames()']]]
 ];

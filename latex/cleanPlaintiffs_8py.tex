@@ -13,16 +13,32 @@ Cleans the plaintiff names and counts frequency of occurance.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a171a230e7ac7699beed794eeeba8bf95}{clean\+Plaintiffs.\+get\+\_\+class\+\_\+that\+\_\+defined\+\_\+method}} (meth)
+\begin{DoxyCompactList}\small\item\em from \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}{clean\+Plaintiffs.\+clean\+Plaintiff}} (full\+Plaintiff)
 \begin{DoxyCompactList}\small\item\em Removes everything from LLC or comma to the end of the name. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{clean\+Plaintiffs.\+plaintiff\+List}} (df\+Raw, field\+Name)
-\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a27eb4357cf84539049992715d5187128}{clean\+Plaintiffs.\+similar\+Name\+List}} (test\+Name, match\+List, compare\+\_\+function, cutoff=90, n\+Returned=50)
+\begin{DoxyCompactList}\small\item\em Returns a list of names similar to test\+Name from the match\+List whose match value is $>$= cutoff and returns no more than n\+Returned matches. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_adda46272dbe4ad37a680fd5646edd41d}{clean\+Plaintiffs.\+test\+Comparison\+Method}} (series\+To\+Test, test\+Function, number\+To\+Try)
+\begin{DoxyCompactList}\small\item\em Runs a test on a comparison method to estimate the total time required to run it on the full dataset. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb}{clean\+Plaintiffs.\+create\+Similarity\+Matrix}} (cleaned\+Value\+Counts)
+\begin{DoxyCompactList}\small\item\em Taking the cleaned\+Value\+Count from plaintiff\+List, this function creates a similarity matrix between the cleaned names. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e}{clean\+Plaintiffs.\+plaintiff\+List}} (df, field\+Name)
+\begin{DoxyCompactList}\small\item\em Returns df with added column of cleaned plaintiff names. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311}{clean\+Plaintiffs.\+dbscan\+Fit}} (fname, eps, min\+\_\+samples=2)
+\begin{DoxyCompactList}\small\item\em Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters requiring at least min\+\_\+samples in them. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_aa52ac5b007acdb249f0fe759a98fa1de}{clean\+Plaintiffs.\+find\+Base\+Names}} (fname, cutoff=0.\+9)
+\begin{DoxyCompactList}\small\item\em Finds the base name of each cleaned name This method does not work as of 2021 May 12. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}{clean\+Plaintiffs.\+main}} ()
 \begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}{clean\+Plaintiffs.\+llc\+Match}} = re.\+compile(r\textquotesingle{}(llc$\vert$,).$\ast$\textquotesingle{}, re.\+I)
+\mbox{\hyperlink{namespacecleanPlaintiffs_a5ad72ac922195745aebb519e49a2e29a}{clean\+Plaintiffs.\+cleanco\+\_\+terms}} = prepare\+\_\+terms()
+\item 
+list \mbox{\hyperlink{namespacecleanPlaintiffs_aea67d0a19052e0460fa4e622f0d7c759}{clean\+Plaintiffs.\+stopwords}} = \mbox{[}\textquotesingle{}a\textquotesingle{}, \textquotesingle{}an\textquotesingle{}, \textquotesingle{}the\textquotesingle{}, \textquotesingle{}are\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}{clean\+Plaintiffs.\+llc\+Match}} = re.\+compile(r\textquotesingle{}(llc$\vert$,$\vert$a/s/o$\vert$as subrogee of$\vert$\textbackslash{}saso\textbackslash{}s).$\ast$\textquotesingle{}, re.\+I)
 \begin{DoxyCompactList}\small\item\em match up to case insensitive first LLC or first comma \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacecleanPlaintiffs_a6b8aa5b6928db0f01e2477455b672597}{clean\+Plaintiffs.\+alpha\+Match}} = re.\+compile(r\textquotesingle{}\mbox{[}$^\wedge$a-\/z A-\/Z0-\/9\mbox{]}\textquotesingle{})
 \begin{DoxyCompactList}\small\item\em clean all non-\/alpha and space characters out \end{DoxyCompactList}\item 

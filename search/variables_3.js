@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['llcmatch_29',['llcMatch',['../namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd',1,'cleanPlaintiffs']]]
+  ['endcaps_53',['endCaps',['../namespacecleanCountOutcomes.html#a2386f6f7a71fc46b2e35a54a7968d053',1,'cleanCountOutcomes.endCaps()'],['../namespacecleanPlaintiffs.html#a55df444f6d816fd4a2beebcc6b097a29',1,'cleanPlaintiffs.endCaps()']]]
 ];

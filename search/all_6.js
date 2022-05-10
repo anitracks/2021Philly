@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_11',['main',['../namespacecleanCountOutcomes.html#a99564092ed8f0a8cb6062fd33086ae28',1,'cleanCountOutcomes.main()'],['../namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19',1,'cleanPlaintiffs.main()']]]
+  ['get_5fclass_5fthat_5fdefined_5fmethod_18',['get_class_that_defined_method',['../namespacecleanPlaintiffs.html#a171a230e7ac7699beed794eeeba8bf95',1,'cleanPlaintiffs']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['cleancountoutcomes_16',['cleanCountOutcomes',['../namespacecleanCountOutcomes.html',1,'']]],
-  ['cleanplaintiffs_17',['cleanPlaintiffs',['../namespacecleanPlaintiffs.html',1,'']]]
+  ['cleancountoutcomes_29',['cleanCountOutcomes',['../namespacecleanCountOutcomes.html',1,'']]],
+  ['cleanplaintiffs_30',['cleanPlaintiffs',['../namespacecleanPlaintiffs.html',1,'']]],
+  ['correlations_31',['correlations',['../namespacecorrelations.html',1,'']]]
 ];

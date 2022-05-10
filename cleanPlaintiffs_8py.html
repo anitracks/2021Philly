@@ -88,18 +88,41 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a171a230e7ac7699beed794eeeba8bf95"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a171a230e7ac7699beed794eeeba8bf95">cleanPlaintiffs.get_class_that_defined_method</a> (meth)</td></tr>
+<tr class="memdesc:a171a230e7ac7699beed794eeeba8bf95"><td class="mdescLeft">&#160;</td><td class="mdescRight">from  <a href="namespacecleanPlaintiffs.html#a171a230e7ac7699beed794eeeba8bf95">More...</a><br /></td></tr>
+<tr class="separator:a171a230e7ac7699beed794eeeba8bf95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eb434aa5d35772dde9c7944d92a1030"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">cleanPlaintiffs.cleanPlaintiff</a> (fullPlaintiff)</td></tr>
 <tr class="memdesc:a0eb434aa5d35772dde9c7944d92a1030"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes everything from LLC or comma to the end of the name.  <a href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">More...</a><br /></td></tr>
 <tr class="separator:a0eb434aa5d35772dde9c7944d92a1030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3db6a5c67e63bf6018d81779d5214835"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a3db6a5c67e63bf6018d81779d5214835">cleanPlaintiffs.plaintiffList</a> (dfRaw, fieldName)</td></tr>
-<tr class="separator:a3db6a5c67e63bf6018d81779d5214835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27eb4357cf84539049992715d5187128"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a27eb4357cf84539049992715d5187128">cleanPlaintiffs.similarNameList</a> (testName, matchList, compare_function, cutoff=90, nReturned=50)</td></tr>
+<tr class="memdesc:a27eb4357cf84539049992715d5187128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of names similar to testName from the matchList whose match value is &gt;= cutoff and returns no more than nReturned matches.  <a href="namespacecleanPlaintiffs.html#a27eb4357cf84539049992715d5187128">More...</a><br /></td></tr>
+<tr class="separator:a27eb4357cf84539049992715d5187128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda46272dbe4ad37a680fd5646edd41d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#adda46272dbe4ad37a680fd5646edd41d">cleanPlaintiffs.testComparisonMethod</a> (seriesToTest, testFunction, numberToTry)</td></tr>
+<tr class="memdesc:adda46272dbe4ad37a680fd5646edd41d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a test on a comparison method to estimate the total time required to run it on the full dataset.  <a href="namespacecleanPlaintiffs.html#adda46272dbe4ad37a680fd5646edd41d">More...</a><br /></td></tr>
+<tr class="separator:adda46272dbe4ad37a680fd5646edd41d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acef3ec054670e0fcc017786ec1e8aeeb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">cleanPlaintiffs.createSimilarityMatrix</a> (cleanedValueCounts)</td></tr>
+<tr class="memdesc:acef3ec054670e0fcc017786ec1e8aeeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between the cleaned names.  <a href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">More...</a><br /></td></tr>
+<tr class="separator:acef3ec054670e0fcc017786ec1e8aeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95f78e00ae5ea7f5d4f292d6880844e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">cleanPlaintiffs.plaintiffList</a> (df, fieldName)</td></tr>
+<tr class="memdesc:ac95f78e00ae5ea7f5d4f292d6880844e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns df with added column of cleaned plaintiff names.  <a href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">More...</a><br /></td></tr>
+<tr class="separator:ac95f78e00ae5ea7f5d4f292d6880844e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a948656ff65ed15ab0295c64a3a2b2311"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">cleanPlaintiffs.dbscanFit</a> (fname, eps, min_samples=2)</td></tr>
+<tr class="memdesc:a948656ff65ed15ab0295c64a3a2b2311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters requiring at least min_samples in them.  <a href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">More...</a><br /></td></tr>
+<tr class="separator:a948656ff65ed15ab0295c64a3a2b2311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa52ac5b007acdb249f0fe759a98fa1de"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#aa52ac5b007acdb249f0fe759a98fa1de">cleanPlaintiffs.findBaseNames</a> (fname, cutoff=0.9)</td></tr>
+<tr class="memdesc:aa52ac5b007acdb249f0fe759a98fa1de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the base name of each cleaned name This method does not work as of 2021 May 12.  <a href="namespacecleanPlaintiffs.html#aa52ac5b007acdb249f0fe759a98fa1de">More...</a><br /></td></tr>
+<tr class="separator:aa52ac5b007acdb249f0fe759a98fa1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae505e4677480e7908bdd4bcb9c50bf19"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">cleanPlaintiffs.main</a> ()</td></tr>
 <tr class="memdesc:ae505e4677480e7908bdd4bcb9c50bf19"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument.  <a href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">More...</a><br /></td></tr>
 <tr class="separator:ae505e4677480e7908bdd4bcb9c50bf19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac63f3c02b3a437acefd06b2a74572edd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd">cleanPlaintiffs.llcMatch</a> = re.compile(r'(llc|,).*', re.I)</td></tr>
+<tr class="memitem:a5ad72ac922195745aebb519e49a2e29a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a5ad72ac922195745aebb519e49a2e29a">cleanPlaintiffs.cleanco_terms</a> = prepare_terms()</td></tr>
+<tr class="separator:a5ad72ac922195745aebb519e49a2e29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea67d0a19052e0460fa4e622f0d7c759"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#aea67d0a19052e0460fa4e622f0d7c759">cleanPlaintiffs.stopwords</a> = ['a', 'an', 'the', 'are']</td></tr>
+<tr class="separator:aea67d0a19052e0460fa4e622f0d7c759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63f3c02b3a437acefd06b2a74572edd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd">cleanPlaintiffs.llcMatch</a> = re.compile(r'(llc|,|a/s/o|as subrogee of|\saso\s).*', re.I)</td></tr>
 <tr class="memdesc:ac63f3c02b3a437acefd06b2a74572edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">match up to case insensitive first LLC or first comma  <a href="namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd">More...</a><br /></td></tr>
 <tr class="separator:ac63f3c02b3a437acefd06b2a74572edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b8aa5b6928db0f01e2477455b672597"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a6b8aa5b6928db0f01e2477455b672597">cleanPlaintiffs.alphaMatch</a> = re.compile(r'[^a-z A-Z0-9]')</td></tr>
@@ -119,7 +142,7 @@ Variables</h2></td></tr>
 <div class="dotgraph">
 <img src="dot_inline_dotgraph_2.png" alt="dot_inline_dotgraph_2.png" border="0" usemap="#dot_inline_dotgraph_2.map"/>
 <map name="dot_inline_dotgraph_2.map" id="dot_inline_dotgraph_2.map"><area shape="rect" href="namespacecleanCountOutcomes.html#a99564092ed8f0a8cb6062fd33086ae28" title="main" alt="" coords="23,5,95,55"/>
-<area shape="rect" href="namespacecleanCountOutcomes.html#a423318d5f6b137f5388738ef967565f8" title="outcomeList" alt="" coords="12,103,105,152"/>
+<area shape="rect" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="outcomeList" alt="" coords="12,103,105,152"/>
 <area shape="rect" href="namespacecleanCountOutcomes.html#a03e2f7d864028a0fa17bf09f898d0d32" title="cleanOutcome" alt="" coords="5,200,112,249"/>
 </map>
 </div>

@@ -3,16 +3,32 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a171a230e7ac7699beed794eeeba8bf95}{get\+\_\+class\+\_\+that\+\_\+defined\+\_\+method}} (meth)
+\begin{DoxyCompactList}\small\item\em from \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}{clean\+Plaintiff}} (full\+Plaintiff)
 \begin{DoxyCompactList}\small\item\em Removes everything from LLC or comma to the end of the name. \end{DoxyCompactList}\item 
-def \mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{plaintiff\+List}} (df\+Raw, field\+Name)
-\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a27eb4357cf84539049992715d5187128}{similar\+Name\+List}} (test\+Name, match\+List, compare\+\_\+function, cutoff=90, n\+Returned=50)
+\begin{DoxyCompactList}\small\item\em Returns a list of names similar to test\+Name from the match\+List whose match value is $>$= cutoff and returns no more than n\+Returned matches. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_adda46272dbe4ad37a680fd5646edd41d}{test\+Comparison\+Method}} (series\+To\+Test, test\+Function, number\+To\+Try)
+\begin{DoxyCompactList}\small\item\em Runs a test on a comparison method to estimate the total time required to run it on the full dataset. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb}{create\+Similarity\+Matrix}} (cleaned\+Value\+Counts)
+\begin{DoxyCompactList}\small\item\em Taking the cleaned\+Value\+Count from plaintiff\+List, this function creates a similarity matrix between the cleaned names. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e}{plaintiff\+List}} (df, field\+Name)
+\begin{DoxyCompactList}\small\item\em Returns df with added column of cleaned plaintiff names. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311}{dbscan\+Fit}} (fname, eps, min\+\_\+samples=2)
+\begin{DoxyCompactList}\small\item\em Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters requiring at least min\+\_\+samples in them. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecleanPlaintiffs_aa52ac5b007acdb249f0fe759a98fa1de}{find\+Base\+Names}} (fname, cutoff=0.\+9)
+\begin{DoxyCompactList}\small\item\em Finds the base name of each cleaned name This method does not work as of 2021 May 12. \end{DoxyCompactList}\item 
 def \mbox{\hyperlink{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}{main}} ()
 \begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}{llc\+Match}} = re.\+compile(r\textquotesingle{}(llc$\vert$,).$\ast$\textquotesingle{}, re.\+I)
+\mbox{\hyperlink{namespacecleanPlaintiffs_a5ad72ac922195745aebb519e49a2e29a}{cleanco\+\_\+terms}} = prepare\+\_\+terms()
+\item 
+list \mbox{\hyperlink{namespacecleanPlaintiffs_aea67d0a19052e0460fa4e622f0d7c759}{stopwords}} = \mbox{[}\textquotesingle{}a\textquotesingle{}, \textquotesingle{}an\textquotesingle{}, \textquotesingle{}the\textquotesingle{}, \textquotesingle{}are\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}{llc\+Match}} = re.\+compile(r\textquotesingle{}(llc$\vert$,$\vert$a/s/o$\vert$as subrogee of$\vert$\textbackslash{}saso\textbackslash{}s).$\ast$\textquotesingle{}, re.\+I)
 \begin{DoxyCompactList}\small\item\em match up to case insensitive first LLC or first comma \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacecleanPlaintiffs_a6b8aa5b6928db0f01e2477455b672597}{alpha\+Match}} = re.\+compile(r\textquotesingle{}\mbox{[}$^\wedge$a-\/z A-\/Z0-\/9\mbox{]}\textquotesingle{})
 \begin{DoxyCompactList}\small\item\em clean all non-\/alpha and space characters out \end{DoxyCompactList}\item 
@@ -43,34 +59,254 @@ cleaned string
 \end{DoxyReturn}
 
 
-Definition at line 50 of file clean\+Plaintiffs.\+py.
+Definition at line 97 of file clean\+Plaintiffs.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{50 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}{cleanPlaintiff}}(fullPlaintiff):}
-\DoxyCodeLine{51     \textcolor{stringliteral}{"{}"{}"{}! Removes everything from LLC or comma to the end of the name}}
-\DoxyCodeLine{52 \textcolor{stringliteral}{       @param fullPlaintiff is the whole plaintiff name}}
-\DoxyCodeLine{53 \textcolor{stringliteral}{       @returns cleaned string}}
-\DoxyCodeLine{54 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{55     \textcolor{comment}{\# Catch the nan's from assumably empty fields}}
-\DoxyCodeLine{56     \textcolor{comment}{\# nan's are both the empty strings and NULLs in David's data}}
-\DoxyCodeLine{57     if(isinstance(fullPlaintiff, float)):}
-\DoxyCodeLine{58         if(math.isnan(fullPlaintiff)):}
-\DoxyCodeLine{59             return(\textcolor{stringliteral}{'Blank or NULL'})}
-\DoxyCodeLine{60         \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{61             pdb.set\_trace()  \textcolor{comment}{\# it isn't an expected value}}
-\DoxyCodeLine{62     \textcolor{keywordflow}{try}:}
-\DoxyCodeLine{63         cleanedString = llcMatch.sub(\textcolor{stringliteral}{''}, fullPlaintiff).strip()}
-\DoxyCodeLine{64     \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} e:}
-\DoxyCodeLine{65         pdb.set\_trace()  \textcolor{comment}{\# unexpected type}}
-\DoxyCodeLine{66     \textcolor{comment}{\# remove everything not alphanumeric or space}}
-\DoxyCodeLine{67     cleanedOut = alphaMatch.sub(\textcolor{stringliteral}{''}, cleanedString).strip().upper()}
-\DoxyCodeLine{68     if(cleanedOut == \textcolor{stringliteral}{''}):}
-\DoxyCodeLine{69         print(\textcolor{stringliteral}{'blank output'})}
-\DoxyCodeLine{70         pdb.set\_trace()}
-\DoxyCodeLine{71     return(cleanedOut)}
-\DoxyCodeLine{72 }
-\DoxyCodeLine{73 }
+\DoxyCodeLine{97 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a0eb434aa5d35772dde9c7944d92a1030}{cleanPlaintiff}}(fullPlaintiff):}
+\DoxyCodeLine{98     \textcolor{stringliteral}{"{}"{}"{}! Removes everything from LLC or comma to the end of the name}}
+\DoxyCodeLine{99 \textcolor{stringliteral}{       @param fullPlaintiff is the whole plaintiff name}}
+\DoxyCodeLine{100 \textcolor{stringliteral}{       @returns cleaned string}}
+\DoxyCodeLine{101 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{102     }
+\DoxyCodeLine{104     if(isinstance(fullPlaintiff, float)):}
+\DoxyCodeLine{105         if(math.isnan(fullPlaintiff)):}
+\DoxyCodeLine{106             return(\textcolor{stringliteral}{'Blank or NULL'})}
+\DoxyCodeLine{107         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{108             pdb.set\_trace()  \textcolor{comment}{\# it isn't an expected value}}
+\DoxyCodeLine{109     \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{110         cleanedString = llcMatch.sub(\textcolor{stringliteral}{''}, fullPlaintiff).strip()}
+\DoxyCodeLine{111     \textcolor{keywordflow}{except} TypeError \textcolor{keyword}{as} e:}
+\DoxyCodeLine{112         pdb.set\_trace()  \textcolor{comment}{\# unexpected type}}
+\DoxyCodeLine{113     }
+\DoxyCodeLine{114     cleanco\_name = basename(cleanedString, cleanco\_terms, prefix=\textcolor{keyword}{False}, middle=\textcolor{keyword}{False}, suffix=\textcolor{keyword}{True})}
+\DoxyCodeLine{115     \textcolor{keywordflow}{if} cleanco\_name == \textcolor{stringliteral}{''}:}
+\DoxyCodeLine{116         cleanco\_name = cleanedString}
+\DoxyCodeLine{117         print(f\textcolor{stringliteral}{"{}cleanco failed on: \{cleanedString\}"{}})}
+\DoxyCodeLine{118     }
+\DoxyCodeLine{119     cleanedOut = alphaMatch.sub(\textcolor{stringliteral}{''}, cleanco\_name).strip().upper()}
+\DoxyCodeLine{120     if(cleanedOut == \textcolor{stringliteral}{''}):}
+\DoxyCodeLine{121         print(\textcolor{stringliteral}{'blank output'})}
+\DoxyCodeLine{122         pdb.set\_trace()}
+\DoxyCodeLine{123     return(cleanedOut)}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb}\label{namespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!createSimilarityMatrix@{createSimilarityMatrix}}
+\index{createSimilarityMatrix@{createSimilarityMatrix}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{createSimilarityMatrix()}{createSimilarityMatrix()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+create\+Similarity\+Matrix (\begin{DoxyParamCaption}\item[{}]{cleaned\+Value\+Counts }\end{DoxyParamCaption})}
+
+
+
+Taking the cleaned\+Value\+Count from plaintiff\+List, this function creates a similarity matrix between the cleaned names. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cleaned\+Value\+Counts} & returned by plaintiff\+List \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 161 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{161 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb}{createSimilarityMatrix}}(cleanedValueCounts):}
+\DoxyCodeLine{162     \textcolor{stringliteral}{"{}"{}"{}! Taking the cleanedValueCount from plaintiffList, this }}
+\DoxyCodeLine{163 \textcolor{stringliteral}{    function creates a similarity matrix between the cleaned names}}
+\DoxyCodeLine{164 \textcolor{stringliteral}{    @param cleanedValueCounts returned by plaintiffList}}
+\DoxyCodeLine{165 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{166     \textcolor{comment}{\# vectorizer = TfidfVectorizer(stop\_words=\{'english'\})}}
+\DoxyCodeLine{167     \textcolor{comment}{\# X = vectorizer.fit\_transform(df['Plaintiff Name(s)'])}}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     }
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174     cutoff = 90  }
+\DoxyCodeLine{175     nReturned = \textcolor{keywordtype}{None}  }
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     }
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188     \textcolor{comment}{\# pdb.set\_trace()}}
+\DoxyCodeLine{189     startTime = datetime.datetime.now()}
+\DoxyCodeLine{190     print(f\textcolor{stringliteral}{"{}Started at \{startTime\}"{}})}
+\DoxyCodeLine{191     }
+\DoxyCodeLine{194     similarNames = cleanedValueCounts.index.to\_series().apply(similarNameList, \(\backslash\)}
+\DoxyCodeLine{195         args=(cleanedValueCounts.index.to\_series(), jellyfish.jaro\_similarity))}
+\DoxyCodeLine{196     endTime = datetime.datetime.now()}
+\DoxyCodeLine{197     totalTime = endTime -\/ startTime}
+\DoxyCodeLine{198     print(f\textcolor{stringliteral}{"{}similarNameList took \{totalTime\} seconds"{}})}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     pdb.set\_trace()}
+\DoxyCodeLine{201     fname = f\textcolor{stringliteral}{"{}\{endTime:\%Y\%m\%d\%H\%M\%S\}-\/comparisonMatrix.pkl"{}}}
+\DoxyCodeLine{202     \textcolor{comment}{\# saving Pandas dataframes:}}
+\DoxyCodeLine{203     \textcolor{comment}{\# https://towardsdatascience.com/the-\/best-\/format-\/to-\/save-\/pandas-\/data-\/414dca023e0d}}
+\DoxyCodeLine{204     similarNames.to\_pickle(fname)}
+\DoxyCodeLine{205     }
+\DoxyCodeLine{206     \textcolor{comment}{\#  Elbow method of determining how many means to use}}
+\DoxyCodeLine{207     \textcolor{comment}{\# Sum\_of\_squared\_distances = []}}
+\DoxyCodeLine{208     \textcolor{comment}{\# K = range(2,5)}}
+\DoxyCodeLine{209     \textcolor{comment}{\# for k in K:}}
+\DoxyCodeLine{210     \textcolor{comment}{\#     print(f"{}Trying \{k\} means"{})}}
+\DoxyCodeLine{211     \textcolor{comment}{\#     km = KMeans(n\_clusters=k, max\_iter=200, n\_init=10)}}
+\DoxyCodeLine{212     \textcolor{comment}{\#     km = km.fit(X)}}
+\DoxyCodeLine{213     \textcolor{comment}{\#     Sum\_of\_squared\_distances.append(km.inertia\_)}}
+\DoxyCodeLine{214     \textcolor{comment}{\# plt.plot(K, Sum\_of\_squared\_distances, 'bx-\/')}}
+\DoxyCodeLine{215     \textcolor{comment}{\# plt.xlabel('k')}}
+\DoxyCodeLine{216     \textcolor{comment}{\# plt.ylabel('Sum\_of\_squared\_distances')}}
+\DoxyCodeLine{217     \textcolor{comment}{\# plt.title('Elbow Method For Optimal k')}}
+\DoxyCodeLine{218     \textcolor{comment}{\# plt.show()}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311}\label{namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!dbscanFit@{dbscanFit}}
+\index{dbscanFit@{dbscanFit}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{dbscanFit()}{dbscanFit()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+dbscan\+Fit (\begin{DoxyParamCaption}\item[{}]{fname,  }\item[{}]{eps,  }\item[{}]{min\+\_\+samples = {\ttfamily 2} }\end{DoxyParamCaption})}
+
+
+
+Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters requiring at least min\+\_\+samples in them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & The filename for a pickle file containing a similarity matrix \\
+\hline
+{\em eps} & Epsilon -\/ the largest distance allowed to be considered a neighbor \\
+\hline
+{\em min\+\_\+samples} & The minimum number of names in a cluster \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 244 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{244 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311}{dbscanFit}}(fname, eps, min\_samples=2):}
+\DoxyCodeLine{245     \textcolor{stringliteral}{"{}"{}"{}! Runs DBSCAN clustering on the similarity matrix in fname}}
+\DoxyCodeLine{246 \textcolor{stringliteral}{    with epsilon (eps) set to eps and clusters requiring at least}}
+\DoxyCodeLine{247 \textcolor{stringliteral}{    min\_samples in them.}}
+\DoxyCodeLine{248 \textcolor{stringliteral}{}}
+\DoxyCodeLine{249 \textcolor{stringliteral}{    @param fname The filename for a pickle file containing a similarity matrix}}
+\DoxyCodeLine{250 \textcolor{stringliteral}{    @param eps Epsilon -\/ the largest distance allowed to be considered a neighbor}}
+\DoxyCodeLine{251 \textcolor{stringliteral}{    @param min\_samples The minimum number of names in a cluster}}
+\DoxyCodeLine{252 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{253     similarNames = pd.read\_pickle(fname)}
+\DoxyCodeLine{254     distanceNames = 1 -\/ similarNames}
+\DoxyCodeLine{255     dbfit = DBSCAN(eps=eps, min\_samples=min\_samples, metric=\textcolor{stringliteral}{'precomputed'}).fit(distanceNames)}
+\DoxyCodeLine{256     \textcolor{keywordflow}{return} dbfit}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258 }
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_aa52ac5b007acdb249f0fe759a98fa1de}\label{namespacecleanPlaintiffs_aa52ac5b007acdb249f0fe759a98fa1de}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!findBaseNames@{findBaseNames}}
+\index{findBaseNames@{findBaseNames}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{findBaseNames()}{findBaseNames()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+find\+Base\+Names (\begin{DoxyParamCaption}\item[{}]{fname,  }\item[{}]{cutoff = {\ttfamily 0.9} }\end{DoxyParamCaption})}
+
+
+
+Finds the base name of each cleaned name This method does not work as of 2021 May 12. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & The filename of the pickle file created by plaintiff\+List \\
+\hline
+{\em cutoff} & The cutoff similarity between names to assume are the same \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 259 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{259 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_aa52ac5b007acdb249f0fe759a98fa1de}{findBaseNames}}(fname, cutoff=0.9):}
+\DoxyCodeLine{260     \textcolor{stringliteral}{"{}"{}"{}! Finds the base name of each cleaned name}}
+\DoxyCodeLine{261 \textcolor{stringliteral}{    This method does not work as of 2021 May 12}}
+\DoxyCodeLine{262 \textcolor{stringliteral}{}}
+\DoxyCodeLine{263 \textcolor{stringliteral}{    @param fname The filename of the pickle file created by plaintiffList}}
+\DoxyCodeLine{264 \textcolor{stringliteral}{    @param cutoff The cutoff similarity between names to assume are the same}}
+\DoxyCodeLine{265 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{266     similarNames = pd.read\_pickle(fname)}
+\DoxyCodeLine{267     test1 = similarNames.apply(\textcolor{keyword}{lambda} x: x > cutoff)}
+\DoxyCodeLine{268     seenNames = set()  \textcolor{comment}{\# set of names already processed}}
+\DoxyCodeLine{269     nameGroups = []  \textcolor{comment}{\# list of name groups}}
+\DoxyCodeLine{270     startTime = datetime.datetime.now()}
+\DoxyCodeLine{271     print(f\textcolor{stringliteral}{'Starting the collation at \{startTime\}'})}
+\DoxyCodeLine{272     \textcolor{keywordflow}{for} name \textcolor{keywordflow}{in} test1.index:}
+\DoxyCodeLine{273         \textcolor{keywordflow}{if} name \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} seenNames:}
+\DoxyCodeLine{274             checkNamesSet = test1[test1[name] == \textcolor{keyword}{True}].index}
+\DoxyCodeLine{275             closeNamesSet = set(checkNamesSet)}
+\DoxyCodeLine{276             seenNames.add(name)}
+\DoxyCodeLine{277             \textcolor{keywordflow}{for} check \textcolor{keywordflow}{in} checkNamesSet:}
+\DoxyCodeLine{278                 \textcolor{keywordflow}{if} check \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} seenNames:}
+\DoxyCodeLine{279                     moreNames = test1[test1[check] == \textcolor{keyword}{True}].index}
+\DoxyCodeLine{280                     seenNames.add(check)}
+\DoxyCodeLine{281                     closeNamesSet.update(moreNames)}
+\DoxyCodeLine{282             nameGroups.append(closeNamesSet)}
+\DoxyCodeLine{283     stopTime = datetime.datetime.now()}
+\DoxyCodeLine{284     print(f\textcolor{stringliteral}{'took \{stopTime -\/ startTime\} seconds'})}
+\DoxyCodeLine{285     pdb.set\_trace()}
+\DoxyCodeLine{286     return(nameGroups)}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288     \textcolor{comment}{\# closeNames = test1[test1['MIDLAND FUNDING'] == True].index.to\_series()}}
+\DoxyCodeLine{289     \textcolor{comment}{\# closeNamesSet = set(test1[test1['MIDLAND FUNDING'] == True].index) }}
+\DoxyCodeLine{290     \textcolor{comment}{\# for name in closeNamesSet:}}
+\DoxyCodeLine{291     \textcolor{comment}{\#     moreNames = set(test1[test1[name] == True].index)}}
+\DoxyCodeLine{292     \textcolor{comment}{\#     closeNamesSet = closeNamesSet.union(moreNames)}}
+\DoxyCodeLine{293     \textcolor{comment}{\# pdb.set\_trace()}}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a171a230e7ac7699beed794eeeba8bf95}\label{namespacecleanPlaintiffs_a171a230e7ac7699beed794eeeba8bf95}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!get\_class\_that\_defined\_method@{get\_class\_that\_defined\_method}}
+\index{get\_class\_that\_defined\_method@{get\_class\_that\_defined\_method}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{get\_class\_that\_defined\_method()}{get\_class\_that\_defined\_method()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+get\+\_\+class\+\_\+that\+\_\+defined\+\_\+method (\begin{DoxyParamCaption}\item[{}]{meth }\end{DoxyParamCaption})}
+
+
+
+from 
+
+
+
+Definition at line 80 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a171a230e7ac7699beed794eeeba8bf95}{get\_class\_that\_defined\_method}}(meth):}
+\DoxyCodeLine{81     \textcolor{stringliteral}{"{}"{}"{}! from }}
+\DoxyCodeLine{82 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{83     \textcolor{keywordflow}{if} inspect.ismethod(meth) \textcolor{keywordflow}{or} (inspect.isbuiltin(meth) \textcolor{keywordflow}{and} getattr(meth, \textcolor{stringliteral}{'\_\_self\_\_'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} getattr(meth.\_\_self\_\_, \textcolor{stringliteral}{'\_\_class\_\_'}, \textcolor{keywordtype}{None})):}
+\DoxyCodeLine{84         \textcolor{keywordflow}{for} cls \textcolor{keywordflow}{in} inspect.getmro(meth.\_\_self\_\_.\_\_class\_\_):}
+\DoxyCodeLine{85             \textcolor{keywordflow}{if} meth.\_\_name\_\_ \textcolor{keywordflow}{in} cls.\_\_dict\_\_:}
+\DoxyCodeLine{86                 \textcolor{keywordflow}{return} cls}
+\DoxyCodeLine{87         meth = getattr(meth, \textcolor{stringliteral}{'\_\_func\_\_'}, meth)  \textcolor{comment}{\# fallback to \_\_qualname\_\_ parsing}}
+\DoxyCodeLine{88     \textcolor{keywordflow}{if} inspect.isfunction(meth):}
+\DoxyCodeLine{89         cls = getattr(inspect.getmodule(meth),}
+\DoxyCodeLine{90                       meth.\_\_qualname\_\_.split(\textcolor{stringliteral}{'.<locals>'}, 1)[0].rsplit(\textcolor{stringliteral}{'.'}, 1)[0],}
+\DoxyCodeLine{91                       \textcolor{keywordtype}{None})}
+\DoxyCodeLine{92         \textcolor{keywordflow}{if} isinstance(cls, type):}
+\DoxyCodeLine{93             \textcolor{keywordflow}{return} cls}
+\DoxyCodeLine{94     \textcolor{keywordflow}{return} getattr(meth, \textcolor{stringliteral}{'\_\_objclass\_\_'}, \textcolor{keywordtype}{None})  \textcolor{comment}{\# handle special descriptor objects}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}\label{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}} 
@@ -85,55 +321,111 @@ This is the main function that reads in a csv file containing the court data fro
 
 It then prints out the column names for reference, filters out the duplicate rows, and prints out the column types for reference. It also calculates the median judgement amount as a proof of concept. Lastly, it calls outcome\+List to create a cleaned and counted list of the outcomes and prints the results. 
 
-Definition at line 96 of file clean\+Plaintiffs.\+py.
+Definition at line 296 of file clean\+Plaintiffs.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{96 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}{main}}():}
-\DoxyCodeLine{97     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that reads in a csv file containing the}}
-\DoxyCodeLine{98 \textcolor{stringliteral}{    court data from the filename passed as the first command line argument. }}
-\DoxyCodeLine{99 \textcolor{stringliteral}{    It then prints out the column names for reference, filters out the}}
-\DoxyCodeLine{100 \textcolor{stringliteral}{    duplicate rows, and prints out the column types for reference. It also}}
-\DoxyCodeLine{101 \textcolor{stringliteral}{    calculates the median judgement amount as a proof of concept. Lastly,}}
-\DoxyCodeLine{102 \textcolor{stringliteral}{    it calls outcomeList to create a cleaned and counted list of the outcomes}}
-\DoxyCodeLine{103 \textcolor{stringliteral}{    and prints the results.}}
-\DoxyCodeLine{104 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{105     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
-\DoxyCodeLine{106     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
-\DoxyCodeLine{107 \textcolor{comment}{\#    parser.add\_argument('dbfile', help='The name of the sqlite db file')}}
-\DoxyCodeLine{108 }
-\DoxyCodeLine{109     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
-\DoxyCodeLine{110     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{112     \textcolor{comment}{\# Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason}}
-\DoxyCodeLine{113     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
-\DoxyCodeLine{114     print(f\textcolor{stringliteral}{'The column names are:\(\backslash\)n\{csvDF.columns.values\}'})}
-\DoxyCodeLine{115 }
-\DoxyCodeLine{116     print(\textcolor{stringliteral}{"{}\(\backslash\)nThe column types are:"{}})}
-\DoxyCodeLine{117     print(csvDF.dtypes)  \textcolor{comment}{\# print out the data type for each column}}
-\DoxyCodeLine{118 }
-\DoxyCodeLine{119     \textcolor{comment}{\# need to look at cases where the same attorney is listed on both sides}}
-\DoxyCodeLine{120     \textcolor{comment}{\# try using sent2vec to sort out similar ones}}
-\DoxyCodeLine{121     \textcolor{comment}{\# pypi.org/project/sent2vec}}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{123     plaintiffs = \mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{plaintiffList}}(csvDF, \textcolor{stringliteral}{'Plaintiff Name(s)'})}
-\DoxyCodeLine{124     print(\textcolor{stringliteral}{'\(\backslash\)nPlaintiff Frequency'})}
-\DoxyCodeLine{125     print(f\textcolor{stringliteral}{'\{plaintiffs\}'})}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{127     \textcolor{keywordflow}{for} plaintiff, pCount \textcolor{keywordflow}{in} plaintiffs.items():}
-\DoxyCodeLine{128         if(pCount > 10):}
-\DoxyCodeLine{129             print(f\textcolor{stringliteral}{"{}\{plaintiff\},\{pCount\}"{}})}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131     \textcolor{comment}{\# the following line counts the Plaintiff names that contain Midland as a check}}
-\DoxyCodeLine{132     \textcolor{comment}{\#nMidlands = len(csvNoDups[csvNoDups['Plaintiff Name(s)'].str.contains('Midland', flags=re.IGNORECASE)]['Plaintiff Name(s)'])}}
-\DoxyCodeLine{133 }
-\DoxyCodeLine{134     \textcolor{comment}{\#conn = sqlite3.connect(args.dbfile)  \# connect to the database}}
-\DoxyCodeLine{135     \textcolor{comment}{\# load the csvData into the database}}
-\DoxyCodeLine{136     \textcolor{comment}{\#csvNoDups.to\_sql('csvNoDups', conn, if\_exists='fail', index=False)}}
-\DoxyCodeLine{137 }
-\DoxyCodeLine{138     stop\_time = datetime.datetime.now()}
-\DoxyCodeLine{139     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
-\DoxyCodeLine{140 }
+\DoxyCodeLine{296 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19}{main}}():}
+\DoxyCodeLine{297     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that reads in a csv file containing the}}
+\DoxyCodeLine{298 \textcolor{stringliteral}{    court data from the filename passed as the first command line argument. }}
+\DoxyCodeLine{299 \textcolor{stringliteral}{    It then prints out the column names for reference, filters out the}}
+\DoxyCodeLine{300 \textcolor{stringliteral}{    duplicate rows, and prints out the column types for reference. It also}}
+\DoxyCodeLine{301 \textcolor{stringliteral}{    calculates the median judgement amount as a proof of concept. Lastly,}}
+\DoxyCodeLine{302 \textcolor{stringliteral}{    it calls outcomeList to create a cleaned and counted list of the outcomes}}
+\DoxyCodeLine{303 \textcolor{stringliteral}{    and prints the results.}}
+\DoxyCodeLine{304 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{305     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
+\DoxyCodeLine{306     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
+\DoxyCodeLine{307     parser.add\_argument(\textcolor{stringliteral}{'picklefile'}, help=\textcolor{stringliteral}{'The name of the pickle file to load'})}
+\DoxyCodeLine{308     parser.add\_argument(\textcolor{stringliteral}{'-\/c'}, \textcolor{stringliteral}{'-\/-\/cutoff'}, help=\textcolor{stringliteral}{'The cutoff for similarity checking'}, type=float)}
+\DoxyCodeLine{309     parser.add\_argument(\textcolor{stringliteral}{'-\/e'}, \textcolor{stringliteral}{'-\/-\/eps'}, help=\textcolor{stringliteral}{'The neighbor distance setting for DBSCAN'}, type=float)}
+\DoxyCodeLine{310     parser.add\_argument(\textcolor{stringliteral}{'-\/s'}, \textcolor{stringliteral}{'-\/-\/similarity'}, help=\textcolor{stringliteral}{'Do similarity calculations'})}
+\DoxyCodeLine{311 \textcolor{comment}{\#    parser.add\_argument('dbfile', help='The name of the sqlite db file')}}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
+\DoxyCodeLine{314     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316     \textcolor{keywordflow}{if} args.picklefile:}
+\DoxyCodeLine{317         \textcolor{keywordflow}{if} args.eps:}
+\DoxyCodeLine{318             eps = args.eps}
+\DoxyCodeLine{319         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{320             eps = 0.1}
+\DoxyCodeLine{321         dbfit = \mbox{\hyperlink{namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311}{dbscanFit}}(args.picklefile, eps)}
+\DoxyCodeLine{322         similarNames = pd.read\_pickle(args.picklefile)}
+\DoxyCodeLine{323         distanceNames = 1 -\/ similarNames}
+\DoxyCodeLine{324     \textcolor{comment}{\# Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason}}
+\DoxyCodeLine{325     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
+\DoxyCodeLine{326     \textcolor{comment}{\# print(f'The column names are:\(\backslash\)n\{csvDF.columns.values\}')}}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328     \textcolor{comment}{\# print("{}\(\backslash\)nThe column types are:"{})}}
+\DoxyCodeLine{329     \textcolor{comment}{\# print(csvDF.dtypes)  \# print out the data type for each column}}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331     \textcolor{comment}{\# need to look at cases where the same attorney is listed on both sides}}
+\DoxyCodeLine{332     \textcolor{comment}{\# try using sent2vec to sort out similar ones}}
+\DoxyCodeLine{333     \textcolor{comment}{\# pypi.org/project/sent2vec}}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335     df = cleanCountOutcomes.cleanWholeDF(csvDF)}
+\DoxyCodeLine{336     (plaintiffs, df) = \mbox{\hyperlink{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e}{plaintiffList}}(df, \textcolor{stringliteral}{'Plaintiff Name(s)'})}
+\DoxyCodeLine{337     (outcomes, df) = \mbox{\hyperlink{namespacecleanCountOutcomes_a5293171c9a56b78cc70e003c9817e261}{cleanCountOutcomes.outcomeList}}(df, \textcolor{stringliteral}{'Case Outcome'})}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339     \textcolor{comment}{\# print('\(\backslash\)nPlaintiff Frequency')}}
+\DoxyCodeLine{340     \textcolor{comment}{\# print(f'\{plaintiffs\}')}}
+\DoxyCodeLine{341     \textcolor{comment}{\# for plaintiff, pCount in plaintiffs.items():}}
+\DoxyCodeLine{342     \textcolor{comment}{\#     if(pCount > 10):}}
+\DoxyCodeLine{343     \textcolor{comment}{\#         print(f"{}\{plaintiff\},\{pCount\}"{})}}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     \textcolor{comment}{\# data we have}}
+\DoxyCodeLine{346     clusterSet = set(dbfit.labels\_)}
+\DoxyCodeLine{347     \textcolor{comment}{\# clusterSet.discard(-\/1)  \# discard the "{}noise"{} names}}
+\DoxyCodeLine{348     clusterNameLists = []}
+\DoxyCodeLine{349     \textcolor{keywordflow}{for} clust \textcolor{keywordflow}{in} clusterSet:}
+\DoxyCodeLine{350         clusterNameLists.append(distanceNames.index[dbfit.labels\_ == clust])}
+\DoxyCodeLine{351     clusterDF = pd.DataFrame(clusterNameLists)  \textcolor{comment}{\# each row is list of names in cluster}}
+\DoxyCodeLine{352     }
+\DoxyCodeLine{353     df  \textcolor{comment}{\# whole dataset with cleaned plaintiff and outcomes}}
+\DoxyCodeLine{354     dbfit.labels\_  \textcolor{comment}{\# cluster number for cleanedPlaintiff}}
+\DoxyCodeLine{355     df.iloc[0][\textcolor{stringliteral}{'PlaintiffCleaned'}]  \textcolor{comment}{\# Need to know what group this is in}}
+\DoxyCodeLine{356     df.iloc[0][\textcolor{stringliteral}{'OutcomeCleaned'}]}
+\DoxyCodeLine{357 }
+\DoxyCodeLine{358     df[\textcolor{stringliteral}{'ClusterNum'}] = -\/5  \textcolor{comment}{\# set clusterNum to an invalid number to make sure all get changed}}
+\DoxyCodeLine{359     df[\textcolor{stringliteral}{'ClusterName'}] = \textcolor{stringliteral}{'ZZ-\/Unclustered'}  \textcolor{comment}{\# set clusterNum to an invalid number to make sure all get changed}}
+\DoxyCodeLine{360     maxClusterIndex = max(clusterDF.index)  \textcolor{comment}{\# store off max index for use later}}
+\DoxyCodeLine{361     clusterDF.insert(0, \textcolor{stringliteral}{'Count'}, -\/1)  \textcolor{comment}{\# set count to an invalid number to allow checking}}
+\DoxyCodeLine{362     clusterNames = []  \textcolor{comment}{\# list of cluster names}}
+\DoxyCodeLine{363     \textcolor{comment}{\# Set the cluster number for each entry in df}}
+\DoxyCodeLine{364     \textcolor{keywordflow}{for} ind \textcolor{keywordflow}{in} clusterDF.index:}
+\DoxyCodeLine{365         rowIndexer = df[\textcolor{stringliteral}{'PlaintiffCleaned'}].isin(clusterDF.iloc[ind])}
+\DoxyCodeLine{366         clusterDF.loc[ind,\textcolor{stringliteral}{'Count'}] = len(df.loc[rowIndexer,\textcolor{stringliteral}{'ClusterNum'}])}
+\DoxyCodeLine{367         if(ind != maxClusterIndex):}
+\DoxyCodeLine{368             df.loc[rowIndexer,\textcolor{stringliteral}{'ClusterNum'}] = ind}
+\DoxyCodeLine{369             df.loc[rowIndexer, \textcolor{stringliteral}{'ClusterName'}] = df.loc[rowIndexer, \textcolor{stringliteral}{'PlaintiffCleaned'}].mode()[0]}
+\DoxyCodeLine{370             clusterNames.append(df.loc[rowIndexer, \textcolor{stringliteral}{'PlaintiffCleaned'}].mode()[0])}
+\DoxyCodeLine{371         \textcolor{keywordflow}{else}:  \textcolor{comment}{\# set the catchall/not in cluster values to -\/1}}
+\DoxyCodeLine{372             df.loc[df[\textcolor{stringliteral}{'PlaintiffCleaned'}].isin(clusterDF.iloc[ind]),\textcolor{stringliteral}{'ClusterNum'}] = -\/1}
+\DoxyCodeLine{373             df.loc[rowIndexer, \textcolor{stringliteral}{'ClusterName'}] = df.loc[rowIndexer, \textcolor{stringliteral}{'PlaintiffCleaned'}]}
+\DoxyCodeLine{374 }
+\DoxyCodeLine{375     \textcolor{comment}{\# create the comparison matrix}}
+\DoxyCodeLine{376     \textcolor{comment}{\# https://stackoverflow.com/questions/48465941/counting-\/combinations-\/between-\/two-\/dataframe-\/columns}}
+\DoxyCodeLine{377     time\_now = datetime.datetime.now()}
+\DoxyCodeLine{378     comparedPO = pd.crosstab(df[\textcolor{stringliteral}{'ClusterName'}], df[\textcolor{stringliteral}{'OutcomeCleaned'}])  \textcolor{comment}{\# Seems to be a good base dataset}}
+\DoxyCodeLine{379     comparedPO.insert(0, \textcolor{stringliteral}{'Clustered'},\textcolor{stringliteral}{'unknown'})}
+\DoxyCodeLine{380     comparedPO.loc[comparedPO.index.isin(clusterNames),\textcolor{stringliteral}{'Clustered'}] = \textcolor{keyword}{True}}
+\DoxyCodeLine{381     comparedPO.loc[\string~comparedPO.index.isin(clusterNames),\textcolor{stringliteral}{'Clustered'}] = \textcolor{keyword}{False}}
+\DoxyCodeLine{382     comparedPO.to\_csv(f\textcolor{stringliteral}{'\{time\_now:\%Y\%m\%d\%H\%M\%S\}-\/comparedPO.csv'})}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{384     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{385     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds so far'})}
+\DoxyCodeLine{386     pdb.set\_trace()}
+\DoxyCodeLine{387     \textcolor{comment}{\# the following line counts the Plaintiff names that contain Midland as a check}}
+\DoxyCodeLine{388     \textcolor{comment}{\#nMidlands = len(csvNoDups[csvNoDups['Plaintiff Name(s)'].str.contains('Midland', flags=re.IGNORECASE)]['Plaintiff Name(s)'])}}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{390     \textcolor{comment}{\#conn = sqlite3.connect(args.dbfile)  \# connect to the database}}
+\DoxyCodeLine{391     \textcolor{comment}{\# load the csvData into the database}}
+\DoxyCodeLine{392     \textcolor{comment}{\#csvNoDups.to\_sql('csvNoDups', conn, if\_exists='fail', index=False)}}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{395     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
+\DoxyCodeLine{396 }
 
 \end{DoxyCode}
 Here is the call graph for this function\+:
@@ -141,51 +433,56 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph}
+\includegraphics[width=350pt]{namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}\label{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}} 
+\mbox{\Hypertarget{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e}\label{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e}} 
 \index{cleanPlaintiffs@{cleanPlaintiffs}!plaintiffList@{plaintiffList}}
 \index{plaintiffList@{plaintiffList}!cleanPlaintiffs@{cleanPlaintiffs}}
 \doxysubsubsection{\texorpdfstring{plaintiffList()}{plaintiffList()}}
-{\footnotesize\ttfamily def clean\+Plaintiffs.\+plaintiff\+List (\begin{DoxyParamCaption}\item[{}]{df\+Raw,  }\item[{}]{field\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+plaintiff\+List (\begin{DoxyParamCaption}\item[{}]{df,  }\item[{}]{field\+Name }\end{DoxyParamCaption})}
+
+
+
+Returns df with added column of cleaned plaintiff names. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em df} & is a panda dataframe of plaintiff names from reading in the csv file of data \\
+{\em df} & is a panda dataframe of plaintiff names from reading in the csv file of data that has had duplicates removed and other cleaning done \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-cleaned and sorted plaintiff names 
+Tuple (cleaned and sorted plaintiff names, df with cleaned plaintiff names column) 
 \end{DoxyReturn}
 
 
-Definition at line 74 of file clean\+Plaintiffs.\+py.
+Definition at line 221 of file clean\+Plaintiffs.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{74 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835}{plaintiffList}}(dfRaw, fieldName):}
-\DoxyCodeLine{75     \textcolor{stringliteral}{"{}"{}"{}! }}
-\DoxyCodeLine{76 \textcolor{stringliteral}{    @param df is a panda dataframe of plaintiff names from reading in the csv file }}
-\DoxyCodeLine{77 \textcolor{stringliteral}{        of data}}
-\DoxyCodeLine{78 \textcolor{stringliteral}{    @returns cleaned and sorted plaintiff names}}
-\DoxyCodeLine{79 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{80     \textcolor{comment}{\# need to filter out exact duplicate rows in base dataset}}
-\DoxyCodeLine{81     \textcolor{comment}{\# keep=False keeps both original and duplicate}}
-\DoxyCodeLine{82     \textcolor{comment}{\# keep='first' marks all but first as True}}
-\DoxyCodeLine{83     dups = dfRaw.duplicated(keep=\textcolor{stringliteral}{'first'})  }
-\DoxyCodeLine{84     print(f\textcolor{stringliteral}{'\(\backslash\)n\{len(dups[dups==True])\} duplicates found'}) }
-\DoxyCodeLine{85     \textcolor{comment}{\#display(csvDF.loc[619,:])  \# display a particular row}}
-\DoxyCodeLine{86     df = dfRaw.drop\_duplicates(keep=\textcolor{stringliteral}{'first'})}
-\DoxyCodeLine{87  }
-\DoxyCodeLine{88     outcomes = df[fieldName]}
-\DoxyCodeLine{89     \textcolor{comment}{\# clean up the outcome string}}
-\DoxyCodeLine{90     cleanedPlaintiffs = outcomes.apply(cleanPlaintiff)}
-\DoxyCodeLine{91     \textcolor{comment}{\# Good ways to count specific occurances: }}
-\DoxyCodeLine{92     \textcolor{comment}{\# https://stackoverflow.com/a/35277776}}
-\DoxyCodeLine{93     \textcolor{comment}{\# see also cleanedOutcomes.value\_counts()}}
-\DoxyCodeLine{94     return(cleanedPlaintiffs.value\_counts())}
-\DoxyCodeLine{95 }
+\DoxyCodeLine{221 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e}{plaintiffList}}(df, fieldName):}
+\DoxyCodeLine{222     \textcolor{stringliteral}{"{}"{}"{}!  Returns df with added column of cleaned plaintiff names}}
+\DoxyCodeLine{223 \textcolor{stringliteral}{    @param df is a panda dataframe of plaintiff names from reading in the csv file }}
+\DoxyCodeLine{224 \textcolor{stringliteral}{        of data that has had duplicates removed and other cleaning done}}
+\DoxyCodeLine{225 \textcolor{stringliteral}{    @returns Tuple (cleaned and sorted plaintiff names, }}
+\DoxyCodeLine{226 \textcolor{stringliteral}{        df with cleaned plaintiff names column)}}
+\DoxyCodeLine{227 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{228  }
+\DoxyCodeLine{229     outcomes = df[fieldName].copy(deep=\textcolor{keyword}{True})}
+\DoxyCodeLine{230     \textcolor{comment}{\# clean up the outcome string}}
+\DoxyCodeLine{231     cleanedPlaintiffs = outcomes.apply(cleanPlaintiff)}
+\DoxyCodeLine{232     \textcolor{comment}{\# add cleaned plaintiff names to the original dataframe}}
+\DoxyCodeLine{233     \textcolor{comment}{\# the following line caused a setting copy of slice from dataframe warning}}
+\DoxyCodeLine{234     \textcolor{comment}{\# https://www.dataquest.io/blog/settingwithcopywarning/}}
+\DoxyCodeLine{235     df = df.assign(PlaintiffCleaned=cleanedPlaintiffs)}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237     \textcolor{comment}{\# Good ways to count specific occurances: }}
+\DoxyCodeLine{238     \textcolor{comment}{\# https://stackoverflow.com/a/35277776}}
+\DoxyCodeLine{239     \textcolor{comment}{\# see also cleanedOutcomes.value\_counts()}}
+\DoxyCodeLine{240     cleanedValueCounts = cleanedPlaintiffs.value\_counts()}
+\DoxyCodeLine{241     return((cleanedValueCounts, df))}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 }
 
 \end{DoxyCode}
 Here is the caller graph for this function\+:
@@ -193,9 +490,98 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835_icgraph}
+\includegraphics[width=342pt]{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a27eb4357cf84539049992715d5187128}\label{namespacecleanPlaintiffs_a27eb4357cf84539049992715d5187128}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!similarNameList@{similarNameList}}
+\index{similarNameList@{similarNameList}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{similarNameList()}{similarNameList()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+similar\+Name\+List (\begin{DoxyParamCaption}\item[{}]{test\+Name,  }\item[{}]{match\+List,  }\item[{}]{compare\+\_\+function,  }\item[{}]{cutoff = {\ttfamily 90},  }\item[{}]{n\+Returned = {\ttfamily 50} }\end{DoxyParamCaption})}
+
+
+
+Returns a list of names similar to test\+Name from the match\+List whose match value is $>$= cutoff and returns no more than n\+Returned matches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Name} & String to search match \\
+\hline
+{\em match\+List} & List of names to compare against \\
+\hline
+{\em cutoff} & The minimum percent match to include in returned list \\
+\hline
+{\em n\+Returned} & The maximum number of results to return \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 126 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{126 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_a27eb4357cf84539049992715d5187128}{similarNameList}}(testName, matchList, compare\_function, cutoff=90, nReturned=50):}
+\DoxyCodeLine{127     \textcolor{stringliteral}{"{}"{}"{}! Returns a list of names similar to testName from the matchList}}
+\DoxyCodeLine{128 \textcolor{stringliteral}{    whose match value is >= cutoff and returns no more than nReturned matches}}
+\DoxyCodeLine{129 \textcolor{stringliteral}{}}
+\DoxyCodeLine{130 \textcolor{stringliteral}{    @param testName String to search match}}
+\DoxyCodeLine{131 \textcolor{stringliteral}{    @param matchList List of names to compare against}}
+\DoxyCodeLine{132 \textcolor{stringliteral}{    @param cutoff The minimum percent match to include in returned list}}
+\DoxyCodeLine{133 \textcolor{stringliteral}{    @param nReturned The maximum number of results to return}}
+\DoxyCodeLine{134 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{135     comparisons = matchList.apply(compare\_function, args=([testName]))}
+\DoxyCodeLine{136     return(comparisons)}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacecleanPlaintiffs_adda46272dbe4ad37a680fd5646edd41d}\label{namespacecleanPlaintiffs_adda46272dbe4ad37a680fd5646edd41d}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!testComparisonMethod@{testComparisonMethod}}
+\index{testComparisonMethod@{testComparisonMethod}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{testComparisonMethod()}{testComparisonMethod()}}
+{\footnotesize\ttfamily def clean\+Plaintiffs.\+test\+Comparison\+Method (\begin{DoxyParamCaption}\item[{}]{series\+To\+Test,  }\item[{}]{test\+Function,  }\item[{}]{number\+To\+Try }\end{DoxyParamCaption})}
+
+
+
+Runs a test on a comparison method to estimate the total time required to run it on the full dataset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em series\+To\+Test} & A Pandas Series object to run the test against \\
+\hline
+{\em test\+Function} & The text comparison function to try \\
+\hline
+{\em number\+To\+Try} & The sampling size to run \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 139 of file clean\+Plaintiffs.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{139 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecleanPlaintiffs_adda46272dbe4ad37a680fd5646edd41d}{testComparisonMethod}}(seriesToTest, testFunction, numberToTry):}
+\DoxyCodeLine{140     \textcolor{stringliteral}{"{}"{}"{}! Runs a test on a comparison method to estimate the total time}}
+\DoxyCodeLine{141 \textcolor{stringliteral}{    required to run it on the full dataset}}
+\DoxyCodeLine{142 \textcolor{stringliteral}{}}
+\DoxyCodeLine{143 \textcolor{stringliteral}{    @param seriesToTest A Pandas Series object to run the test against}}
+\DoxyCodeLine{144 \textcolor{stringliteral}{    @param testFunction The text comparison function to try}}
+\DoxyCodeLine{145 \textcolor{stringliteral}{    @param numberToTry The sampling size to run}}
+\DoxyCodeLine{146 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{147     nTest = numberToTry  \textcolor{comment}{\# number of names to test}}
+\DoxyCodeLine{148     startTime = datetime.datetime.now()}
+\DoxyCodeLine{149     print(f\textcolor{stringliteral}{"{}Starting at \{startTime\}"{}})}
+\DoxyCodeLine{150     }
+\DoxyCodeLine{153     similarNames = seriesToTest.apply(similarNameList, \(\backslash\)}
+\DoxyCodeLine{154         args=(seriesToTest[:nTest], testFunction))}
+\DoxyCodeLine{155     totalTime = datetime.datetime.now() -\/ startTime}
+\DoxyCodeLine{156     print(f\textcolor{stringliteral}{"{}similarNameList took \{totalTime\} seconds"{}})}
+\DoxyCodeLine{157     print(f\textcolor{stringliteral}{"{}Time per name: \{totalTime/nTest\}"{}})}
+\DoxyCodeLine{158     print(f\textcolor{stringliteral}{"{}Time estimate for whole table: \{seriesToTest.size*totalTime/nTest\}"{}})}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 }
+
+\end{DoxyCode}
 
 
 \doxysubsection{Variable Documentation}
@@ -211,7 +597,17 @@ clean all non-\/alpha and space characters out
 
 
 
-Definition at line 43 of file clean\+Plaintiffs.\+py.
+Definition at line 73 of file clean\+Plaintiffs.\+py.
+
+\mbox{\Hypertarget{namespacecleanPlaintiffs_a5ad72ac922195745aebb519e49a2e29a}\label{namespacecleanPlaintiffs_a5ad72ac922195745aebb519e49a2e29a}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!cleanco\_terms@{cleanco\_terms}}
+\index{cleanco\_terms@{cleanco\_terms}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{cleanco\_terms}{cleanco\_terms}}
+{\footnotesize\ttfamily clean\+Plaintiffs.\+cleanco\+\_\+terms = prepare\+\_\+terms()}
+
+
+
+Definition at line 66 of file clean\+Plaintiffs.\+py.
 
 \mbox{\Hypertarget{namespacecleanPlaintiffs_a2520fa4be7522d0231ab7ac252d6579b}\label{namespacecleanPlaintiffs_a2520fa4be7522d0231ab7ac252d6579b}} 
 \index{cleanPlaintiffs@{cleanPlaintiffs}!datetimeToEnd@{datetimeToEnd}}
@@ -225,7 +621,7 @@ matches date and time to end of line in format 07/17/2017 1\+:15
 
 
 
-Definition at line 48 of file clean\+Plaintiffs.\+py.
+Definition at line 78 of file clean\+Plaintiffs.\+py.
 
 \mbox{\Hypertarget{namespacecleanPlaintiffs_a55df444f6d816fd4a2beebcc6b097a29}\label{namespacecleanPlaintiffs_a55df444f6d816fd4a2beebcc6b097a29}} 
 \index{cleanPlaintiffs@{cleanPlaintiffs}!endCaps@{endCaps}}
@@ -239,13 +635,13 @@ matches all caps words to the end of the line
 
 
 
-Definition at line 46 of file clean\+Plaintiffs.\+py.
+Definition at line 76 of file clean\+Plaintiffs.\+py.
 
 \mbox{\Hypertarget{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}\label{namespacecleanPlaintiffs_ac63f3c02b3a437acefd06b2a74572edd}} 
 \index{cleanPlaintiffs@{cleanPlaintiffs}!llcMatch@{llcMatch}}
 \index{llcMatch@{llcMatch}!cleanPlaintiffs@{cleanPlaintiffs}}
 \doxysubsubsection{\texorpdfstring{llcMatch}{llcMatch}}
-{\footnotesize\ttfamily clean\+Plaintiffs.\+llc\+Match = re.\+compile(r\textquotesingle{}(llc$\vert$,).$\ast$\textquotesingle{}, re.\+I)}
+{\footnotesize\ttfamily clean\+Plaintiffs.\+llc\+Match = re.\+compile(r\textquotesingle{}(llc$\vert$,$\vert$a/s/o$\vert$as subrogee of$\vert$\textbackslash{}saso\textbackslash{}s).$\ast$\textquotesingle{}, re.\+I)}
 
 
 
@@ -253,5 +649,15 @@ match up to case insensitive first LLC or first comma
 
 
 
-Definition at line 41 of file clean\+Plaintiffs.\+py.
+Definition at line 71 of file clean\+Plaintiffs.\+py.
+
+\mbox{\Hypertarget{namespacecleanPlaintiffs_aea67d0a19052e0460fa4e622f0d7c759}\label{namespacecleanPlaintiffs_aea67d0a19052e0460fa4e622f0d7c759}} 
+\index{cleanPlaintiffs@{cleanPlaintiffs}!stopwords@{stopwords}}
+\index{stopwords@{stopwords}!cleanPlaintiffs@{cleanPlaintiffs}}
+\doxysubsubsection{\texorpdfstring{stopwords}{stopwords}}
+{\footnotesize\ttfamily list clean\+Plaintiffs.\+stopwords = \mbox{[}\textquotesingle{}a\textquotesingle{}, \textquotesingle{}an\textquotesingle{}, \textquotesingle{}the\textquotesingle{}, \textquotesingle{}are\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line 68 of file clean\+Plaintiffs.\+py.
 

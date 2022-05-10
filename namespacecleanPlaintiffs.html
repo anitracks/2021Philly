@@ -73,18 +73,41 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a171a230e7ac7699beed794eeeba8bf95"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a171a230e7ac7699beed794eeeba8bf95">get_class_that_defined_method</a> (meth)</td></tr>
+<tr class="memdesc:a171a230e7ac7699beed794eeeba8bf95"><td class="mdescLeft">&#160;</td><td class="mdescRight">from  <a href="namespacecleanPlaintiffs.html#a171a230e7ac7699beed794eeeba8bf95">More...</a><br /></td></tr>
+<tr class="separator:a171a230e7ac7699beed794eeeba8bf95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eb434aa5d35772dde9c7944d92a1030"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">cleanPlaintiff</a> (fullPlaintiff)</td></tr>
 <tr class="memdesc:a0eb434aa5d35772dde9c7944d92a1030"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes everything from LLC or comma to the end of the name.  <a href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">More...</a><br /></td></tr>
 <tr class="separator:a0eb434aa5d35772dde9c7944d92a1030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3db6a5c67e63bf6018d81779d5214835"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a3db6a5c67e63bf6018d81779d5214835">plaintiffList</a> (dfRaw, fieldName)</td></tr>
-<tr class="separator:a3db6a5c67e63bf6018d81779d5214835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27eb4357cf84539049992715d5187128"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a27eb4357cf84539049992715d5187128">similarNameList</a> (testName, matchList, compare_function, cutoff=90, nReturned=50)</td></tr>
+<tr class="memdesc:a27eb4357cf84539049992715d5187128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a list of names similar to testName from the matchList whose match value is &gt;= cutoff and returns no more than nReturned matches.  <a href="namespacecleanPlaintiffs.html#a27eb4357cf84539049992715d5187128">More...</a><br /></td></tr>
+<tr class="separator:a27eb4357cf84539049992715d5187128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda46272dbe4ad37a680fd5646edd41d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#adda46272dbe4ad37a680fd5646edd41d">testComparisonMethod</a> (seriesToTest, testFunction, numberToTry)</td></tr>
+<tr class="memdesc:adda46272dbe4ad37a680fd5646edd41d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a test on a comparison method to estimate the total time required to run it on the full dataset.  <a href="namespacecleanPlaintiffs.html#adda46272dbe4ad37a680fd5646edd41d">More...</a><br /></td></tr>
+<tr class="separator:adda46272dbe4ad37a680fd5646edd41d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acef3ec054670e0fcc017786ec1e8aeeb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">createSimilarityMatrix</a> (cleanedValueCounts)</td></tr>
+<tr class="memdesc:acef3ec054670e0fcc017786ec1e8aeeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between the cleaned names.  <a href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">More...</a><br /></td></tr>
+<tr class="separator:acef3ec054670e0fcc017786ec1e8aeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95f78e00ae5ea7f5d4f292d6880844e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">plaintiffList</a> (df, fieldName)</td></tr>
+<tr class="memdesc:ac95f78e00ae5ea7f5d4f292d6880844e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns df with added column of cleaned plaintiff names.  <a href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">More...</a><br /></td></tr>
+<tr class="separator:ac95f78e00ae5ea7f5d4f292d6880844e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a948656ff65ed15ab0295c64a3a2b2311"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">dbscanFit</a> (fname, eps, min_samples=2)</td></tr>
+<tr class="memdesc:a948656ff65ed15ab0295c64a3a2b2311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters requiring at least min_samples in them.  <a href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">More...</a><br /></td></tr>
+<tr class="separator:a948656ff65ed15ab0295c64a3a2b2311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa52ac5b007acdb249f0fe759a98fa1de"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#aa52ac5b007acdb249f0fe759a98fa1de">findBaseNames</a> (fname, cutoff=0.9)</td></tr>
+<tr class="memdesc:aa52ac5b007acdb249f0fe759a98fa1de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the base name of each cleaned name This method does not work as of 2021 May 12.  <a href="namespacecleanPlaintiffs.html#aa52ac5b007acdb249f0fe759a98fa1de">More...</a><br /></td></tr>
+<tr class="separator:aa52ac5b007acdb249f0fe759a98fa1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae505e4677480e7908bdd4bcb9c50bf19"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">main</a> ()</td></tr>
 <tr class="memdesc:ae505e4677480e7908bdd4bcb9c50bf19"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument.  <a href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">More...</a><br /></td></tr>
 <tr class="separator:ae505e4677480e7908bdd4bcb9c50bf19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac63f3c02b3a437acefd06b2a74572edd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd">llcMatch</a> = re.compile(r'(llc|,).*', re.I)</td></tr>
+<tr class="memitem:a5ad72ac922195745aebb519e49a2e29a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a5ad72ac922195745aebb519e49a2e29a">cleanco_terms</a> = prepare_terms()</td></tr>
+<tr class="separator:a5ad72ac922195745aebb519e49a2e29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea67d0a19052e0460fa4e622f0d7c759"><td class="memItemLeft" align="right" valign="top">list&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#aea67d0a19052e0460fa4e622f0d7c759">stopwords</a> = ['a', 'an', 'the', 'are']</td></tr>
+<tr class="separator:aea67d0a19052e0460fa4e622f0d7c759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63f3c02b3a437acefd06b2a74572edd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd">llcMatch</a> = re.compile(r'(llc|,|a/s/o|as subrogee of|\saso\s).*', re.I)</td></tr>
 <tr class="memdesc:ac63f3c02b3a437acefd06b2a74572edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">match up to case insensitive first LLC or first comma  <a href="namespacecleanPlaintiffs.html#ac63f3c02b3a437acefd06b2a74572edd">More...</a><br /></td></tr>
 <tr class="separator:ac63f3c02b3a437acefd06b2a74572edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b8aa5b6928db0f01e2477455b672597"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecleanPlaintiffs.html#a6b8aa5b6928db0f01e2477455b672597">alphaMatch</a> = re.compile(r'[^a-z A-Z0-9]')</td></tr>
@@ -123,32 +146,299 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cleaned string </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00050">50</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">cleanPlaintiff</a>(fullPlaintiff):</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Removes everything from LLC or comma to the end of the name</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">       @param fullPlaintiff is the whole plaintiff name</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">       @returns cleaned string</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment"># Catch the nan&#39;s from assumably empty fields</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment"># nan&#39;s are both the empty strings and NULLs in David&#39;s data</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    if(isinstance(fullPlaintiff, float)):</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        if(math.isnan(fullPlaintiff)):</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            return(<span class="stringliteral">&#39;Blank or NULL&#39;</span>)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            pdb.set_trace()  <span class="comment"># it isn&#39;t an expected value</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        cleanedString = llcMatch.sub(<span class="stringliteral">&#39;&#39;</span>, fullPlaintiff).strip()</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> e:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        pdb.set_trace()  <span class="comment"># unexpected type</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment"># remove everything not alphanumeric or space</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    cleanedOut = alphaMatch.sub(<span class="stringliteral">&#39;&#39;</span>, cleanedString).strip().upper()</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    if(cleanedOut == <span class="stringliteral">&#39;&#39;</span>):</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        print(<span class="stringliteral">&#39;blank output&#39;</span>)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        pdb.set_trace()</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    return(cleanedOut)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="ttc" id="anamespacecleanPlaintiffs_html_a0eb434aa5d35772dde9c7944d92a1030"><div class="ttname"><a href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">cleanPlaintiffs.cleanPlaintiff</a></div><div class="ttdeci">def cleanPlaintiff(fullPlaintiff)</div><div class="ttdoc">Removes everything from LLC or comma to the end of the name.</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00050">cleanPlaintiffs.py:50</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00097">97</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">cleanPlaintiff</a>(fullPlaintiff):</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Removes everything from LLC or comma to the end of the name</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">       @param fullPlaintiff is the whole plaintiff name</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">       @returns cleaned string</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    if(isinstance(fullPlaintiff, float)):</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        if(math.isnan(fullPlaintiff)):</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            return(<span class="stringliteral">&#39;Blank or NULL&#39;</span>)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            pdb.set_trace()  <span class="comment"># it isn&#39;t an expected value</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        cleanedString = llcMatch.sub(<span class="stringliteral">&#39;&#39;</span>, fullPlaintiff).strip()</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">except</span> TypeError <span class="keyword">as</span> e:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        pdb.set_trace()  <span class="comment"># unexpected type</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    cleanco_name = basename(cleanedString, cleanco_terms, prefix=<span class="keyword">False</span>, middle=<span class="keyword">False</span>, suffix=<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> cleanco_name == <span class="stringliteral">&#39;&#39;</span>:</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        cleanco_name = cleanedString</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        print(f<span class="stringliteral">&quot;cleanco failed on: {cleanedString}&quot;</span>)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    cleanedOut = alphaMatch.sub(<span class="stringliteral">&#39;&#39;</span>, cleanco_name).strip().upper()</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    if(cleanedOut == <span class="stringliteral">&#39;&#39;</span>):</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        print(<span class="stringliteral">&#39;blank output&#39;</span>)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        pdb.set_trace()</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    return(cleanedOut)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_a0eb434aa5d35772dde9c7944d92a1030"><div class="ttname"><a href="namespacecleanPlaintiffs.html#a0eb434aa5d35772dde9c7944d92a1030">cleanPlaintiffs.cleanPlaintiff</a></div><div class="ttdeci">def cleanPlaintiff(fullPlaintiff)</div><div class="ttdoc">Removes everything from LLC or comma to the end of the name.</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00097">cleanPlaintiffs.py:97</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acef3ec054670e0fcc017786ec1e8aeeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acef3ec054670e0fcc017786ec1e8aeeb">&#9670;&nbsp;</a></span>createSimilarityMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def cleanPlaintiffs.createSimilarityMatrix </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cleanedValueCounts</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between the cleaned names. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cleanedValueCounts</td><td>returned by plaintiffList </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00161">161</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">createSimilarityMatrix</a>(cleanedValueCounts):</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Taking the cleanedValueCount from plaintiffList, this </span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="stringliteral">    function creates a similarity matrix between the cleaned names</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="stringliteral">    @param cleanedValueCounts returned by plaintiffList</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment"># vectorizer = TfidfVectorizer(stop_words={&#39;english&#39;})</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment"># X = vectorizer.fit_transform(df[&#39;Plaintiff Name(s)&#39;])</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    cutoff = 90  </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    nReturned = <span class="keywordtype">None</span>  </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment"># pdb.set_trace()</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    startTime = datetime.datetime.now()</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    print(f<span class="stringliteral">&quot;Started at {startTime}&quot;</span>)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    similarNames = cleanedValueCounts.index.to_series().apply(similarNameList, \</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        args=(cleanedValueCounts.index.to_series(), jellyfish.jaro_similarity))</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    endTime = datetime.datetime.now()</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    totalTime = endTime - startTime</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    print(f<span class="stringliteral">&quot;similarNameList took {totalTime} seconds&quot;</span>)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    pdb.set_trace()</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    fname = f<span class="stringliteral">&quot;{endTime:%Y%m%d%H%M%S}-comparisonMatrix.pkl&quot;</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment"># saving Pandas dataframes:</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="comment"># https://towardsdatascience.com/the-best-format-to-save-pandas-data-414dca023e0d</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    similarNames.to_pickle(fname)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment">#  Elbow method of determining how many means to use</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="comment"># Sum_of_squared_distances = []</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment"># K = range(2,5)</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="comment"># for k in K:</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">#     print(f&quot;Trying {k} means&quot;)</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">#     km = KMeans(n_clusters=k, max_iter=200, n_init=10)</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">#     km = km.fit(X)</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">#     Sum_of_squared_distances.append(km.inertia_)</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment"># plt.plot(K, Sum_of_squared_distances, &#39;bx-&#39;)</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="comment"># plt.xlabel(&#39;k&#39;)</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment"># plt.ylabel(&#39;Sum_of_squared_distances&#39;)</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment"># plt.title(&#39;Elbow Method For Optimal k&#39;)</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment"># plt.show()</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_acef3ec054670e0fcc017786ec1e8aeeb"><div class="ttname"><a href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">cleanPlaintiffs.createSimilarityMatrix</a></div><div class="ttdeci">def createSimilarityMatrix(cleanedValueCounts)</div><div class="ttdoc">Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between th...</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00161">cleanPlaintiffs.py:161</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a948656ff65ed15ab0295c64a3a2b2311"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a948656ff65ed15ab0295c64a3a2b2311">&#9670;&nbsp;</a></span>dbscanFit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def cleanPlaintiffs.dbscanFit </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>eps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>min_samples</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters requiring at least min_samples in them. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>The filename for a pickle file containing a similarity matrix </td></tr>
+    <tr><td class="paramname">eps</td><td>Epsilon - the largest distance allowed to be considered a neighbor </td></tr>
+    <tr><td class="paramname">min_samples</td><td>The minimum number of names in a cluster </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00244">244</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">dbscanFit</a>(fname, eps, min_samples=2):</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Runs DBSCAN clustering on the similarity matrix in fname</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="stringliteral">    with epsilon (eps) set to eps and clusters requiring at least</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="stringliteral">    min_samples in them.</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="stringliteral">    @param fname The filename for a pickle file containing a similarity matrix</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="stringliteral">    @param eps Epsilon - the largest distance allowed to be considered a neighbor</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="stringliteral">    @param min_samples The minimum number of names in a cluster</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    similarNames = pd.read_pickle(fname)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    distanceNames = 1 - similarNames</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    dbfit = DBSCAN(eps=eps, min_samples=min_samples, metric=<span class="stringliteral">&#39;precomputed&#39;</span>).fit(distanceNames)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> dbfit</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_a948656ff65ed15ab0295c64a3a2b2311"><div class="ttname"><a href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">cleanPlaintiffs.dbscanFit</a></div><div class="ttdeci">def dbscanFit(fname, eps, min_samples=2)</div><div class="ttdoc">Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters r...</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00244">cleanPlaintiffs.py:244</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311_icgraph.png" border="0" usemap="#anamespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311_icgraph" alt=""/></div>
+<map name="anamespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311_icgraph" id="anamespacecleanPlaintiffs_a948656ff65ed15ab0295c64a3a2b2311_icgraph">
+<area shape="rect" title="Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters r..." alt="" coords="188,5,351,32"/>
+<area shape="rect" href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,5,140,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa52ac5b007acdb249f0fe759a98fa1de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa52ac5b007acdb249f0fe759a98fa1de">&#9670;&nbsp;</a></span>findBaseNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def cleanPlaintiffs.findBaseNames </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cutoff</em> = <code>0.9</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the base name of each cleaned name This method does not work as of 2021 May 12. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fname</td><td>The filename of the pickle file created by plaintiffList </td></tr>
+    <tr><td class="paramname">cutoff</td><td>The cutoff similarity between names to assume are the same </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00259">259</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#aa52ac5b007acdb249f0fe759a98fa1de">findBaseNames</a>(fname, cutoff=0.9):</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Finds the base name of each cleaned name</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="stringliteral">    This method does not work as of 2021 May 12</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="stringliteral">    @param fname The filename of the pickle file created by plaintiffList</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="stringliteral">    @param cutoff The cutoff similarity between names to assume are the same</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    similarNames = pd.read_pickle(fname)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    test1 = similarNames.apply(<span class="keyword">lambda</span> x: x &gt; cutoff)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    seenNames = set()  <span class="comment"># set of names already processed</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    nameGroups = []  <span class="comment"># list of name groups</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    startTime = datetime.datetime.now()</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    print(f<span class="stringliteral">&#39;Starting the collation at {startTime}&#39;</span>)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordflow">for</span> name <span class="keywordflow">in</span> test1.index:</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span> name <span class="keywordflow">not</span> <span class="keywordflow">in</span> seenNames:</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            checkNamesSet = test1[test1[name] == <span class="keyword">True</span>].index</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            closeNamesSet = set(checkNamesSet)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            seenNames.add(name)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">for</span> check <span class="keywordflow">in</span> checkNamesSet:</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">if</span> check <span class="keywordflow">not</span> <span class="keywordflow">in</span> seenNames:</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    moreNames = test1[test1[check] == <span class="keyword">True</span>].index</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    seenNames.add(check)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    closeNamesSet.update(moreNames)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            nameGroups.append(closeNamesSet)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    stopTime = datetime.datetime.now()</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    print(f<span class="stringliteral">&#39;took {stopTime - startTime} seconds&#39;</span>)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    pdb.set_trace()</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    return(nameGroups)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="comment"># closeNames = test1[test1[&#39;MIDLAND FUNDING&#39;] == True].index.to_series()</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="comment"># closeNamesSet = set(test1[test1[&#39;MIDLAND FUNDING&#39;] == True].index) </span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="comment"># for name in closeNamesSet:</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="comment">#     moreNames = set(test1[test1[name] == True].index)</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">#     closeNamesSet = closeNamesSet.union(moreNames)</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="comment"># pdb.set_trace()</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_aa52ac5b007acdb249f0fe759a98fa1de"><div class="ttname"><a href="namespacecleanPlaintiffs.html#aa52ac5b007acdb249f0fe759a98fa1de">cleanPlaintiffs.findBaseNames</a></div><div class="ttdeci">def findBaseNames(fname, cutoff=0.9)</div><div class="ttdoc">Finds the base name of each cleaned name This method does not work as of 2021 May 12.</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00259">cleanPlaintiffs.py:259</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a171a230e7ac7699beed794eeeba8bf95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a171a230e7ac7699beed794eeeba8bf95">&#9670;&nbsp;</a></span>get_class_that_defined_method()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def cleanPlaintiffs.get_class_that_defined_method </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>meth</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>from </p>
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00080">80</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#a171a230e7ac7699beed794eeeba8bf95">get_class_that_defined_method</a>(meth):</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! from </span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">if</span> inspect.ismethod(meth) <span class="keywordflow">or</span> (inspect.isbuiltin(meth) <span class="keywordflow">and</span> getattr(meth, <span class="stringliteral">&#39;__self__&#39;</span>, <span class="keywordtype">None</span>) <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span> <span class="keywordflow">and</span> getattr(meth.__self__, <span class="stringliteral">&#39;__class__&#39;</span>, <span class="keywordtype">None</span>)):</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">for</span> cls <span class="keywordflow">in</span> inspect.getmro(meth.__self__.__class__):</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> meth.__name__ <span class="keywordflow">in</span> cls.__dict__:</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">return</span> cls</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        meth = getattr(meth, <span class="stringliteral">&#39;__func__&#39;</span>, meth)  <span class="comment"># fallback to __qualname__ parsing</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span> inspect.isfunction(meth):</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        cls = getattr(inspect.getmodule(meth),</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                      meth.__qualname__.split(<span class="stringliteral">&#39;.&lt;locals&gt;&#39;</span>, 1)[0].rsplit(<span class="stringliteral">&#39;.&#39;</span>, 1)[0],</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                      <span class="keywordtype">None</span>)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> isinstance(cls, type):</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> cls</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> getattr(meth, <span class="stringliteral">&#39;__objclass__&#39;</span>, <span class="keywordtype">None</span>)  <span class="comment"># handle special descriptor objects</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_a171a230e7ac7699beed794eeeba8bf95"><div class="ttname"><a href="namespacecleanPlaintiffs.html#a171a230e7ac7699beed794eeeba8bf95">cleanPlaintiffs.get_class_that_defined_method</a></div><div class="ttdeci">def get_class_that_defined_method(meth)</div><div class="ttdoc">from</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00080">cleanPlaintiffs.py:80</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -170,68 +460,127 @@ Variables</h2></td></tr>
 <p>This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. </p>
 <p>It then prints out the column names for reference, filters out the duplicate rows, and prints out the column types for reference. It also calculates the median judgement amount as a proof of concept. Lastly, it calls outcomeList to create a cleaned and counted list of the outcomes and prints the results. </p>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00096">96</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">main</a>():</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! This is the main function that reads in a csv file containing the</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">    court data from the filename passed as the first command line argument. </span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">    It then prints out the column names for reference, filters out the</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="stringliteral">    duplicate rows, and prints out the column types for reference. It also</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="stringliteral">    calculates the median judgement amount as a proof of concept. Lastly,</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="stringliteral">    it calls outcomeList to create a cleaned and counted list of the outcomes</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="stringliteral">    and prints the results.</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    parser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars=<span class="stringliteral">&#39;@&#39;</span>)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;csvfile&#39;</span>, help=<span class="stringliteral">&#39;The name of the csv file to load&#39;</span>)</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">#    parser.add_argument(&#39;dbfile&#39;, help=&#39;The name of the sqlite db file&#39;)</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    start_time = datetime.datetime.now()  <span class="comment"># save the time the script started</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    args = parser.parse_args()  <span class="comment"># parse the command line arguments</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment"># Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    csvDF = pd.read_csv(args.csvfile)  <span class="comment"># read in the csv data</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    print(f<span class="stringliteral">&#39;The column names are:\n{csvDF.columns.values}&#39;</span>)</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    print(<span class="stringliteral">&quot;\nThe column types are:&quot;</span>)</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    print(csvDF.dtypes)  <span class="comment"># print out the data type for each column</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment"># need to look at cases where the same attorney is listed on both sides</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment"># try using sent2vec to sort out similar ones</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment"># pypi.org/project/sent2vec</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    plaintiffs = <a class="code" href="namespacecleanPlaintiffs.html#a3db6a5c67e63bf6018d81779d5214835">plaintiffList</a>(csvDF, <span class="stringliteral">&#39;Plaintiff Name(s)&#39;</span>)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    print(<span class="stringliteral">&#39;\nPlaintiff Frequency&#39;</span>)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    print(f<span class="stringliteral">&#39;{plaintiffs}&#39;</span>)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">for</span> plaintiff, pCount <span class="keywordflow">in</span> plaintiffs.items():</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        if(pCount &gt; 10):</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            print(f<span class="stringliteral">&quot;{plaintiff},{pCount}&quot;</span>)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment"># the following line counts the Plaintiff names that contain Midland as a check</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">#nMidlands = len(csvNoDups[csvNoDups[&#39;Plaintiff Name(s)&#39;].str.contains(&#39;Midland&#39;, flags=re.IGNORECASE)][&#39;Plaintiff Name(s)&#39;])</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">#conn = sqlite3.connect(args.dbfile)  # connect to the database</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment"># load the csvData into the database</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">#csvNoDups.to_sql(&#39;csvNoDups&#39;, conn, if_exists=&#39;fail&#39;, index=False)</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    stop_time = datetime.datetime.now()</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds&#39;</span>)</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="ttc" id="anamespacecleanPlaintiffs_html_a3db6a5c67e63bf6018d81779d5214835"><div class="ttname"><a href="namespacecleanPlaintiffs.html#a3db6a5c67e63bf6018d81779d5214835">cleanPlaintiffs.plaintiffList</a></div><div class="ttdeci">def plaintiffList(dfRaw, fieldName)</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00074">cleanPlaintiffs.py:74</a></div></div>
-<div class="ttc" id="anamespacecleanPlaintiffs_html_ae505e4677480e7908bdd4bcb9c50bf19"><div class="ttname"><a href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">cleanPlaintiffs.main</a></div><div class="ttdeci">def main()</div><div class="ttdoc">This is the main function that reads in a csv file containing the court data from the filename passed...</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00096">cleanPlaintiffs.py:96</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00296">296</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">main</a>():</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! This is the main function that reads in a csv file containing the</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="stringliteral">    court data from the filename passed as the first command line argument. </span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="stringliteral">    It then prints out the column names for reference, filters out the</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="stringliteral">    duplicate rows, and prints out the column types for reference. It also</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="stringliteral">    calculates the median judgement amount as a proof of concept. Lastly,</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="stringliteral">    it calls outcomeList to create a cleaned and counted list of the outcomes</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="stringliteral">    and prints the results.</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    parser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars=<span class="stringliteral">&#39;@&#39;</span>)</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;csvfile&#39;</span>, help=<span class="stringliteral">&#39;The name of the csv file to load&#39;</span>)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;picklefile&#39;</span>, help=<span class="stringliteral">&#39;The name of the pickle file to load&#39;</span>)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-c&#39;</span>, <span class="stringliteral">&#39;--cutoff&#39;</span>, help=<span class="stringliteral">&#39;The cutoff for similarity checking&#39;</span>, type=float)</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-e&#39;</span>, <span class="stringliteral">&#39;--eps&#39;</span>, help=<span class="stringliteral">&#39;The neighbor distance setting for DBSCAN&#39;</span>, type=float)</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-s&#39;</span>, <span class="stringliteral">&#39;--similarity&#39;</span>, help=<span class="stringliteral">&#39;Do similarity calculations&#39;</span>)</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment">#    parser.add_argument(&#39;dbfile&#39;, help=&#39;The name of the sqlite db file&#39;)</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    start_time = datetime.datetime.now()  <span class="comment"># save the time the script started</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    args = parser.parse_args()  <span class="comment"># parse the command line arguments</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">if</span> args.picklefile:</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">if</span> args.eps:</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            eps = args.eps</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            eps = 0.1</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        dbfit = <a class="code" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">dbscanFit</a>(args.picklefile, eps)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        similarNames = pd.read_pickle(args.picklefile)</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        distanceNames = 1 - similarNames</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment"># Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    csvDF = pd.read_csv(args.csvfile)  <span class="comment"># read in the csv data</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="comment"># print(f&#39;The column names are:\n{csvDF.columns.values}&#39;)</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="comment"># print(&quot;\nThe column types are:&quot;)</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="comment"># print(csvDF.dtypes)  # print out the data type for each column</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="comment"># need to look at cases where the same attorney is listed on both sides</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="comment"># try using sent2vec to sort out similar ones</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment"># pypi.org/project/sent2vec</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    df = cleanCountOutcomes.cleanWholeDF(csvDF)</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    (plaintiffs, df) = <a class="code" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">plaintiffList</a>(df, <span class="stringliteral">&#39;Plaintiff Name(s)&#39;</span>)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    (outcomes, df) = <a class="code" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261">cleanCountOutcomes.outcomeList</a>(df, <span class="stringliteral">&#39;Case Outcome&#39;</span>)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="comment"># print(&#39;\nPlaintiff Frequency&#39;)</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="comment"># print(f&#39;{plaintiffs}&#39;)</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="comment"># for plaintiff, pCount in plaintiffs.items():</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="comment">#     if(pCount &gt; 10):</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">#         print(f&quot;{plaintiff},{pCount}&quot;)</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="comment"># data we have</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    clusterSet = set(dbfit.labels_)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="comment"># clusterSet.discard(-1)  # discard the &quot;noise&quot; names</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    clusterNameLists = []</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">for</span> clust <span class="keywordflow">in</span> clusterSet:</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        clusterNameLists.append(distanceNames.index[dbfit.labels_ == clust])</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    clusterDF = pd.DataFrame(clusterNameLists)  <span class="comment"># each row is list of names in cluster</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    df  <span class="comment"># whole dataset with cleaned plaintiff and outcomes</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    dbfit.labels_  <span class="comment"># cluster number for cleanedPlaintiff</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    df.iloc[0][<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>]  <span class="comment"># Need to know what group this is in</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    df.iloc[0][<span class="stringliteral">&#39;OutcomeCleaned&#39;</span>]</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    df[<span class="stringliteral">&#39;ClusterNum&#39;</span>] = -5  <span class="comment"># set clusterNum to an invalid number to make sure all get changed</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    df[<span class="stringliteral">&#39;ClusterName&#39;</span>] = <span class="stringliteral">&#39;ZZ-Unclustered&#39;</span>  <span class="comment"># set clusterNum to an invalid number to make sure all get changed</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    maxClusterIndex = max(clusterDF.index)  <span class="comment"># store off max index for use later</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    clusterDF.insert(0, <span class="stringliteral">&#39;Count&#39;</span>, -1)  <span class="comment"># set count to an invalid number to allow checking</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    clusterNames = []  <span class="comment"># list of cluster names</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="comment"># Set the cluster number for each entry in df</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">for</span> ind <span class="keywordflow">in</span> clusterDF.index:</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        rowIndexer = df[<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].isin(clusterDF.iloc[ind])</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        clusterDF.loc[ind,<span class="stringliteral">&#39;Count&#39;</span>] = len(df.loc[rowIndexer,<span class="stringliteral">&#39;ClusterNum&#39;</span>])</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        if(ind != maxClusterIndex):</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            df.loc[rowIndexer,<span class="stringliteral">&#39;ClusterNum&#39;</span>] = ind</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            df.loc[rowIndexer, <span class="stringliteral">&#39;ClusterName&#39;</span>] = df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].mode()[0]</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            clusterNames.append(df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].mode()[0])</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">else</span>:  <span class="comment"># set the catchall/not in cluster values to -1</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            df.loc[df[<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].isin(clusterDF.iloc[ind]),<span class="stringliteral">&#39;ClusterNum&#39;</span>] = -1</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            df.loc[rowIndexer, <span class="stringliteral">&#39;ClusterName&#39;</span>] = df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>]</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="comment"># create the comparison matrix</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="comment"># https://stackoverflow.com/questions/48465941/counting-combinations-between-two-dataframe-columns</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    time_now = datetime.datetime.now()</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    comparedPO = pd.crosstab(df[<span class="stringliteral">&#39;ClusterName&#39;</span>], df[<span class="stringliteral">&#39;OutcomeCleaned&#39;</span>])  <span class="comment"># Seems to be a good base dataset</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    comparedPO.insert(0, <span class="stringliteral">&#39;Clustered&#39;</span>,<span class="stringliteral">&#39;unknown&#39;</span>)</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    comparedPO.loc[comparedPO.index.isin(clusterNames),<span class="stringliteral">&#39;Clustered&#39;</span>] = <span class="keyword">True</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    comparedPO.loc[~comparedPO.index.isin(clusterNames),<span class="stringliteral">&#39;Clustered&#39;</span>] = <span class="keyword">False</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    comparedPO.to_csv(f<span class="stringliteral">&#39;{time_now:%Y%m%d%H%M%S}-comparedPO.csv&#39;</span>)</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    stop_time = datetime.datetime.now()</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds so far&#39;</span>)</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    pdb.set_trace()</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="comment"># the following line counts the Plaintiff names that contain Midland as a check</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="comment">#nMidlands = len(csvNoDups[csvNoDups[&#39;Plaintiff Name(s)&#39;].str.contains(&#39;Midland&#39;, flags=re.IGNORECASE)][&#39;Plaintiff Name(s)&#39;])</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="comment">#conn = sqlite3.connect(args.dbfile)  # connect to the database</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="comment"># load the csvData into the database</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="comment">#csvNoDups.to_sql(&#39;csvNoDups&#39;, conn, if_exists=&#39;fail&#39;, index=False)</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    stop_time = datetime.datetime.now()</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds&#39;</span>)</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="ttc" id="anamespacecleanCountOutcomes_html_a5293171c9a56b78cc70e003c9817e261"><div class="ttname"><a href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261">cleanCountOutcomes.outcomeList</a></div><div class="ttdeci">def outcomeList(df, columnName='Case Outcome')</div><div class="ttdoc">Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu...</div><div class="ttdef"><b>Definition:</b> <a href="cleanCountOutcomes_8py_source.html#l00081">cleanCountOutcomes.py:81</a></div></div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_ac95f78e00ae5ea7f5d4f292d6880844e"><div class="ttname"><a href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">cleanPlaintiffs.plaintiffList</a></div><div class="ttdeci">def plaintiffList(df, fieldName)</div><div class="ttdoc">Returns df with added column of cleaned plaintiff names.</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00221">cleanPlaintiffs.py:221</a></div></div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_ae505e4677480e7908bdd4bcb9c50bf19"><div class="ttname"><a href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">cleanPlaintiffs.main</a></div><div class="ttdeci">def main()</div><div class="ttdoc">This is the main function that reads in a csv file containing the court data from the filename passed...</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00296">cleanPlaintiffs.py:296</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph.png" border="0" usemap="#anamespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph" alt=""/></div>
 <map name="anamespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph" id="anamespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph">
-<area shape="rect" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,5,140,32"/>
-<area shape="rect" href="namespacecleanPlaintiffs.html#a3db6a5c67e63bf6018d81779d5214835" title=" " alt="" coords="188,5,355,32"/>
+<area shape="rect" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,56,140,83"/>
+<area shape="rect" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311" title="Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters r..." alt="" coords="218,5,381,32"/>
+<area shape="rect" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu..." alt="" coords="188,56,411,83"/>
+<area shape="rect" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e" title="Returns df with added column of cleaned plaintiff names." alt="" coords="216,107,383,133"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a3db6a5c67e63bf6018d81779d5214835"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3db6a5c67e63bf6018d81779d5214835">&#9670;&nbsp;</a></span>plaintiffList()</h2>
+<a id="ac95f78e00ae5ea7f5d4f292d6880844e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac95f78e00ae5ea7f5d4f292d6880844e">&#9670;&nbsp;</a></span>plaintiffList()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,7 +589,7 @@ Here is the call graph for this function:</div>
           <td class="memname">def cleanPlaintiffs.plaintiffList </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>dfRaw</em>, </td>
+          <td class="paramname"><em>df</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -255,47 +604,191 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns df with added column of cleaned plaintiff names. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">df</td><td>is a panda dataframe of plaintiff names from reading in the csv file of data </td></tr>
+    <tr><td class="paramname">df</td><td>is a panda dataframe of plaintiff names from reading in the csv file of data that has had duplicates removed and other cleaning done </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>cleaned and sorted plaintiff names </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Tuple (cleaned and sorted plaintiff names, df with cleaned plaintiff names column) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00074">74</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#a3db6a5c67e63bf6018d81779d5214835">plaintiffList</a>(dfRaw, fieldName):</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! </span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">    @param df is a panda dataframe of plaintiff names from reading in the csv file </span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">        of data</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">    @returns cleaned and sorted plaintiff names</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment"># need to filter out exact duplicate rows in base dataset</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment"># keep=False keeps both original and duplicate</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment"># keep=&#39;first&#39; marks all but first as True</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    dups = dfRaw.duplicated(keep=<span class="stringliteral">&#39;first&#39;</span>)  </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    print(f<span class="stringliteral">&#39;\n{len(dups[dups==True])} duplicates found&#39;</span>) </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">#display(csvDF.loc[619,:])  # display a particular row</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    df = dfRaw.drop_duplicates(keep=<span class="stringliteral">&#39;first&#39;</span>)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    outcomes = df[fieldName]</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment"># clean up the outcome string</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    cleanedPlaintiffs = outcomes.apply(cleanPlaintiff)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment"># Good ways to count specific occurances: </span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment"># https://stackoverflow.com/a/35277776</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment"># see also cleanedOutcomes.value_counts()</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    return(cleanedPlaintiffs.value_counts())</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00221">221</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">plaintiffList</a>(df, fieldName):</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;!  Returns df with added column of cleaned plaintiff names</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="stringliteral">    @param df is a panda dataframe of plaintiff names from reading in the csv file </span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="stringliteral">        of data that has had duplicates removed and other cleaning done</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="stringliteral">    @returns Tuple (cleaned and sorted plaintiff names, </span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="stringliteral">        df with cleaned plaintiff names column)</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    outcomes = df[fieldName].copy(deep=<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="comment"># clean up the outcome string</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    cleanedPlaintiffs = outcomes.apply(cleanPlaintiff)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment"># add cleaned plaintiff names to the original dataframe</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment"># the following line caused a setting copy of slice from dataframe warning</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment"># https://www.dataquest.io/blog/settingwithcopywarning/</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    df = df.assign(PlaintiffCleaned=cleanedPlaintiffs)</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="comment"># Good ways to count specific occurances: </span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment"># https://stackoverflow.com/a/35277776</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment"># see also cleanedOutcomes.value_counts()</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    cleanedValueCounts = cleanedPlaintiffs.value_counts()</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    return((cleanedValueCounts, df))</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835_icgraph.png" border="0" usemap="#anamespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835_icgraph" alt=""/></div>
-<map name="anamespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835_icgraph" id="anamespacecleanPlaintiffs_a3db6a5c67e63bf6018d81779d5214835_icgraph">
-<area shape="rect" title=" " alt="" coords="188,5,355,32"/>
+<div class="center"><img src="namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e_icgraph.png" border="0" usemap="#anamespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e_icgraph" alt=""/></div>
+<map name="anamespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e_icgraph" id="anamespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e_icgraph">
+<area shape="rect" title="Returns df with added column of cleaned plaintiff names." alt="" coords="188,31,355,57"/>
 <area shape="rect" href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,5,140,32"/>
+<area shape="rect" href="namespacecorrelations.html#a20ed0e303ef453a17dd601e1d4bd479c" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="12,56,133,83"/>
 </map>
 </div>
 
+</div>
+</div>
+<a id="a27eb4357cf84539049992715d5187128"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27eb4357cf84539049992715d5187128">&#9670;&nbsp;</a></span>similarNameList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def cleanPlaintiffs.similarNameList </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>testName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>matchList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>compare_function</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cutoff</em> = <code>90</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>nReturned</em> = <code>50</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a list of names similar to testName from the matchList whose match value is &gt;= cutoff and returns no more than nReturned matches. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">testName</td><td>String to search match </td></tr>
+    <tr><td class="paramname">matchList</td><td>List of names to compare against </td></tr>
+    <tr><td class="paramname">cutoff</td><td>The minimum percent match to include in returned list </td></tr>
+    <tr><td class="paramname">nReturned</td><td>The maximum number of results to return </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00126">126</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#a27eb4357cf84539049992715d5187128">similarNameList</a>(testName, matchList, compare_function, cutoff=90, nReturned=50):</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Returns a list of names similar to testName from the matchList</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="stringliteral">    whose match value is &gt;= cutoff and returns no more than nReturned matches</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="stringliteral">    @param testName String to search match</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="stringliteral">    @param matchList List of names to compare against</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="stringliteral">    @param cutoff The minimum percent match to include in returned list</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="stringliteral">    @param nReturned The maximum number of results to return</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    comparisons = matchList.apply(compare_function, args=([testName]))</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    return(comparisons)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_a27eb4357cf84539049992715d5187128"><div class="ttname"><a href="namespacecleanPlaintiffs.html#a27eb4357cf84539049992715d5187128">cleanPlaintiffs.similarNameList</a></div><div class="ttdeci">def similarNameList(testName, matchList, compare_function, cutoff=90, nReturned=50)</div><div class="ttdoc">Returns a list of names similar to testName from the matchList whose match value is &gt;= cutoff and ret...</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00126">cleanPlaintiffs.py:126</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adda46272dbe4ad37a680fd5646edd41d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adda46272dbe4ad37a680fd5646edd41d">&#9670;&nbsp;</a></span>testComparisonMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def cleanPlaintiffs.testComparisonMethod </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>seriesToTest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>testFunction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>numberToTry</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs a test on a comparison method to estimate the total time required to run it on the full dataset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seriesToTest</td><td>A Pandas Series object to run the test against </td></tr>
+    <tr><td class="paramname">testFunction</td><td>The text comparison function to try </td></tr>
+    <tr><td class="paramname">numberToTry</td><td>The sampling size to run </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00139">139</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#adda46272dbe4ad37a680fd5646edd41d">testComparisonMethod</a>(seriesToTest, testFunction, numberToTry):</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Runs a test on a comparison method to estimate the total time</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="stringliteral">    required to run it on the full dataset</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="stringliteral">    @param seriesToTest A Pandas Series object to run the test against</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="stringliteral">    @param testFunction The text comparison function to try</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="stringliteral">    @param numberToTry The sampling size to run</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    nTest = numberToTry  <span class="comment"># number of names to test</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    startTime = datetime.datetime.now()</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    print(f<span class="stringliteral">&quot;Starting at {startTime}&quot;</span>)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    similarNames = seriesToTest.apply(similarNameList, \</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        args=(seriesToTest[:nTest], testFunction))</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    totalTime = datetime.datetime.now() - startTime</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    print(f<span class="stringliteral">&quot;similarNameList took {totalTime} seconds&quot;</span>)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    print(f<span class="stringliteral">&quot;Time per name: {totalTime/nTest}&quot;</span>)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    print(f<span class="stringliteral">&quot;Time estimate for whole table: {seriesToTest.size*totalTime/nTest}&quot;</span>)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_adda46272dbe4ad37a680fd5646edd41d"><div class="ttname"><a href="namespacecleanPlaintiffs.html#adda46272dbe4ad37a680fd5646edd41d">cleanPlaintiffs.testComparisonMethod</a></div><div class="ttdeci">def testComparisonMethod(seriesToTest, testFunction, numberToTry)</div><div class="ttdoc">Runs a test on a comparison method to estimate the total time required to run it on the full dataset.</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00139">cleanPlaintiffs.py:139</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -313,7 +806,23 @@ Here is the caller graph for this function:</div>
 
 <p>clean all non-alpha and space characters out </p>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00043">43</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00073">73</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+
+</div>
+</div>
+<a id="a5ad72ac922195745aebb519e49a2e29a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ad72ac922195745aebb519e49a2e29a">&#9670;&nbsp;</a></span>cleanco_terms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cleanPlaintiffs.cleanco_terms = prepare_terms()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00066">66</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
 
 </div>
 </div>
@@ -331,7 +840,7 @@ Here is the caller graph for this function:</div>
 
 <p>matches date and time to end of line in format 07/17/2017 1:15 </p>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00048">48</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00078">78</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
 
 </div>
 </div>
@@ -349,7 +858,7 @@ Here is the caller graph for this function:</div>
 
 <p>matches all caps words to the end of the line </p>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00046">46</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00076">76</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
 
 </div>
 </div>
@@ -360,14 +869,30 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">cleanPlaintiffs.llcMatch = re.compile(r'(llc|,).*', re.I)</td>
+          <td class="memname">cleanPlaintiffs.llcMatch = re.compile(r'(llc|,|a/s/o|as subrogee of|\saso\s).*', re.I)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>match up to case insensitive first LLC or first comma </p>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00041">41</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00071">71</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+
+</div>
+</div>
+<a id="aea67d0a19052e0460fa4e622f0d7c759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea67d0a19052e0460fa4e622f0d7c759">&#9670;&nbsp;</a></span>stopwords</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list cleanPlaintiffs.stopwords = ['a', 'an', 'the', 'are']</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00068">68</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
 
 </div>
 </div>
