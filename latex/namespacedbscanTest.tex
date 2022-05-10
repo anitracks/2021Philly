@@ -1,0 +1,152 @@
+\hypertarget{namespacedbscanTest}{}\doxysection{dbscan\+Test Namespace Reference}
+\label{namespacedbscanTest}\index{dbscanTest@{dbscanTest}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacedbscanTest_a53f6789a745b40c715e0ac3fa2c84e35}{find\+Base\+Names}} (fname, cutoff=0.\+9)
+\begin{DoxyCompactList}\small\item\em Finds the base name of each cleaned name. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacedbscanTest_a0e068c113f7f88b734359519cfc852b0}{main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function that reads in a. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacedbscanTest_a53f6789a745b40c715e0ac3fa2c84e35}\label{namespacedbscanTest_a53f6789a745b40c715e0ac3fa2c84e35}} 
+\index{dbscanTest@{dbscanTest}!findBaseNames@{findBaseNames}}
+\index{findBaseNames@{findBaseNames}!dbscanTest@{dbscanTest}}
+\doxysubsubsection{\texorpdfstring{findBaseNames()}{findBaseNames()}}
+{\footnotesize\ttfamily def dbscan\+Test.\+find\+Base\+Names (\begin{DoxyParamCaption}\item[{}]{fname,  }\item[{}]{cutoff = {\ttfamily 0.9} }\end{DoxyParamCaption})}
+
+
+
+Finds the base name of each cleaned name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & The filename of the pickle file created by plaintiff\+List \\
+\hline
+{\em cutoff} & The cutoff similarity between names to assume are the same \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 29 of file dbscan\+Test.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29 \textcolor{keyword}{def }\mbox{\hyperlink{namespacedbscanTest_a53f6789a745b40c715e0ac3fa2c84e35}{findBaseNames}}(fname, cutoff=0.9):}
+\DoxyCodeLine{30     \textcolor{stringliteral}{"{}"{}"{}! Finds the base name of each cleaned name}}
+\DoxyCodeLine{31 \textcolor{stringliteral}{}}
+\DoxyCodeLine{32 \textcolor{stringliteral}{    @param fname The filename of the pickle file created by plaintiffList}}
+\DoxyCodeLine{33 \textcolor{stringliteral}{    @param cutoff The cutoff similarity between names to assume are the same}}
+\DoxyCodeLine{34 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{35     similarNames = pd.read\_pickle(fname)}
+\DoxyCodeLine{36     distanceNames = 1 -\/ similarNames}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{comment}{\# fitStartTime = datetime.datetime.now()}}
+\DoxyCodeLine{39     \textcolor{comment}{\# dbfit = DBSCAN(eps=0.1, min\_samples=2, metric='precomputed').fit(distanceNames)}}
+\DoxyCodeLine{40     \textcolor{comment}{\# fitEndTime = datetime.datetime.now()}}
+\DoxyCodeLine{41     \textcolor{comment}{\# print(f'Fitting took \{fitEndTime -\/ fitStartTime\}')}}
+\DoxyCodeLine{42     \textcolor{comment}{\# print(f'set of labels: \{set(dbfit.labels\_)\}')}}
+\DoxyCodeLine{43     \textcolor{comment}{\# print(f'Group 0 contains: \{distanceNames.index[dbfit.labels\_ == 0]\}')}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{comment}{\# scan through different eps values recording the numbers of core samples}}
+\DoxyCodeLine{46     \textcolor{comment}{\# and record the names at each step to show which names were added each time}}
+\DoxyCodeLine{47     fitStartTime = datetime.datetime.now()}
+\DoxyCodeLine{48     fits = []}
+\DoxyCodeLine{49     epsList = np.arange(0.01,0.24,0.01)}
+\DoxyCodeLine{50     curveData = np.zeros([len(epsList),2])}
+\DoxyCodeLine{51     ii = 0}
+\DoxyCodeLine{52     \textcolor{keywordflow}{for} eps \textcolor{keywordflow}{in} epsList:}
+\DoxyCodeLine{53         print(f\textcolor{stringliteral}{"{}Fitting \{eps\}:"{}})}
+\DoxyCodeLine{54         dbfit = DBSCAN(eps=eps, min\_samples=2, metric=\textcolor{stringliteral}{'precomputed'}).fit(distanceNames)}
+\DoxyCodeLine{55         fits.append(dbfit)}
+\DoxyCodeLine{56         curveData[ii,0] = eps}
+\DoxyCodeLine{57         curveData[ii,1] = dbfit.components\_.shape[0]}
+\DoxyCodeLine{58         ii += 1}
+\DoxyCodeLine{59     fitEndTime = datetime.datetime.now()}
+\DoxyCodeLine{60     print(f\textcolor{stringliteral}{'Fitting took \{fitEndTime -\/ fitStartTime\}'})}
+\DoxyCodeLine{61     fig = plt.figure(figsize=(9,6))}
+\DoxyCodeLine{62     plt.rc(\textcolor{stringliteral}{'xtick'}, labelsize=12)}
+\DoxyCodeLine{63     plt.rc(\textcolor{stringliteral}{'ytick'}, labelsize=12)}
+\DoxyCodeLine{64     plt.plot(curveData[:,0], curveData[:,1], \textcolor{stringliteral}{'bo-\/-\/'})}
+\DoxyCodeLine{65     plt.title(\textcolor{stringliteral}{'Clustered Name Count'}, fontsize=22)}
+\DoxyCodeLine{66     plt.ylabel(\textcolor{stringliteral}{'Number of Names that were Clustered'}, fontsize=16)}
+\DoxyCodeLine{67     plt.xlabel(\textcolor{stringliteral}{'Allowed Neighbor Distance (eps)'}, fontsize=16)}
+\DoxyCodeLine{68     plt.grid(\textcolor{keyword}{True})}
+\DoxyCodeLine{69     plt.savefig(f\textcolor{stringliteral}{'\{fitEndTime:\%Y\%m\%d\%H\%M\%S\}-\/CoreCount.png'}, bbox\_inches=\textcolor{stringliteral}{'tight'}, pad\_inches=0.1)}
+\DoxyCodeLine{70     plt.show()}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{comment}{\# Need list of names for each cluster to look over}}
+\DoxyCodeLine{73     matchFit = 9  \textcolor{comment}{\# the number of the fit to use for subsquent processing}}
+\DoxyCodeLine{74     clusterSet = set(fits[matchFit].labels\_)}
+\DoxyCodeLine{75     clusterSet.discard(-\/1)  \textcolor{comment}{\# discard the "{}noise"{} names}}
+\DoxyCodeLine{76     clusterNameLists = []}
+\DoxyCodeLine{77     \textcolor{keywordflow}{for} clust \textcolor{keywordflow}{in} clusterSet:}
+\DoxyCodeLine{78         clusterNameLists.append(distanceNames.index[fits[matchFit].labels\_ == clust])}
+\DoxyCodeLine{79     clusterDF = pd.DataFrame(clusterNameLists)}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     distanceNames.index[fits[9].labels\_ == 0]}
+\DoxyCodeLine{82     df = pd.DataFrame(test1, index=[\textcolor{stringliteral}{'one'},\textcolor{stringliteral}{'two'},3,\textcolor{stringliteral}{'four'}])}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{comment}{\# Need prototype (base) name for each cluster}}
+\DoxyCodeLine{85     \textcolor{comment}{\# output the "{}noise"{} names (cluster -\/1) as a separate file since so long}}
+\DoxyCodeLine{86     pdb.set\_trace()}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 }
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{namespacedbscanTest_a53f6789a745b40c715e0ac3fa2c84e35_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacedbscanTest_a0e068c113f7f88b734359519cfc852b0}\label{namespacedbscanTest_a0e068c113f7f88b734359519cfc852b0}} 
+\index{dbscanTest@{dbscanTest}!main@{main}}
+\index{main@{main}!dbscanTest@{dbscanTest}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def dbscan\+Test.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the main function that reads in a. 
+
+
+
+Definition at line 89 of file dbscan\+Test.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89 \textcolor{keyword}{def }\mbox{\hyperlink{namespacedbscanTest_a0e068c113f7f88b734359519cfc852b0}{main}}():}
+\DoxyCodeLine{90     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that reads in a }}
+\DoxyCodeLine{91 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{92     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
+\DoxyCodeLine{93     parser.add\_argument(\textcolor{stringliteral}{'picklefile'}, help=\textcolor{stringliteral}{'The name of the similarity matrix pickle file to load'})}
+\DoxyCodeLine{94     parser.add\_argument(\textcolor{stringliteral}{'-\/c'}, \textcolor{stringliteral}{'-\/-\/cutoff'}, help=\textcolor{stringliteral}{'The cutoff for similarity checking'}, type=float)}
+\DoxyCodeLine{95 \textcolor{comment}{\#    parser.add\_argument('dbfile', help='The name of the sqlite db file')}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
+\DoxyCodeLine{98     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{keywordflow}{if} args.picklefile:}
+\DoxyCodeLine{101         \textcolor{keywordflow}{if} args.cutoff:}
+\DoxyCodeLine{102             cutoff = args.cutoff}
+\DoxyCodeLine{103         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{104             cutoff = 0.8}
+\DoxyCodeLine{105         \mbox{\hyperlink{namespacedbscanTest_a53f6789a745b40c715e0ac3fa2c84e35}{findBaseNames}}(args.picklefile, cutoff)}
+\DoxyCodeLine{106         \textcolor{keywordflow}{return}}
+\DoxyCodeLine{107     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{108     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
+\DoxyCodeLine{109 }
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{namespacedbscanTest_a0e068c113f7f88b734359519cfc852b0_cgraph}
+\end{center}
+\end{figure}

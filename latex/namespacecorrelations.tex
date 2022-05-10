@@ -1,0 +1,85 @@
+\hypertarget{namespacecorrelations}{}\doxysection{correlations Namespace Reference}
+\label{namespacecorrelations}\index{correlations@{correlations}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacecorrelations_a20ed0e303ef453a17dd601e1d4bd479c}{main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacecorrelations_a20ed0e303ef453a17dd601e1d4bd479c}\label{namespacecorrelations_a20ed0e303ef453a17dd601e1d4bd479c}} 
+\index{correlations@{correlations}!main@{main}}
+\index{main@{main}!correlations@{correlations}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def correlations.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the main function that reads in a csv file containing the court data from the filename passed as the first command line argument. 
+
+
+
+Definition at line 23 of file correlations.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecorrelations_a20ed0e303ef453a17dd601e1d4bd479c}{main}}():}
+\DoxyCodeLine{24     \textcolor{stringliteral}{"{}"{}"{}! This is the main function that reads in a csv file containing the}}
+\DoxyCodeLine{25 \textcolor{stringliteral}{    court data from the filename passed as the first command line argument. }}
+\DoxyCodeLine{26 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{27     parser = argparse.ArgumentParser(description=\_\_doc\_\_, fromfile\_prefix\_chars=\textcolor{stringliteral}{'@'})}
+\DoxyCodeLine{28     parser.add\_argument(\textcolor{stringliteral}{'csvfile'}, help=\textcolor{stringliteral}{'The name of the csv file to load'})}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     start\_time = datetime.datetime.now()  \textcolor{comment}{\# save the time the script started}}
+\DoxyCodeLine{31     args = parser.parse\_args()  \textcolor{comment}{\# parse the command line arguments}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{\# Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason}}
+\DoxyCodeLine{34     csvDF = pd.read\_csv(args.csvfile)  \textcolor{comment}{\# read in the csv data}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{comment}{\# need to look at cases where the same attorney is listed on both sides}}
+\DoxyCodeLine{37     \textcolor{comment}{\# try using sent2vec to sort out similar ones}}
+\DoxyCodeLine{38     \textcolor{comment}{\# pypi.org/project/sent2vec}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     df = cleanCountOutcomes.cleanWholeDF(csvDF)}
+\DoxyCodeLine{41     (plaintiffs, df) = \mbox{\hyperlink{namespacecleanPlaintiffs_ac95f78e00ae5ea7f5d4f292d6880844e}{cleanPlaintiffs.plaintiffList}}(df, \textcolor{stringliteral}{'Plaintiff Name(s)'})}
+\DoxyCodeLine{42     (outcomes, df) = \mbox{\hyperlink{namespacecleanCountOutcomes_a5293171c9a56b78cc70e003c9817e261}{cleanCountOutcomes.outcomeList}}(df, \textcolor{stringliteral}{'Case Outcome'})}
+\DoxyCodeLine{43     print(df[\textcolor{stringliteral}{'PlaintiffCleaned'}].head())}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{comment}{\# Look at rows where Plaintiff Name(s) == plaintiffs}}
+\DoxyCodeLine{46     df.loc[df[\textcolor{stringliteral}{'PlaintiffCleaned'}] == plaintiffs.index[0],\textcolor{stringliteral}{'OutcomeCleaned'}].value\_counts()}
+\DoxyCodeLine{47     \textcolor{comment}{\# need to use cleaned outcomes, not raw outcomes for line above \string^}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{comment}{\# https://stackoverflow.com/questions/48465941/counting-\/combinations-\/between-\/two-\/dataframe-\/columns}}
+\DoxyCodeLine{50     comparedPO = pd.crosstab(df[\textcolor{stringliteral}{'PlaintiffCleaned'}], df[\textcolor{stringliteral}{'OutcomeCleaned'}])  \textcolor{comment}{\# Seems to be a good base dataset}}
+\DoxyCodeLine{51     comparedPO.to\_csv(\textcolor{stringliteral}{'comparedPO.csv'})}
+\DoxyCodeLine{52     groupedPO = df.groupby([\textcolor{stringliteral}{'PlaintiffCleaned'},\textcolor{stringliteral}{'OutcomeCleaned'}]).size().reset\_index().rename(columns=\{0:\textcolor{stringliteral}{'count'}\})  \textcolor{comment}{\# data not in right form}}
+\DoxyCodeLine{53     pdb.set\_trace()}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{comment}{\# This is a bootstrapping method to find more of the similar plaintiff names}}
+\DoxyCodeLine{56     matched = 0}
+\DoxyCodeLine{57     diffMatched = 0}
+\DoxyCodeLine{58     \textcolor{keywordflow}{for} index, value \textcolor{keywordflow}{in} plaintiffs.items():}
+\DoxyCodeLine{59         nFind = len(cleanDF[cleanDF[\textcolor{stringliteral}{'Plaintiff Name(s)'}].str.contains(index, case=\textcolor{keyword}{False})])}
+\DoxyCodeLine{60         \textcolor{keywordflow}{if} nFind != value:}
+\DoxyCodeLine{61             print(f\textcolor{stringliteral}{"{}\{index\} found \{nFind\} out of \{value\}"{}})}
+\DoxyCodeLine{62             diffMatched += 1}
+\DoxyCodeLine{63             \textcolor{comment}{\#pdb.set\_trace()}}
+\DoxyCodeLine{64         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{65             print(f\textcolor{stringliteral}{"{}\{index\} matched"{}})}
+\DoxyCodeLine{66             matched += 1}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     print(f\textcolor{stringliteral}{"{}\{matched\} matched, \{diffMatched\} didn't match"{}})}
+\DoxyCodeLine{69     stop\_time = datetime.datetime.now()}
+\DoxyCodeLine{70     print(f\textcolor{stringliteral}{'\{\_\_file\_\_\} took \{stop\_time-\/start\_time\} seconds'})}
+\DoxyCodeLine{71 }
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacecorrelations_a20ed0e303ef453a17dd601e1d4bd479c_cgraph}
+\end{center}
+\end{figure}

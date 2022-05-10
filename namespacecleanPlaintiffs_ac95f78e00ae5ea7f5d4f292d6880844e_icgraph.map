@@ -1,0 +1,5 @@
+<map id="cleanPlaintiffs.plaintiffList" name="cleanPlaintiffs.plaintiffList">
+<area shape="rect" id="node1" title="Returns df with added column of cleaned plaintiff names." alt="" coords="188,31,355,57"/>
+<area shape="rect" id="node2" href="$namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,5,140,32"/>
+<area shape="rect" id="node3" href="$namespacecorrelations.html#a20ed0e303ef453a17dd601e1d4bd479c" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="12,56,133,83"/>
+</map>
