@@ -2,7 +2,8 @@
  @file cleanCountOutcomes.py
  @brief Cleans the outcome data and counts how many of each there are
  @details The main function reads in the name of a csv file to process. 
- The "Case Outcome" column is processed via 
+ It then removes all rows that are exact duplicates of each other. Lastly,
+ it processes the "Case Outcome" column via the following function stack:
   \dot
  digraph example{
  node[shape=record, fontname=Helvetica, fontsize=10];
@@ -12,7 +13,7 @@
  b -> c -> d [arrowhead= "open", style = "dashed"];
  }
  \enddot
- It is cleaned via the following
+ It is cleaned via the following process:
  processes:
  -# Check for nan which arise from blank or Null input values
  -# Remove all trailing ALL CAPS WORDS
@@ -28,25 +29,18 @@
 import datetime  # used for start/end times
 import argparse  # Improved command line functionality
 import pdb       # Debugging
-import csv       # CSV file operations
 import pandas as pd  # Pandas data manipulation library
-import sqlite3   # built in sql database
 import numpy as np  # for data processing
 import re  # regular expression library for processing
 import math  # for isnan
 
-# automate making the Outcome Sub-Category list based on common words in 
-# common across large numbers of Outcomes.
-# less than 0.1% care less than 10%
-
-# need to parse out the judgment amounts
 
 ## matches all caps words to the end of the line
 endCaps = re.compile(r'(\b(?:[A-Z]+)\b(?:\s[A-Z]+\b)*\.*)$')
 ## matches date and time to end of line in format 07/17/2017 1:15
 datetimeToEnd = re.compile(r'(\s\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{2} [AP]M.*)$')  # selects date time to end
 
-def cleanWholeDF(df):
+def removeDuplicates(df):
     """! Cleans the main df by removing duplicate rows
         @param df DataFrame that needs cleaning
         @returns cleaned df
@@ -108,11 +102,9 @@ def outcomeList(df, columnName='Case Outcome'):
 def main():
     """! This is the main function that reads in a csv file containing the
     court data from the filename passed as the first command line argument. 
-    It then prints out the column names for reference, filters out the
-    duplicate rows, and prints out the column types for reference. It also
-    calculates the median judgement amount as a proof of concept. Lastly,
-    it calls outcomeList to create a cleaned and counted list of the outcomes
-    and prints the results.
+    It then filters out the duplicate rows. It also calculates the median 
+    judgement amount as a proof of concept. Lastly, it calls outcomeList to 
+    create a cleaned and counted list of the outcomes and prints the results.
     """
     parser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
     parser.add_argument('csvfile', help='The name of the csv file to load')
@@ -123,13 +115,14 @@ def main():
 
     # Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason
     csvDF = pd.read_csv(args.csvfile)  # read in the csv data
-    print(f'The column names are:\n{csvDF.columns.values}')
+    #print(f'The column names are:\n{csvDF.columns.values}')
 
-    csvNoDups = cleanWholeDF(csvDF)
+    csvNoDups = removeDuplicates(csvDF)
 
-    print("\nThe column types are:")
-    print(csvNoDups.dtypes)  # print out the data type for each column
-    # calculate the median judgment amount
+    #print("\nThe column types are:")
+    #print(csvNoDups.dtypes)  # print out the data type for each column
+    
+    # calculate the median judgment amount as a demonstration of reading the file
     medJudgment = np.nanmedian(csvNoDups['Judgment Amount'])
     print(f'\nThe median judgment amount is ${medJudgment}')
 
@@ -138,10 +131,7 @@ def main():
     # pypi.org/project/sent2vec
     outs = outcomeList(csvNoDups)[0]
     print('\nOutcome Subcategories')
-    print(f'{outs}')
-    #conn = sqlite3.connect(args.dbfile)  # connect to the database
-    # load the csvData into the database
-    #csvNoDups.to_sql('csvNoDups', conn, if_exists='fail', index=False)
+    print(outs.to_string())
 
     stop_time = datetime.datetime.now()
     print(f'{__file__} took {stop_time-start_time} seconds')

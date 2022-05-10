@@ -8,6 +8,12 @@ Written by Seth McNeill
 Managed by David McNeill and Stacy Butler
 
 # Usage
+## cleanCount Outcomes.py
+Cleaning and counting the most occurring outcomes is done as follows:
+```
+python .\src\cleanCountOutcomes.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv
+```
+## cleanPlaintiffs.py
 The following is an example of running the cleanPlaintiffs.py script from inside the 
 src folder.
 ```
