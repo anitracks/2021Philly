@@ -20,6 +20,19 @@ src folder.
 python .\cleanPlaintiffs.py ..\..\data\MC_specialreport_limiteddaterange_Nov6.csv .\20215121490-comparisonMatrix.pkl -e 0.1
 ```
 
+## Updating Documentation Using Doxygen
+The `docs` folder has a separate Git repository for the documentation. To update the 
+documentation, `cd` into the `docs` folder. Inside that folder run:
+```
+doxygen ..\doxygen\Doxygen.in
+```
+This will create all the new documentation. To commit everything including the 
+new/deleted files run:
+```
+git add -A
+```
+Now it is ready to `commit` and `push`.
+
 # Progress
 ## 2021 March 18 
 The code in cleanCountOutcomes.py reads in a csv file
