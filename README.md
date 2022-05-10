@@ -13,11 +13,20 @@ Cleaning and counting the most occurring outcomes is done as follows:
 ```
 python .\src\cleanCountOutcomes.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv
 ```
-## cleanPlaintiffs.py
-The following is an example of running the cleanPlaintiffs.py script from inside the 
-src folder.
+
+## cleanPlaintiffs.py - Creating the Comparison Matrix 
+Running cleanPlaintiffs.py as shown below will create the comparison matrix pickle
+file. This may take 9 minutes to run.
 ```
-python .\cleanPlaintiffs.py ..\..\data\MC_specialreport_limiteddaterange_Nov6.csv .\20215121490-comparisonMatrix.pkl -e 0.1
+python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -s
+```
+## cleanPlaintiffs.py - Plaintiff vs Outcome Matrix
+The following is an example of running the cleanPlaintiffs.py script from inside the 
+root folder to calculate the comparedPO.csv (plaintiffs vs outcomes matrix) file 
+which takes about 41 seconds. It requires a camparison matrix pickle file to have 
+already been created.
+```
+python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl
 ```
 
 ## Updating Documentation Using Doxygen

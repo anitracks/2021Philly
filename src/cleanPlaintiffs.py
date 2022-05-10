@@ -1,27 +1,31 @@
 """!
  @file cleanPlaintiffs.py
  @brief Cleans the plaintiff names and counts frequency of occurance
- @details The main function reads in the name of a csv file to process. 
+ @details The functions in this script can clean plaintiff names and 
+ then cluster the names to put similar names together. For instance,
+   - Victoria Fire and Casualty Co. a/s/o Robert Logan
+   - Victoria Fire and Casualty Company a/s/o Francisco Mulero
+both refer to the came plaintiff and should be clustered together.
 
- @todo change the following documentation
- The "Case Outcome" column is processed via 
-  \dot
- digraph example{
- node[shape=record, fontname=Helvetica, fontsize=10];
- b [label="main"  URL= "\ref cleanCountOutcomes.main" ];
- c [label="outcomeList" URL= "\ref cleanCountOutcomes.outcomeList" ];
- d [label="cleanOutcome" URL= "\ref cleanCountOutcomes.cleanOutcome" ];
- b -> c -> d [arrowhead= "open", style = "dashed"];
- }
- \enddot
- It is cleaned via the following
- processes:
- -# Check for nan which arise from blank or Null input values
- -# Remove all trailing ALL CAPS WORDS
- -# Remove everything after the first period (.)
- -# Remove date/time and everything after it (typical format 07/17/2017 1:15)
+We did the following to clean the plaintiff names:
+   - Removed "a/s/o", "as subrogee of", “aso”, commas, and the text that followed those items
+   - Removed any non-alphanumeric characters
+   - Used CleanCo to remove LLC, INC, etc.
+   - Put the names into all uppercase
 
- Then the count of each unique value is calculated and printed.
+Clustering plaintiffs is started by using the [jellyfish](https://github.com/jamesturk/jellyfish) 
+jaro_similarity function as can be seen in the createSimilarityMatrix() function to 
+calculate similarities between all the cleaned plaintiff names. Once the 
+similarity matrix has been created, the [DBSCAN](https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-with-python-scikit-learn-d690cbae4c5d)
+algorithm is used to cluster similar names.
+
+Typical use cases are as follows:
+
+    python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -s
+    python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl
+
+The first creates the similarity matrix (may take 9 minutes). The second uses this
+similarity matrix to build a plaintiff vs outcome matrix.
 
  @author Seth McNeill
  @date 2021 March 11
@@ -30,9 +34,7 @@
 import datetime  # used for start/end times
 import argparse  # Improved command line functionality
 import pdb       # Debugging
-import csv       # CSV file operations
 import pandas as pd  # Pandas data manipulation library
-import sqlite3   # built in sql database
 import numpy as np  # for data processing
 import re  # regular expression library for processing
 import math  # for isnan
@@ -41,15 +43,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer  # TF-IDF tokanizer
 import matplotlib.pyplot as plt  # plotting capability
 from sklearn.cluster import KMeans  # K-Means Clustering
 from cleanco import prepare_terms, basename  # removes co, llc, lp, etc. from names
-from fuzzywuzzy import fuzz     # for fuzzy name matching
-from fuzzywuzzy import process  # for fuzzy name matching
 import distance  # library that has string comparison functions (docs say it is slow)
 import jellyfish  # library for string comparisons that is supposed to be fast
-import strsimpy  # string comparison library
+#import strsimpy  # string comparison library
 import textdistance  # string comparison library
-import abydos  # string comparison library
+#import abydos  # string comparison library
 import inspect  # for looking at base class of method
-import copy  # for deep copying
+#import copy  # for deep copying
 from sklearn.cluster import DBSCAN  # DBSCAN clustering algorithm
 
 # methods to try:
@@ -162,17 +162,17 @@ def createSimilarityMatrix(cleanedValueCounts):
     """! Taking the cleanedValueCount from plaintiffList, this 
     function creates a similarity matrix between the cleaned names
     @param cleanedValueCounts returned by plaintiffList
+    @returns Name of pickle file similarity matrix is saved in
     """
     # vectorizer = TfidfVectorizer(stop_words={'english'})
     # X = vectorizer.fit_transform(df['Plaintiff Name(s)'])
 
-    ## Using FuzzyWuzzy library to find close matching names
     # create list of lists of similar names
     # do quick histogram analysis of lengths of lists to get an idea
-    # of whate is left to do
+    # of what is left to do
 
-    cutoff = 90  ## Percent match has to be >= to this
-    nReturned = None  ## number of matches to return
+    # cutoff = 90  ## Percent match has to be >= to this
+    # nReturned = None  ## number of matches to return
 
     ## Time tests for different algorithms
     # nTest = 500  # number of names to test
@@ -185,7 +185,6 @@ def createSimilarityMatrix(cleanedValueCounts):
     #     testComparisonMethod(cleanedValueCounts.index.to_series(), \
     #         fun, nTest)
 
-    # pdb.set_trace()
     startTime = datetime.datetime.now()
     print(f"Started at {startTime}")
     ## took too long
@@ -197,7 +196,6 @@ def createSimilarityMatrix(cleanedValueCounts):
     totalTime = endTime - startTime
     print(f"similarNameList took {totalTime} seconds")
 
-    pdb.set_trace()
     fname = f"{endTime:%Y%m%d%H%M%S}-comparisonMatrix.pkl"
     # saving Pandas dataframes:
     # https://towardsdatascience.com/the-best-format-to-save-pandas-data-414dca023e0d
@@ -216,12 +214,14 @@ def createSimilarityMatrix(cleanedValueCounts):
     # plt.ylabel('Sum_of_squared_distances')
     # plt.title('Elbow Method For Optimal k')
     # plt.show()
+    return fname
 
 
 def plaintiffList(df, fieldName):
     """!  Returns df with added column of cleaned plaintiff names
     @param df is a panda dataframe of plaintiff names from reading in the csv file 
         of data that has had duplicates removed and other cleaning done
+    @param fieldname The column name that contains the plaintiff names to be cleaned
     @returns Tuple (cleaned and sorted plaintiff names, 
         df with cleaned plaintiff names column)
     """
@@ -304,37 +304,38 @@ def main():
     """
     parser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
     parser.add_argument('csvfile', help='The name of the csv file to load')
-    parser.add_argument('picklefile', help='The name of the pickle file to load')
-    parser.add_argument('-c', '--cutoff', help='The cutoff for similarity checking', type=float)
+    parser.add_argument('-p', '--picklefile', help='The name of the pickle file to load')
+#    parser.add_argument('-c', '--cutoff', help='The cutoff for similarity checking', type=float)
     parser.add_argument('-e', '--eps', help='The neighbor distance setting for DBSCAN', type=float)
-    parser.add_argument('-s', '--similarity', help='Do similarity calculations')
-#    parser.add_argument('dbfile', help='The name of the sqlite db file')
+    parser.add_argument('-s', '--similarity', action='store_true', help='Do similarity calculations')
 
     start_time = datetime.datetime.now()  # save the time the script started
     args = parser.parse_args()  # parse the command line arguments
 
-    if args.picklefile:
-        if args.eps:
-            eps = args.eps
-        else:
-            eps = 0.1
-        dbfit = dbscanFit(args.picklefile, eps)
-        similarNames = pd.read_pickle(args.picklefile)
-        distanceNames = 1 - similarNames
     # Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason
     csvDF = pd.read_csv(args.csvfile)  # read in the csv data
     # print(f'The column names are:\n{csvDF.columns.values}')
 
-    # print("\nThe column types are:")
-    # print(csvDF.dtypes)  # print out the data type for each column
-
-    # need to look at cases where the same attorney is listed on both sides
-    # try using sent2vec to sort out similar ones
-    # pypi.org/project/sent2vec
-
-    df = cleanCountOutcomes.cleanWholeDF(csvDF)
-    (plaintiffs, df) = plaintiffList(df, 'Plaintiff Name(s)')
+    df = cleanCountOutcomes.removeDuplicates(csvDF)
+    (cleanedValueCounts, df) = plaintiffList(df, 'Plaintiff Name(s)')
     (outcomes, df) = cleanCountOutcomes.outcomeList(df, 'Case Outcome')
+
+    if args.similarity:  # create the similarity matrix. Takes hours to calculate
+        pickleFileName = createSimilarityMatrix(cleanedValueCounts)
+    elif args.picklefile:
+        pickleFileName = args.picklefile
+    else:
+        raise Exception("Need to either pass the -s flag or the -p with pickle file name")
+    
+    print(f'Using {pickleFileName} for similarity matrix')
+
+    if args.eps:
+        eps = args.eps
+    else:
+        eps = 0.1
+    dbfit = dbscanFit(pickleFileName, eps)
+    similarNames = pd.read_pickle(pickleFileName)
+    distanceNames = 1 - similarNames
 
     # print('\nPlaintiff Frequency')
     # print(f'{plaintiffs}')
@@ -383,13 +384,8 @@ def main():
 
     stop_time = datetime.datetime.now()
     print(f'{__file__} took {stop_time-start_time} seconds so far')
-    pdb.set_trace()
     # the following line counts the Plaintiff names that contain Midland as a check
     #nMidlands = len(csvNoDups[csvNoDups['Plaintiff Name(s)'].str.contains('Midland', flags=re.IGNORECASE)]['Plaintiff Name(s)'])
-
-    #conn = sqlite3.connect(args.dbfile)  # connect to the database
-    # load the csvData into the database
-    #csvNoDups.to_sql('csvNoDups', conn, if_exists='fail', index=False)
 
     stop_time = datetime.datetime.now()
     print(f'{__file__} took {stop_time-start_time} seconds')
