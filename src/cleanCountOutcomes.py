@@ -14,7 +14,6 @@
  }
  \enddot
  It is cleaned via the following process:
- processes:
  -# Check for nan which arise from blank or Null input values
  -# Remove all trailing ALL CAPS WORDS
  -# Remove everything after the first period (.)
