@@ -29,6 +29,12 @@ already been created.
 python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl
 ```
 
+## dbscanTest.py
+This creates a figure (as a saved .png file) of the number of names clustered vs 
+epsilon using the DBSCAN algorithm on the similarity matrix created in cleanPlaintiffs.py.
+```
+python src\dbscanTest.py 20220510152542-comparisonMatrix.pkl
+```
 ## Updating Documentation Using Doxygen
 The `docs` folder has a separate Git repository for the documentation. To update the 
 documentation, `cd` into the `docs` folder. Inside that folder run:

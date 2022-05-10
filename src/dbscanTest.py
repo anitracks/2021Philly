@@ -1,7 +1,9 @@
 """!
  @file dbscanTest.py
  @brief DBSCAN clustering tests
- @details Uses precomputed distance matrix loaded from disk
+ @details Uses precomputed distance matrix loaded from disk 
+ (created by cleanPlaintiffs.py with the -s option) to give a plot
+ for different values of epsilon in the DBSCAN algorithm.
 
  @author Seth McNeill
  @date 2021 May 13
@@ -46,7 +48,12 @@ def findBaseNames(fname, cutoff=0.9):
     # and record the names at each step to show which names were added each time
     fitStartTime = datetime.datetime.now()
     fits = []
-    epsList = np.arange(0.01,0.24,0.01)
+    min_eps = 0.01
+    max_eps = 0.24
+    eps_step = 0.21
+    print("Testing different epsilon (eps) values for DBSCAN.")
+    print(f"testing from {min_eps} to {max_eps} stepping {eps_step}")
+    epsList = np.arange(min_eps, max_eps, eps_step)
     curveData = np.zeros([len(epsList),2])
     ii = 0
     for eps in epsList:
@@ -69,30 +76,31 @@ def findBaseNames(fname, cutoff=0.9):
     plt.savefig(f'{fitEndTime:%Y%m%d%H%M%S}-CoreCount.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
+# the following code collects the clusters of names to look at
     # Need list of names for each cluster to look over
-    matchFit = 9  # the number of the fit to use for subsquent processing
-    clusterSet = set(fits[matchFit].labels_)
-    clusterSet.discard(-1)  # discard the "noise" names
-    clusterNameLists = []
-    for clust in clusterSet:
-        clusterNameLists.append(distanceNames.index[fits[matchFit].labels_ == clust])
-    clusterDF = pd.DataFrame(clusterNameLists)
+    # matchFit = 9  # the number of the fit to use for subsquent processing
+    # clusterSet = set(fits[matchFit].labels_)
+    # clusterSet.discard(-1)  # discard the "noise" names
+    # clusterNameLists = []
+    # for clust in clusterSet:
+    #     clusterNameLists.append(distanceNames.index[fits[matchFit].labels_ == clust])
+    # clusterDF = pd.DataFrame(clusterNameLists)
 
-    distanceNames.index[fits[9].labels_ == 0]
-    df = pd.DataFrame(test1, index=['one','two',3,'four'])
+    # distanceNames.index[fits[matchFit].labels_ == 0]
+    # pdb.set_trace()
 
     # Need prototype (base) name for each cluster
     # output the "noise" names (cluster -1) as a separate file since so long
-    pdb.set_trace()
 
 
 def main():
-    """! This is the main function that reads in a 
+    """! This is the main function that reads in a similarity matrix pickle file 
+    created by cleanPlaintiffs.py with a -s option. It then tries different 
+    epsilon values for the DBSCAN clustering algorithm and plots the results.
     """
     parser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
     parser.add_argument('picklefile', help='The name of the similarity matrix pickle file to load')
-    parser.add_argument('-c', '--cutoff', help='The cutoff for similarity checking', type=float)
-#    parser.add_argument('dbfile', help='The name of the sqlite db file')
+    # parser.add_argument('-c', '--cutoff', help='The cutoff for similarity checking', type=float)
 
     start_time = datetime.datetime.now()  # save the time the script started
     args = parser.parse_args()  # parse the command line arguments
