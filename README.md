@@ -7,7 +7,22 @@ https://anitracks.github.io/2021Philly/index.html
 Written by Seth McNeill  
 Managed by David McNeill and Stacy Butler
 
+# Setting Up the Environment
+This project was developed using Python 3.9.1 using a virtual environment. The list of
+packages installed to develop this project is listed in requirements.txt. Not all the 
+packages in requirements.txt are used in the final version of this code. Once the 
+correct version of Python has been installed, the virtual environment can be setup as
+follows in the directory you have cloned this project into:
+```
+python -m venv .venv
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
 # Usage
+The scripts should be run in the order listed here. The data used as input is a 
+csv file created by David McNeill based on the raw data received from the courts.
+
 ## cleanCount Outcomes.py
 Cleaning and counting the most occurring outcomes is done as follows:
 ```
@@ -16,25 +31,31 @@ python .\src\cleanCountOutcomes.py ..\data\MC_specialreport_limiteddaterange_Nov
 
 ## cleanPlaintiffs.py - Creating the Comparison Matrix 
 Running cleanPlaintiffs.py as shown below will create the comparison matrix pickle
-file. This may take 9 minutes to run.
+file. This may take 9 minutes to run. It uses the 
+[jellyfish](https://github.com/jamesturk/jellyfish) `jaro_similarity` function
+to calculate the similarity between plaintiff names.
 ```
 python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -s
 ```
+
+## dbscanTest.py
+This creates a figure (as a saved .png file) of the number of names clustered vs 
+epsilon using the DBSCAN algorithm on the similarity matrix created in cleanPlaintiffs.py.
+The figure is used to decide what value of epsilon to use when calling cleanPlaintiffs.py
+to do the plaintiff clustering below. We chose an epsilon value of 0.1 based on the figure.
+```
+python src\dbscanTest.py 20220510152542-comparisonMatrix.pkl
+```
+
 ## cleanPlaintiffs.py - Plaintiff vs Outcome Matrix
 The following is an example of running the cleanPlaintiffs.py script from inside the 
 root folder to calculate the comparedPO.csv (plaintiffs vs outcomes matrix) file 
 which takes about 41 seconds. It requires a camparison matrix pickle file to have 
 already been created.
 ```
-python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl
+python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl -e 0.10
 ```
 
-## dbscanTest.py
-This creates a figure (as a saved .png file) of the number of names clustered vs 
-epsilon using the DBSCAN algorithm on the similarity matrix created in cleanPlaintiffs.py.
-```
-python src\dbscanTest.py 20220510152542-comparisonMatrix.pkl
-```
 ## Updating Documentation Using Doxygen
 The `docs` folder has a separate Git repository for the documentation. To update the 
 documentation, `cd` into the `docs` folder. Inside that folder run:
