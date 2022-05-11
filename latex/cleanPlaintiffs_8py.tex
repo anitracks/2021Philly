@@ -51,23 +51,26 @@ list \mbox{\hyperlink{namespacecleanPlaintiffs_aea67d0a19052e0460fa4e622f0d7c759
 \doxysubsection{Detailed Description}
 Cleans the plaintiff names and counts frequency of occurance. 
 
-The main function reads in the name of a csv file to process.
+The functions in this script can clean plaintiff names and then cluster the names to put similar names together. For instance,
+\begin{DoxyItemize}
+\item Victoria Fire and Casualty Co. a/s/o Robert Logan
+\item Victoria Fire and Casualty Company a/s/o Francisco Mulero both refer to the came plaintiff and should be clustered together.
+\end{DoxyItemize}
 
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]change the following documentation The \char`\"{}\+Case Outcome\char`\"{} column is processed via \end{DoxyRefDesc}
+We did the following to clean the plaintiff names\+:
+\begin{DoxyItemize}
+\item Removed \char`\"{}a/s/o\char`\"{}, \char`\"{}as subrogee of\char`\"{}, “aso”, commas, and the text that followed those items
+\item Removed any non-\/alphanumeric characters
+\item Used Clean\+Co to remove LLC, INC, etc.
+\item Put the names into all uppercase
+\end{DoxyItemize}
 
-\begin{DoxyImageNoCaption}
-  \mbox{\includegraphics[width=\textwidth,height=\textheight/2,keepaspectratio=true]{dot_inline_dotgraph_2}}
-\end{DoxyImageNoCaption}
- It is cleaned via the following processes\+:
-\begin{DoxyEnumerate}
-\item Check for nan which arise from blank or Null input values
-\item Remove all trailing ALL CAPS WORDS
-\item Remove everything after the first period (.)
-\item Remove date/time and everything after it (typical format 07/17/2017 1\+:15)
-\end{DoxyEnumerate}
+Clustering plaintiffs is started by using the \href{https://github.com/jamesturk/jellyfish}{\texttt{ jellyfish}} jaro\+\_\+similarity function as can be seen in the \mbox{\hyperlink{namespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb}{create\+Similarity\+Matrix()}} function to calculate similarities between all the cleaned plaintiff names. Once the similarity matrix has been created, the \href{https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-with-python-scikit-learn-d690cbae4c5d}{\texttt{ DBSCAN}} algorithm is used to cluster similar names.
 
-Then the count of each unique value is calculated and printed.
+Typical use cases are as follows\+: \begin{DoxyVerb}python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -s
+python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl
+\end{DoxyVerb}
+ The first creates the similarity matrix (may take 9 minutes). The second uses this similarity matrix to build a plaintiff vs outcome matrix.
 
 \begin{DoxyAuthor}{Author}
 Seth Mc\+Neill 

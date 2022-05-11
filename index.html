@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">2021 Philly Data Analysis
-   &#160;<span id="projectnumber">0.2.0</span>
+   &#160;<span id="projectnumber">0.2.1</span>
    </div>
    <div id="projectbrief">This is a project for the Pew Foundation to analyze court data.</div>
   </td>
@@ -71,19 +71,36 @@ $(function() {
 <p>Written by Seth McNeill <br  />
  Managed by David McNeill and Stacy Butler</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
+Setting Up the Environment</h1>
+<p>This project was developed using Python 3.9.1 using a virtual environment. The list of packages installed to develop this project is listed in requirements.txt. Not all the packages in requirements.txt are used in the final version of this code. Once the correct version of Python has been installed, the virtual environment can be setup as follows in the directory you have cloned this project into: </p><div class="fragment"><div class="line">python -m venv .venv</div>
+<div class="line">.\.venv\Scripts\activate</div>
+<div class="line">pip install -r requirements.txt</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Usage</h1>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<p>The scripts should be run in the order listed here. The data used as input is a csv file created by David McNeill based on the raw data received from the courts.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
 cleanCount Outcomes.py</h2>
 <p>Cleaning and counting the most occurring outcomes is done as follows: </p><div class="fragment"><div class="line">python .\src\cleanCountOutcomes.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv</div>
-</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md3"></a>
-cleanPlaintiffs.py</h2>
-<p>The following is an example of running the <a class="el" href="cleanPlaintiffs_8py.html" title="Cleans the plaintiff names and counts frequency of occurance.">cleanPlaintiffs.py</a> script from inside the src folder. </p><div class="fragment"><div class="line">python .\cleanPlaintiffs.py ..\..\data\MC_specialreport_limiteddaterange_Nov6.csv .\20215121490-comparisonMatrix.pkl -e 0.1</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+cleanPlaintiffs.py - Creating the Comparison Matrix</h2>
+<p>Running <a class="el" href="cleanPlaintiffs_8py.html" title="Cleans the plaintiff names and counts frequency of occurance.">cleanPlaintiffs.py</a> as shown below will create the comparison matrix pickle file. This may take 9 minutes to run. It uses the <a href="https://github.com/jamesturk/jellyfish">jellyfish</a> <code>jaro_similarity</code> function to calculate the similarity between plaintiff names. </p><div class="fragment"><div class="line">python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -s</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+dbscanTest.py</h2>
+<p>This creates a figure (as a saved .png file) of the number of names clustered vs epsilon using the DBSCAN algorithm on the similarity matrix created in <a class="el" href="cleanPlaintiffs_8py.html" title="Cleans the plaintiff names and counts frequency of occurance.">cleanPlaintiffs.py</a>. The figure is used to decide what value of epsilon to use when calling <a class="el" href="cleanPlaintiffs_8py.html" title="Cleans the plaintiff names and counts frequency of occurance.">cleanPlaintiffs.py</a> to do the plaintiff clustering below. We chose an epsilon value of 0.1 based on the figure. </p><div class="fragment"><div class="line">python src\dbscanTest.py 20220510152542-comparisonMatrix.pkl</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+cleanPlaintiffs.py - Plaintiff vs Outcome Matrix</h2>
+<p>The following is an example of running the <a class="el" href="cleanPlaintiffs_8py.html" title="Cleans the plaintiff names and counts frequency of occurance.">cleanPlaintiffs.py</a> script from inside the root folder to calculate the comparedPO.csv (plaintiffs vs outcomes matrix) file which takes about 41 seconds. It requires a camparison matrix pickle file to have already been created. </p><div class="fragment"><div class="line">python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl -e 0.10</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Updating Documentation Using Doxygen</h2>
+<p>The <code>docs</code> folder has a separate Git repository for the documentation. To update the documentation, <code>cd</code> into the <code>docs</code> folder. Inside that folder run: </p><div class="fragment"><div class="line">doxygen ..\doxygen\Doxygen.in</div>
+</div><!-- fragment --><p> This will create all the new documentation. To commit everything including the new/deleted files run: </p><div class="fragment"><div class="line">git add -A</div>
+</div><!-- fragment --><p> Now it is ready to <code>commit</code> and <code>push</code>.</p>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Progress</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 2021 March 18</h2>
 <p>The code in <a class="el" href="cleanCountOutcomes_8py.html" title="Cleans the outcome data and counts how many of each there are.">cleanCountOutcomes.py</a> reads in a csv file from the Philidelphia court system, cleans, collates, and prints out the outcomes column.</p>
-<h3><a class="anchor" id="autotoc_md6"></a>
+<h3><a class="anchor" id="autotoc_md10"></a>
 Example output</h3>
 <div class="fragment"><div class="line">Outcome Subcategories                                              Count</div>
 <div class="line">Judgment for Plaintiff by Default                                  40711</div>

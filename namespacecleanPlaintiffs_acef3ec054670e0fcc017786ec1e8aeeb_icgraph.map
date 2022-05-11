@@ -1,0 +1,4 @@
+<map id="cleanPlaintiffs.createSimilarityMatrix" name="cleanPlaintiffs.createSimilarityMatrix">
+<area shape="rect" id="node1" title="Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between th..." alt="" coords="188,5,384,47"/>
+<area shape="rect" id="node2" href="$namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,13,140,39"/>
+</map>

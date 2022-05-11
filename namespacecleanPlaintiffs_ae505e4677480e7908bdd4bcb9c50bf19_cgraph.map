@@ -1,6 +1,8 @@
 <map id="cleanPlaintiffs.main" name="cleanPlaintiffs.main">
-<area shape="rect" id="node1" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,56,140,83"/>
-<area shape="rect" id="node2" href="$namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311" title="Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters r..." alt="" coords="218,5,381,32"/>
-<area shape="rect" id="node3" href="$namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu..." alt="" coords="188,56,411,83"/>
-<area shape="rect" id="node4" href="$namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e" title="Returns df with added column of cleaned plaintiff names." alt="" coords="216,107,383,133"/>
+<area shape="rect" id="node1" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,122,140,149"/>
+<area shape="rect" id="node2" href="$namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb" title="Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between th..." alt="" coords="201,5,397,47"/>
+<area shape="rect" id="node3" href="$namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311" title="Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters r..." alt="" coords="218,71,381,98"/>
+<area shape="rect" id="node4" href="$namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu..." alt="" coords="188,122,411,149"/>
+<area shape="rect" id="node5" href="$namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e" title="Returns df with added column of cleaned plaintiff names." alt="" coords="216,173,383,199"/>
+<area shape="rect" id="node6" href="$namespacecleanCountOutcomes.html#a4274f083552a8e34e4f1100d27302ef2" title="Cleans the main df by removing duplicate rows." alt="" coords="203,224,395,265"/>
 </map>

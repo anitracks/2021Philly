@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">2021 Philly Data Analysis
-   &#160;<span id="projectnumber">0.2.0</span>
+   &#160;<span id="projectnumber">0.2.1</span>
    </div>
    <div id="projectbrief">This is a project for the Pew Foundation to analyze court data.</div>
   </td>
@@ -202,56 +202,68 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Name of pickle file similarity matrix is saved in </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00161">161</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
 <div class="fragment"><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">createSimilarityMatrix</a>(cleanedValueCounts):</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;! Taking the cleanedValueCount from plaintiffList, this </span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="stringliteral">    function creates a similarity matrix between the cleaned names</span></div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="stringliteral">    @param cleanedValueCounts returned by plaintiffList</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment"># vectorizer = TfidfVectorizer(stop_words={&#39;english&#39;})</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment"># X = vectorizer.fit_transform(df[&#39;Plaintiff Name(s)&#39;])</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="stringliteral">    @returns Name of pickle file similarity matrix is saved in</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment"># vectorizer = TfidfVectorizer(stop_words={&#39;english&#39;})</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment"># X = vectorizer.fit_transform(df[&#39;Plaintiff Name(s)&#39;])</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment"># create list of lists of similar names</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment"># do quick histogram analysis of lengths of lists to get an idea</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment"># of what is left to do</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    cutoff = 90  </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    nReturned = <span class="keywordtype">None</span>  </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment"># cutoff = 90  ## Percent match has to be &gt;= to this</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment"># nReturned = None  ## number of matches to return</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    </div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment"># pdb.set_trace()</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    startTime = datetime.datetime.now()</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    print(f<span class="stringliteral">&quot;Started at {startTime}&quot;</span>)</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    similarNames = cleanedValueCounts.index.to_series().apply(similarNameList, \</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        args=(cleanedValueCounts.index.to_series(), jellyfish.jaro_similarity))</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    endTime = datetime.datetime.now()</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    totalTime = endTime - startTime</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    print(f<span class="stringliteral">&quot;similarNameList took {totalTime} seconds&quot;</span>)</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    pdb.set_trace()</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    fname = f<span class="stringliteral">&quot;{endTime:%Y%m%d%H%M%S}-comparisonMatrix.pkl&quot;</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment"># saving Pandas dataframes:</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="comment"># https://towardsdatascience.com/the-best-format-to-save-pandas-data-414dca023e0d</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    similarNames.to_pickle(fname)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment">#  Elbow method of determining how many means to use</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="comment"># Sum_of_squared_distances = []</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment"># K = range(2,5)</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="comment"># for k in K:</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">#     print(f&quot;Trying {k} means&quot;)</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">#     km = KMeans(n_clusters=k, max_iter=200, n_init=10)</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">#     km = km.fit(X)</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">#     Sum_of_squared_distances.append(km.inertia_)</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment"># plt.plot(K, Sum_of_squared_distances, &#39;bx-&#39;)</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="comment"># plt.xlabel(&#39;k&#39;)</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment"># plt.ylabel(&#39;Sum_of_squared_distances&#39;)</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment"># plt.title(&#39;Elbow Method For Optimal k&#39;)</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment"># plt.show()</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    startTime = datetime.datetime.now()</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    print(f<span class="stringliteral">&quot;Started at {startTime}&quot;</span>)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    similarNames = cleanedValueCounts.index.to_series().apply(similarNameList, \</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        args=(cleanedValueCounts.index.to_series(), jellyfish.jaro_similarity))</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    endTime = datetime.datetime.now()</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    totalTime = endTime - startTime</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    print(f<span class="stringliteral">&quot;similarNameList took {totalTime} seconds&quot;</span>)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    fname = f<span class="stringliteral">&quot;{endTime:%Y%m%d%H%M%S}-comparisonMatrix.pkl&quot;</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="comment"># saving Pandas dataframes:</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment"># https://towardsdatascience.com/the-best-format-to-save-pandas-data-414dca023e0d</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    similarNames.to_pickle(fname)</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="comment">#  Elbow method of determining how many means to use</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="comment"># Sum_of_squared_distances = []</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment"># K = range(2,5)</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="comment"># for k in K:</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment">#     print(f&quot;Trying {k} means&quot;)</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="comment">#     km = KMeans(n_clusters=k, max_iter=200, n_init=10)</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">#     km = km.fit(X)</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">#     Sum_of_squared_distances.append(km.inertia_)</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment"># plt.plot(K, Sum_of_squared_distances, &#39;bx-&#39;)</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment"># plt.xlabel(&#39;k&#39;)</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment"># plt.ylabel(&#39;Sum_of_squared_distances&#39;)</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="comment"># plt.title(&#39;Elbow Method For Optimal k&#39;)</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment"># plt.show()</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">return</span> fname</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
 <div class="ttc" id="anamespacecleanPlaintiffs_html_acef3ec054670e0fcc017786ec1e8aeeb"><div class="ttname"><a href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">cleanPlaintiffs.createSimilarityMatrix</a></div><div class="ttdeci">def createSimilarityMatrix(cleanedValueCounts)</div><div class="ttdoc">Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between th...</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00161">cleanPlaintiffs.py:161</a></div></div>
-</div><!-- fragment -->
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb_icgraph.png" border="0" usemap="#anamespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb_icgraph" alt=""/></div>
+<map name="anamespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb_icgraph" id="anamespacecleanPlaintiffs_acef3ec054670e0fcc017786ec1e8aeeb_icgraph">
+<area shape="rect" title="Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between th..." alt="" coords="188,5,384,47"/>
+<area shape="rect" href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,13,140,39"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a948656ff65ed15ab0295c64a3a2b2311"></a>
@@ -472,108 +484,107 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    parser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars=<span class="stringliteral">&#39;@&#39;</span>)</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;csvfile&#39;</span>, help=<span class="stringliteral">&#39;The name of the csv file to load&#39;</span>)</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;picklefile&#39;</span>, help=<span class="stringliteral">&#39;The name of the pickle file to load&#39;</span>)</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-c&#39;</span>, <span class="stringliteral">&#39;--cutoff&#39;</span>, help=<span class="stringliteral">&#39;The cutoff for similarity checking&#39;</span>, type=float)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-p&#39;</span>, <span class="stringliteral">&#39;--picklefile&#39;</span>, help=<span class="stringliteral">&#39;The name of the pickle file to load&#39;</span>)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">#    parser.add_argument(&#39;-c&#39;, &#39;--cutoff&#39;, help=&#39;The cutoff for similarity checking&#39;, type=float)</span></div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-e&#39;</span>, <span class="stringliteral">&#39;--eps&#39;</span>, help=<span class="stringliteral">&#39;The neighbor distance setting for DBSCAN&#39;</span>, type=float)</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-s&#39;</span>, <span class="stringliteral">&#39;--similarity&#39;</span>, help=<span class="stringliteral">&#39;Do similarity calculations&#39;</span>)</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment">#    parser.add_argument(&#39;dbfile&#39;, help=&#39;The name of the sqlite db file&#39;)</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    start_time = datetime.datetime.now()  <span class="comment"># save the time the script started</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    args = parser.parse_args()  <span class="comment"># parse the command line arguments</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">if</span> args.picklefile:</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">if</span> args.eps:</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            eps = args.eps</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            eps = 0.1</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        dbfit = <a class="code" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">dbscanFit</a>(args.picklefile, eps)</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        similarNames = pd.read_pickle(args.picklefile)</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        distanceNames = 1 - similarNames</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment"># Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    csvDF = pd.read_csv(args.csvfile)  <span class="comment"># read in the csv data</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="comment"># print(f&#39;The column names are:\n{csvDF.columns.values}&#39;)</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="comment"># print(&quot;\nThe column types are:&quot;)</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="comment"># print(csvDF.dtypes)  # print out the data type for each column</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="comment"># need to look at cases where the same attorney is listed on both sides</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="comment"># try using sent2vec to sort out similar ones</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment"># pypi.org/project/sent2vec</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    df = cleanCountOutcomes.cleanWholeDF(csvDF)</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    (plaintiffs, df) = <a class="code" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">plaintiffList</a>(df, <span class="stringliteral">&#39;Plaintiff Name(s)&#39;</span>)</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    (outcomes, df) = <a class="code" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261">cleanCountOutcomes.outcomeList</a>(df, <span class="stringliteral">&#39;Case Outcome&#39;</span>)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="comment"># print(&#39;\nPlaintiff Frequency&#39;)</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="comment"># print(f&#39;{plaintiffs}&#39;)</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="comment"># for plaintiff, pCount in plaintiffs.items():</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="comment">#     if(pCount &gt; 10):</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">#         print(f&quot;{plaintiff},{pCount}&quot;)</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="comment"># data we have</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    clusterSet = set(dbfit.labels_)</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="comment"># clusterSet.discard(-1)  # discard the &quot;noise&quot; names</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    clusterNameLists = []</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">for</span> clust <span class="keywordflow">in</span> clusterSet:</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        clusterNameLists.append(distanceNames.index[dbfit.labels_ == clust])</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    clusterDF = pd.DataFrame(clusterNameLists)  <span class="comment"># each row is list of names in cluster</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    df  <span class="comment"># whole dataset with cleaned plaintiff and outcomes</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    dbfit.labels_  <span class="comment"># cluster number for cleanedPlaintiff</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    df.iloc[0][<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>]  <span class="comment"># Need to know what group this is in</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    df.iloc[0][<span class="stringliteral">&#39;OutcomeCleaned&#39;</span>]</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    df[<span class="stringliteral">&#39;ClusterNum&#39;</span>] = -5  <span class="comment"># set clusterNum to an invalid number to make sure all get changed</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    df[<span class="stringliteral">&#39;ClusterName&#39;</span>] = <span class="stringliteral">&#39;ZZ-Unclustered&#39;</span>  <span class="comment"># set clusterNum to an invalid number to make sure all get changed</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    maxClusterIndex = max(clusterDF.index)  <span class="comment"># store off max index for use later</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    clusterDF.insert(0, <span class="stringliteral">&#39;Count&#39;</span>, -1)  <span class="comment"># set count to an invalid number to allow checking</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    clusterNames = []  <span class="comment"># list of cluster names</span></div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="comment"># Set the cluster number for each entry in df</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">for</span> ind <span class="keywordflow">in</span> clusterDF.index:</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        rowIndexer = df[<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].isin(clusterDF.iloc[ind])</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        clusterDF.loc[ind,<span class="stringliteral">&#39;Count&#39;</span>] = len(df.loc[rowIndexer,<span class="stringliteral">&#39;ClusterNum&#39;</span>])</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        if(ind != maxClusterIndex):</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            df.loc[rowIndexer,<span class="stringliteral">&#39;ClusterNum&#39;</span>] = ind</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            df.loc[rowIndexer, <span class="stringliteral">&#39;ClusterName&#39;</span>] = df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].mode()[0]</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            clusterNames.append(df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].mode()[0])</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">else</span>:  <span class="comment"># set the catchall/not in cluster values to -1</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            df.loc[df[<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].isin(clusterDF.iloc[ind]),<span class="stringliteral">&#39;ClusterNum&#39;</span>] = -1</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            df.loc[rowIndexer, <span class="stringliteral">&#39;ClusterName&#39;</span>] = df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>]</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="comment"># create the comparison matrix</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="comment"># https://stackoverflow.com/questions/48465941/counting-combinations-between-two-dataframe-columns</span></div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    time_now = datetime.datetime.now()</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    comparedPO = pd.crosstab(df[<span class="stringliteral">&#39;ClusterName&#39;</span>], df[<span class="stringliteral">&#39;OutcomeCleaned&#39;</span>])  <span class="comment"># Seems to be a good base dataset</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    comparedPO.insert(0, <span class="stringliteral">&#39;Clustered&#39;</span>,<span class="stringliteral">&#39;unknown&#39;</span>)</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    comparedPO.loc[comparedPO.index.isin(clusterNames),<span class="stringliteral">&#39;Clustered&#39;</span>] = <span class="keyword">True</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    comparedPO.loc[~comparedPO.index.isin(clusterNames),<span class="stringliteral">&#39;Clustered&#39;</span>] = <span class="keyword">False</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    comparedPO.to_csv(f<span class="stringliteral">&#39;{time_now:%Y%m%d%H%M%S}-comparedPO.csv&#39;</span>)</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    stop_time = datetime.datetime.now()</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds so far&#39;</span>)</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    pdb.set_trace()</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    parser.add_argument(<span class="stringliteral">&#39;-s&#39;</span>, <span class="stringliteral">&#39;--similarity&#39;</span>, action=<span class="stringliteral">&#39;store_true&#39;</span>, help=<span class="stringliteral">&#39;Do similarity calculations&#39;</span>)</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    start_time = datetime.datetime.now()  <span class="comment"># save the time the script started</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    args = parser.parse_args()  <span class="comment"># parse the command line arguments</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="comment"># Plaintiff Attorney ID and Defendant Attorney ID come in as mixed types for some reason</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    csvDF = pd.read_csv(args.csvfile)  <span class="comment"># read in the csv data</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment"># print(f&#39;The column names are:\n{csvDF.columns.values}&#39;)</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    df = <a class="code" href="namespacecleanCountOutcomes.html#a4274f083552a8e34e4f1100d27302ef2">cleanCountOutcomes.removeDuplicates</a>(csvDF)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    (cleanedValueCounts, df) = <a class="code" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">plaintiffList</a>(df, <span class="stringliteral">&#39;Plaintiff Name(s)&#39;</span>)</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    (outcomes, df) = <a class="code" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261">cleanCountOutcomes.outcomeList</a>(df, <span class="stringliteral">&#39;Case Outcome&#39;</span>)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> args.similarity:  <span class="comment"># create the similarity matrix. Takes hours to calculate</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        pickleFileName = <a class="code" href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb">createSimilarityMatrix</a>(cleanedValueCounts)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordflow">elif</span> args.picklefile:</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        pickleFileName = args.picklefile</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">raise</span> Exception(<span class="stringliteral">&quot;Need to either pass the -s flag or the -p with pickle file name&quot;</span>)</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    print(f<span class="stringliteral">&#39;Using {pickleFileName} for similarity matrix&#39;</span>)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">if</span> args.eps:</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        eps = args.eps</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        eps = 0.1</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    dbfit = <a class="code" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311">dbscanFit</a>(pickleFileName, eps)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    similarNames = pd.read_pickle(pickleFileName)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    distanceNames = 1 - similarNames</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="comment"># print(&#39;\nPlaintiff Frequency&#39;)</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="comment"># print(f&#39;{plaintiffs}&#39;)</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="comment"># for plaintiff, pCount in plaintiffs.items():</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">#     if(pCount &gt; 10):</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="comment">#         print(f&quot;{plaintiff},{pCount}&quot;)</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="comment"># data we have</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    clusterSet = set(dbfit.labels_)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="comment"># clusterSet.discard(-1)  # discard the &quot;noise&quot; names</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    clusterNameLists = []</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordflow">for</span> clust <span class="keywordflow">in</span> clusterSet:</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        clusterNameLists.append(distanceNames.index[dbfit.labels_ == clust])</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    clusterDF = pd.DataFrame(clusterNameLists)  <span class="comment"># each row is list of names in cluster</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    df  <span class="comment"># whole dataset with cleaned plaintiff and outcomes</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    dbfit.labels_  <span class="comment"># cluster number for cleanedPlaintiff</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    df.iloc[0][<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>]  <span class="comment"># Need to know what group this is in</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    df.iloc[0][<span class="stringliteral">&#39;OutcomeCleaned&#39;</span>]</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    df[<span class="stringliteral">&#39;ClusterNum&#39;</span>] = -5  <span class="comment"># set clusterNum to an invalid number to make sure all get changed</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    df[<span class="stringliteral">&#39;ClusterName&#39;</span>] = <span class="stringliteral">&#39;ZZ-Unclustered&#39;</span>  <span class="comment"># set clusterNum to an invalid number to make sure all get changed</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    maxClusterIndex = max(clusterDF.index)  <span class="comment"># store off max index for use later</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    clusterDF.insert(0, <span class="stringliteral">&#39;Count&#39;</span>, -1)  <span class="comment"># set count to an invalid number to allow checking</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    clusterNames = []  <span class="comment"># list of cluster names</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="comment"># Set the cluster number for each entry in df</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">for</span> ind <span class="keywordflow">in</span> clusterDF.index:</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        rowIndexer = df[<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].isin(clusterDF.iloc[ind])</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        clusterDF.loc[ind,<span class="stringliteral">&#39;Count&#39;</span>] = len(df.loc[rowIndexer,<span class="stringliteral">&#39;ClusterNum&#39;</span>])</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        if(ind != maxClusterIndex):</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            df.loc[rowIndexer,<span class="stringliteral">&#39;ClusterNum&#39;</span>] = ind</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            df.loc[rowIndexer, <span class="stringliteral">&#39;ClusterName&#39;</span>] = df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].mode()[0]</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            clusterNames.append(df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].mode()[0])</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">else</span>:  <span class="comment"># set the catchall/not in cluster values to -1</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            df.loc[df[<span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>].isin(clusterDF.iloc[ind]),<span class="stringliteral">&#39;ClusterNum&#39;</span>] = -1</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            df.loc[rowIndexer, <span class="stringliteral">&#39;ClusterName&#39;</span>] = df.loc[rowIndexer, <span class="stringliteral">&#39;PlaintiffCleaned&#39;</span>]</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="comment"># create the comparison matrix</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="comment"># https://stackoverflow.com/questions/48465941/counting-combinations-between-two-dataframe-columns</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    time_now = datetime.datetime.now()</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    comparedPO = pd.crosstab(df[<span class="stringliteral">&#39;ClusterName&#39;</span>], df[<span class="stringliteral">&#39;OutcomeCleaned&#39;</span>])  <span class="comment"># Seems to be a good base dataset</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    comparedPO.insert(0, <span class="stringliteral">&#39;Clustered&#39;</span>,<span class="stringliteral">&#39;unknown&#39;</span>)</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    comparedPO.loc[comparedPO.index.isin(clusterNames),<span class="stringliteral">&#39;Clustered&#39;</span>] = <span class="keyword">True</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    comparedPO.loc[~comparedPO.index.isin(clusterNames),<span class="stringliteral">&#39;Clustered&#39;</span>] = <span class="keyword">False</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    comparedPO.to_csv(f<span class="stringliteral">&#39;{time_now:%Y%m%d%H%M%S}-comparedPO.csv&#39;</span>)</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    stop_time = datetime.datetime.now()</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds so far&#39;</span>)</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="comment"># the following line counts the Plaintiff names that contain Midland as a check</span></div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="comment">#nMidlands = len(csvNoDups[csvNoDups[&#39;Plaintiff Name(s)&#39;].str.contains(&#39;Midland&#39;, flags=re.IGNORECASE)][&#39;Plaintiff Name(s)&#39;])</span></div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="comment">#conn = sqlite3.connect(args.dbfile)  # connect to the database</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="comment"># load the csvData into the database</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="comment">#csvNoDups.to_sql(&#39;csvNoDups&#39;, conn, if_exists=&#39;fail&#39;, index=False)</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    stop_time = datetime.datetime.now()</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds&#39;</span>)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    stop_time = datetime.datetime.now()</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    print(f<span class="stringliteral">&#39;{__file__} took {stop_time-start_time} seconds&#39;</span>)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
+<div class="ttc" id="anamespacecleanCountOutcomes_html_a4274f083552a8e34e4f1100d27302ef2"><div class="ttname"><a href="namespacecleanCountOutcomes.html#a4274f083552a8e34e4f1100d27302ef2">cleanCountOutcomes.removeDuplicates</a></div><div class="ttdeci">def removeDuplicates(df)</div><div class="ttdoc">Cleans the main df by removing duplicate rows.</div><div class="ttdef"><b>Definition:</b> <a href="cleanCountOutcomes_8py_source.html#l00042">cleanCountOutcomes.py:42</a></div></div>
 <div class="ttc" id="anamespacecleanCountOutcomes_html_a5293171c9a56b78cc70e003c9817e261"><div class="ttname"><a href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261">cleanCountOutcomes.outcomeList</a></div><div class="ttdeci">def outcomeList(df, columnName='Case Outcome')</div><div class="ttdoc">Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu...</div><div class="ttdef"><b>Definition:</b> <a href="cleanCountOutcomes_8py_source.html#l00081">cleanCountOutcomes.py:81</a></div></div>
-<div class="ttc" id="anamespacecleanPlaintiffs_html_ac95f78e00ae5ea7f5d4f292d6880844e"><div class="ttname"><a href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">cleanPlaintiffs.plaintiffList</a></div><div class="ttdeci">def plaintiffList(df, fieldName)</div><div class="ttdoc">Returns df with added column of cleaned plaintiff names.</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00221">cleanPlaintiffs.py:221</a></div></div>
+<div class="ttc" id="anamespacecleanPlaintiffs_html_ac95f78e00ae5ea7f5d4f292d6880844e"><div class="ttname"><a href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">cleanPlaintiffs.plaintiffList</a></div><div class="ttdeci">def plaintiffList(df, fieldName)</div><div class="ttdoc">Returns df with added column of cleaned plaintiff names.</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00220">cleanPlaintiffs.py:220</a></div></div>
 <div class="ttc" id="anamespacecleanPlaintiffs_html_ae505e4677480e7908bdd4bcb9c50bf19"><div class="ttname"><a href="namespacecleanPlaintiffs.html#ae505e4677480e7908bdd4bcb9c50bf19">cleanPlaintiffs.main</a></div><div class="ttdeci">def main()</div><div class="ttdoc">This is the main function that reads in a csv file containing the court data from the filename passed...</div><div class="ttdef"><b>Definition:</b> <a href="cleanPlaintiffs_8py_source.html#l00296">cleanPlaintiffs.py:296</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph.png" border="0" usemap="#anamespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph" alt=""/></div>
 <map name="anamespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph" id="anamespacecleanPlaintiffs_ae505e4677480e7908bdd4bcb9c50bf19_cgraph">
-<area shape="rect" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,56,140,83"/>
-<area shape="rect" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311" title="Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters r..." alt="" coords="218,5,381,32"/>
-<area shape="rect" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu..." alt="" coords="188,56,411,83"/>
-<area shape="rect" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e" title="Returns df with added column of cleaned plaintiff names." alt="" coords="216,107,383,133"/>
+<area shape="rect" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,122,140,149"/>
+<area shape="rect" href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb" title="Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between th..." alt="" coords="201,5,397,47"/>
+<area shape="rect" href="namespacecleanPlaintiffs.html#a948656ff65ed15ab0295c64a3a2b2311" title="Runs DBSCAN clustering on the similarity matrix in fname with epsilon (eps) set to eps and clusters r..." alt="" coords="218,71,381,98"/>
+<area shape="rect" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu..." alt="" coords="188,122,411,149"/>
+<area shape="rect" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e" title="Returns df with added column of cleaned plaintiff names." alt="" coords="216,173,383,199"/>
+<area shape="rect" href="namespacecleanCountOutcomes.html#a4274f083552a8e34e4f1100d27302ef2" title="Cleans the main df by removing duplicate rows." alt="" coords="203,224,395,265"/>
 </map>
 </div>
 
@@ -609,16 +620,18 @@ Here is the call graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df</td><td>is a panda dataframe of plaintiff names from reading in the csv file of data that has had duplicates removed and other cleaning done </td></tr>
+    <tr><td class="paramname">fieldname</td><td>The column name that contains the plaintiff names to be cleaned </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Tuple (cleaned and sorted plaintiff names, df with cleaned plaintiff names column) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00221">221</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">plaintiffList</a>(df, fieldName):</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;!  Returns df with added column of cleaned plaintiff names</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="stringliteral">    @param df is a panda dataframe of plaintiff names from reading in the csv file </span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="stringliteral">        of data that has had duplicates removed and other cleaning done</span></div>
+<p class="definition">Definition at line <a class="el" href="cleanPlaintiffs_8py_source.html#l00220">220</a> of file <a class="el" href="cleanPlaintiffs_8py_source.html">cleanPlaintiffs.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keyword">def </span><a class="code" href="namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e">plaintiffList</a>(df, fieldName):</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;!  Returns df with added column of cleaned plaintiff names</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="stringliteral">    @param df is a panda dataframe of plaintiff names from reading in the csv file </span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="stringliteral">        of data that has had duplicates removed and other cleaning done</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="stringliteral">    @param fieldname The column name that contains the plaintiff names to be cleaned</span></div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="stringliteral">    @returns Tuple (cleaned and sorted plaintiff names, </span></div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="stringliteral">        df with cleaned plaintiff names column)</span></div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>

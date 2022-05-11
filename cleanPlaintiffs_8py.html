@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">2021 Philly Data Analysis
-   &#160;<span id="projectnumber">0.2.0</span>
+   &#160;<span id="projectnumber">0.2.1</span>
    </div>
    <div id="projectbrief">This is a project for the Pew Foundation to analyze court data.</div>
   </td>
@@ -137,22 +137,20 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cleans the plaintiff names and counts frequency of occurance. </p>
-<p>The main function reads in the name of a csv file to process.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>change the following documentation The "Case Outcome" column is processed via </dd></dl>
-<div class="dotgraph">
-<img src="dot_inline_dotgraph_2.png" alt="dot_inline_dotgraph_2.png" border="0" usemap="#dot_inline_dotgraph_2.map"/>
-<map name="dot_inline_dotgraph_2.map" id="dot_inline_dotgraph_2.map"><area shape="rect" href="namespacecleanCountOutcomes.html#a99564092ed8f0a8cb6062fd33086ae28" title="main" alt="" coords="23,5,95,55"/>
-<area shape="rect" href="namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="outcomeList" alt="" coords="12,103,105,152"/>
-<area shape="rect" href="namespacecleanCountOutcomes.html#a03e2f7d864028a0fa17bf09f898d0d32" title="cleanOutcome" alt="" coords="5,200,112,249"/>
-</map>
-</div>
-<p> It is cleaned via the following processes:</p><ol type="1">
-<li>Check for nan which arise from blank or Null input values</li>
-<li>Remove all trailing ALL CAPS WORDS</li>
-<li>Remove everything after the first period (.)</li>
-<li>Remove date/time and everything after it (typical format 07/17/2017 1:15)</li>
-</ol>
-<p>Then the count of each unique value is calculated and printed.</p>
+<p>The functions in this script can clean plaintiff names and then cluster the names to put similar names together. For instance,</p><ul>
+<li>Victoria Fire and Casualty Co. a/s/o Robert Logan</li>
+<li>Victoria Fire and Casualty Company a/s/o Francisco Mulero both refer to the came plaintiff and should be clustered together.</li>
+</ul>
+<p>We did the following to clean the plaintiff names:</p><ul>
+<li>Removed "a/s/o", "as subrogee of", “aso”, commas, and the text that followed those items</li>
+<li>Removed any non-alphanumeric characters</li>
+<li>Used CleanCo to remove LLC, INC, etc.</li>
+<li>Put the names into all uppercase</li>
+</ul>
+<p>Clustering plaintiffs is started by using the <a href="https://github.com/jamesturk/jellyfish">jellyfish</a> jaro_similarity function as can be seen in the <a class="el" href="namespacecleanPlaintiffs.html#acef3ec054670e0fcc017786ec1e8aeeb" title="Taking the cleanedValueCount from plaintiffList, this function creates a similarity matrix between th...">createSimilarityMatrix()</a> function to calculate similarities between all the cleaned plaintiff names. Once the similarity matrix has been created, the <a href="https://towardsdatascience.com/dbscan-algorithm-complete-guide-and-application-with-python-scikit-learn-d690cbae4c5d">DBSCAN</a> algorithm is used to cluster similar names.</p>
+<p>Typical use cases are as follows: </p><pre class="fragment">python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -s
+python .\src\cleanPlaintiffs.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv -p .\src\20215121490-comparisonMatrix.pkl
+</pre><p> The first creates the similarity matrix (may take 9 minutes). The second uses this similarity matrix to build a plaintiff vs outcome matrix.</p>
 <dl class="section author"><dt>Author</dt><dd>Seth McNeill </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021 March 11 </dd></dl>
 

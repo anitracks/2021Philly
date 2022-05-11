@@ -1,4 +1,4 @@
 <map id="dbscanTest.main" name="dbscanTest.main">
-<area shape="rect" id="node1" title="This is the main function that reads in a." alt="" coords="5,5,127,32"/>
+<area shape="rect" id="node1" title="This is the main function that reads in a similarity matrix pickle file created by cleanPlaintiffs...." alt="" coords="5,5,127,32"/>
 <area shape="rect" id="node2" href="$namespacedbscanTest.html#a53f6789a745b40c715e0ac3fa2c84e35" title="Finds the base name of each cleaned name." alt="" coords="175,5,359,32"/>
 </map>

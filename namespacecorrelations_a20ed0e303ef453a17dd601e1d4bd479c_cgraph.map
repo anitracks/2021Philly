@@ -1,5 +1,6 @@
 <map id="correlations.main" name="correlations.main">
-<area shape="rect" id="node1" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,31,127,57"/>
+<area shape="rect" id="node1" title="This is the main function that reads in a csv file containing the court data from the filename passed..." alt="" coords="5,56,127,83"/>
 <area shape="rect" id="node2" href="$namespacecleanCountOutcomes.html#a5293171c9a56b78cc70e003c9817e261" title="Returns a list of cleaned and sorted outcomes that have been grouped by commonality and counts the nu..." alt="" coords="175,5,397,32"/>
 <area shape="rect" id="node3" href="$namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e" title="Returns df with added column of cleaned plaintiff names." alt="" coords="203,56,369,83"/>
+<area shape="rect" id="node4" href="$namespacecleanCountOutcomes.html#a4274f083552a8e34e4f1100d27302ef2" title="Cleans the main df by removing duplicate rows." alt="" coords="190,107,382,149"/>
 </map>
