@@ -23,7 +23,7 @@ pip install -r requirements.txt
 The scripts should be run in the order listed here. The data used as input is a 
 csv file created by David McNeill based on the raw data received from the courts.
 
-## cleanCount Outcomes.py
+## cleanCountOutcomes.py
 Cleaning and counting the most occurring outcomes is done as follows using the 
 cleanCountOutcomes.py script:
 ```
