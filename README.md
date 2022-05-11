@@ -9,8 +9,8 @@ Managed by David McNeill and Stacy Butler
 
 # Setting Up the Environment
 This project was developed using Python 3.9.1 using a virtual environment. The list of
-packages installed to develop this project is listed in requirements.txt. Not all the 
-packages in requirements.txt are used in the final version of this code. Once the 
+packages installed to develop this project is listed in `requirements.txt`. Not all the 
+packages in `requirements.txt` are used in the final version of this code. Once the 
 correct version of Python has been installed, the virtual environment can be setup as
 follows in the directory you have cloned this project into:
 ```
@@ -24,7 +24,8 @@ The scripts should be run in the order listed here. The data used as input is a
 csv file created by David McNeill based on the raw data received from the courts.
 
 ## cleanCount Outcomes.py
-Cleaning and counting the most occurring outcomes is done as follows:
+Cleaning and counting the most occurring outcomes is done as follows using the 
+cleanCountOutcomes.py script:
 ```
 python .\src\cleanCountOutcomes.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv
 ```
