@@ -50,7 +50,7 @@ def findBaseNames(fname, cutoff=0.9):
     fits = []
     min_eps = 0.01
     max_eps = 0.24
-    eps_step = 0.21
+    eps_step = 0.01
     print("Testing different epsilon (eps) values for DBSCAN.")
     print(f"testing from {min_eps} to {max_eps} stepping {eps_step}")
     epsList = np.arange(min_eps, max_eps, eps_step)
