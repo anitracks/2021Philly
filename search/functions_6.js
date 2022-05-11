@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plaintifflist_45',['plaintiffList',['../namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e',1,'cleanPlaintiffs']]]
+  ['plaintifflist_47',['plaintiffList',['../namespacecleanPlaintiffs.html#ac95f78e00ae5ea7f5d4f292d6880844e',1,'cleanPlaintiffs']]]
 ];

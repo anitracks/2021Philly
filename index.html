@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">2021 Philly Data Analysis
-   &#160;<span id="projectnumber">0.2.2</span>
+   &#160;<span id="projectnumber">0.2.3</span>
    </div>
    <div id="projectbrief">This is a project for the Pew Foundation to analyze court data.</div>
   </td>
@@ -72,14 +72,14 @@ $(function() {
  Managed by David McNeill and Stacy Butler</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Setting Up the Environment</h1>
-<p>This project was developed using Python 3.9.1 using a virtual environment. The list of packages installed to develop this project is listed in <code>requirements.txt</code>. Not all the packages in <code>requirements.txt</code> are used in the final version of this code. Once the correct version of Python has been installed, the virtual environment can be setup as follows in the directory you have cloned this project into: </p><div class="fragment"><div class="line">python -m venv .venv</div>
+<p>This project was developed using Python 3.9.1 using a virtual environment. The list of packages installed to develop this project is listed in <code><a class="el" href="requirements_8txt.html">requirements.txt</a></code>. Not all the packages in <code><a class="el" href="requirements_8txt.html">requirements.txt</a></code> are used in the final version of this code. Once the correct version of Python has been installed, the virtual environment can be setup as follows in the directory you have cloned this project into: </p><div class="fragment"><div class="line">python -m venv .venv</div>
 <div class="line">.\.venv\Scripts\activate</div>
 <div class="line">pip install -r requirements.txt</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Usage</h1>
 <p>The scripts should be run in the order listed here. The data used as input is a csv file created by David McNeill based on the raw data received from the courts.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
-cleanCount Outcomes.py</h2>
+cleanCountOutcomes.py</h2>
 <p>Cleaning and counting the most occurring outcomes is done as follows using the <a class="el" href="cleanCountOutcomes_8py.html" title="Cleans the outcome data and counts how many of each there are.">cleanCountOutcomes.py</a> script: </p><div class="fragment"><div class="line">python .\src\cleanCountOutcomes.py ..\data\MC_specialreport_limiteddaterange_Nov6.csv</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 cleanPlaintiffs.py - Creating the Comparison Matrix</h2>
